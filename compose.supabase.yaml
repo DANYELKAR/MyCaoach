@@ -1,0 +1,11 @@
+name: spark-supabase
+services:
+  api:
+    build: ./backend
+    env_file:
+      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: supabase
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped

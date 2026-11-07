@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-07",
+  "summary": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "suite": "com.spark.api.ai.OutputValidatorTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "buildsPromptWithContextHistoryAndStyleAsUntrustedData",
+        "rejectsBlockedDuplicateOversizedAndWrongCount"
+      ]
+    },
+    {
+      "suite": "com.spark.api.ai.RemoteAdapterTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "supabaseRecursivelyListsAndDeletesOnlyUserObjectsThenAuth",
+        "geminiDoesNotRetry4xxOrExposeRawErrors",
+        "geminiUsesSchemaSafetyImagesAndOnlyOneRetryOn5xx",
+        "supabaseSignsPrivateImageAccessForOnlySixtySeconds",
+        "revenueCatVerifiesCanonicalEntitlementAndExpiry"
+      ]
+    },
+    {
+      "suite": "com.spark.api.foundation.FoundationIntegrationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "mvcDoesNotExposeSseFragmentsOrXsltViews",
+        "migratesRegistersAuthenticatesAndPersistsProfile"
+      ]
+    },
+    {
+      "suite": "com.spark.api.foundation.MemoryIntegrationTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "billingReplayOrderingAndCancellation",
+        "peopleFoldersSavedFeedbackAndOwnership",
+        "plusUnlocksReplyStyleCustomTonesAndTemplates",
+        "oldHistoryRequiresPlus",
+        "freeLimitsAndHistoryDeletionCannotRefillCredits",
+        "accountDeletionRemovesAuthRowsAndFilesAndRejectsStaleToken",
+        "interruptedAccountDeletionCanBeRetriedWithTheSameToken",
+        "cleanupRemovesOnlyOldUnreferencedObjects"
+      ]
+    },
+    {
+      "suite": "com.spark.api.generation.GenerationIntegrationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "withdrawalOfImageRetentionDuringAiCallDeletesTheUploadedFile",
+        "multipartImageValidationAndConsentAndPlanChecks",
+        "replayConflictAndFailureCreditRules",
+        "expiredAttemptCannotCommitOrFailANewerReservation",
+        "concurrentRequestsCannotOverspend"
+      ]
+    },
+    {
+      "suite": "com.spark.api.platform.JwtValidationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "jwksChecksSignatureIssuerAudienceAndExpiry",
+        "explicitLegacyHs256ConfigurationValidatesTokensAndRequiresStrongSecret"
+      ]
+    },
+    {
+      "suite": "com.spark.api.platform.RateLimitServiceTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "limitsEachUserIndependently"
+      ]
+    },
+    {
+      "suite": "com.spark.api.platform.SecurityConfigurationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "protectedApiRequiresAuthenticationWithCorrelatedError",
+        "bearerTokenCannotBypassUnconfiguredIdentityProvider"
+      ]
+    },
+    {
+      "suite": "com.spark.api.usage.QualityMetricsTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "ratesUseAppropriateDenominatorsAndHandleEmptyData"
+      ]
+    },
+    {
+      "suite": "com.spark.api.usage.UsageServiceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "handlesDstShortAndLongDays",
+        "planExpiryAndCapacityAreEnforced",
+        "respectsLocalMidnightAndOnlySucceededCredits"
+      ]
+    }
+  ]
+}

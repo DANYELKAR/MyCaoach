@@ -1,0 +1,9 @@
+spring:
+  flyway:
+    locations: classpath:db/local,classpath:db/migration
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+REVENUECAT_WEBHOOK_SECRET: ${LOCAL_WEBHOOK_SECRET:local-webhook-secret}

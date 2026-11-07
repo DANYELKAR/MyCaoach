@@ -1,0 +1,35 @@
+name: spark-local
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: spark
+      POSTGRES_USER: spark
+      POSTGRES_PASSWORD: spark_local_only
+    volumes:
+      - spark_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spark -d spark"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+  api:
+    build: ./backend
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      LOCAL_STORAGE_PATH: /app/inputs
+      DATABASE_URL: jdbc:postgresql://postgres:5432/spark
+      DATABASE_USERNAME: spark
+      DATABASE_PASSWORD: spark_local_only
+    volumes:
+      - spark_inputs:/app/inputs
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  spark_inputs:
+  spark_postgres:

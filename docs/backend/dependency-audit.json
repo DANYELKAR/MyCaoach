@@ -1,0 +1,29 @@
+{
+  "source": "https://api.osv.dev/v1/querybatch",
+  "date": "2026-11-07",
+  "scope": "Maven compile/runtime; excludes container OS and test tooling",
+  "packagesChecked": 103,
+  "findings": [
+    {
+      "package": "org.springframework:spring-webmvc",
+      "version": "6.2.19",
+      "vulnerabilities": [
+        "GHSA-j9f9-w8pj-32f8",
+        "GHSA-pc63-qcmh-9cmg"
+      ]
+    }
+  ],
+  "assessments": {
+    "GHSA-j9f9-w8pj-32f8": {
+      "feature": "SSE with view fragments",
+      "assessment": "Not used by the current application. REST controller surface regression test is required.",
+      "source": "https://spring.io/security/cve-2026-47890"
+    },
+    "GHSA-pc63-qcmh-9cmg": {
+      "feature": "XsltView with wildcard implicit view rendering",
+      "assessment": "No XSLT view resolver or wildcard application controller; regression test is required.",
+      "source": "https://github.com/spring-projects/spring-framework/commit/692dbc9160de3b5de50ccedeee014716d0cedb7b"
+    }
+  },
+  "regressionTest": "FoundationIntegrationTest.mvcDoesNotExposeSseFragmentsOrXsltViews"
+}

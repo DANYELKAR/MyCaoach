@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+spark:
+  auth:
+    legacy-hs256-enabled: ${SUPABASE_LEGACY_HS256_ENABLED:false}
+    issuer: ${SUPABASE_URL}/auth/v1
+    jwks-url: ${SUPABASE_JWKS_URL}
+    audience: ${SUPABASE_JWT_AUDIENCE:authenticated}
