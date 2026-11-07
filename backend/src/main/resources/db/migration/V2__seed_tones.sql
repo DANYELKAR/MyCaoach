@@ -1,0 +1,7 @@
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000001','Casual','👋','Casual built-in tone','Be relaxed, friendly and conversational.',0);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000002','Flirty','😉','Flirty built-in tone','Be lightly flirty, respectful and never sexual.',1);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000003','Playful','🎈','Playful built-in tone','Use cheerful, gentle teasing without insults.',2);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000004','Witty','✨','Witty built-in tone','Use specific observations and clever but natural wordplay.',3);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000005','Romantic','🌹','Romantic built-in tone','Be warm and sincere without excessive intimacy.',4);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000006','Confident','🔥','Confident built-in tone','Be direct and self-assured without pressure.',5);
+insert into tones(id,name,emoji,description,prompt_fragment,sort_order) values ('00000000-0000-0000-0000-000000000007','Bold','⚡','Bold built-in tone','Be daring and memorable, strictly PG-13; no pressure or sexual remarks.',6);
