@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1d1a22", "surface-container-high": "#2b2931", "on-primary": "#660026", "on-primary-fixed-variant": "#900038", "primary-fixed": "#ffd9de", "inverse-primary": "#b90f4d", "on-tertiary-fixed": "#002114", "background": "#141219", "on-error": "#690005", "tertiary-container": "#00a574", "surface-dim": "#141219", "on-tertiary-container": "#003120", "outline": "#a9898d", "secondary-container": "#571bc1", "inverse-on-surface": "#322f37", "on-error-container": "#ffdad6", "surface-bright": "#3b3840", "secondary-fixed": "#e9ddff", "primary-fixed-dim": "#ffb2be", "tertiary-fixed": "#68fcbf", "on-surface-variant": "#e1bec2", "outline-variant": "#5a4044", "surface-container": "#211e26", "on-primary-container": "#5a0020", "on-background": "#e6e0eb", "on-secondary-fixed": "#23005c", "on-tertiary": "#003825", "on-secondary": "#3c0091", "on-primary-fixed": "#400015", "secondary": "#d0bcff", "primary-container": "#ff4d7d", "on-tertiary-fixed-variant": "#005137", "primary": "#ffb2be", "surface-tint": "#ffb2be", "on-secondary-fixed-variant": "#5516be", "inverse-surface": "#e6e0eb", "surface-variant": "#36333b", "on-secondary-container": "#c4abff", "on-surface": "#e6e0eb", "tertiary": "#45dfa4", "surface": "#141219", "error-container": "#93000a", "surface-container-highest": "#36333b", "error": "#ffb4ab", "tertiary-fixed-dim": "#45dfa4", "surface-container-lowest": "#0f0d14", "secondary-fixed-dim": "#d0bcff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.25rem", "space-xl": "2rem" }, "fontFamily": { "large-title": ["Inter"], "caption-2": ["Inter"], "subheadline": ["Inter"], "footnote": ["Inter"], "title-1": ["Inter"], "caption-1": ["Inter"], "body": ["Inter"], "headline": ["Inter"], "title-2": ["Inter"], "callout": ["Inter"], "title-3": ["Inter"] }, "fontSize": { "large-title": ["34px", { "lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700" }], "caption-2": ["11px", { "lineHeight": "13px", "letterSpacing": "0.07px", "fontWeight": "500" }], "subheadline": ["15px", { "lineHeight": "20px", "letterSpacing": "-0.24px", "fontWeight": "400" }], "footnote": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.08px", "fontWeight": "400" }], "title-1": ["28px", { "lineHeight": "34px", "letterSpacing": "0.36px", "fontWeight": "700" }], "caption-1": ["12px", { "lineHeight": "16px", "letterSpacing": "0px", "fontWeight": "400" }], "body": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "400" }], "headline": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "600" }], "title-2": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.26px", "fontWeight": "600" }], "callout": ["16px", { "lineHeight": "21px", "letterSpacing": "-0.32px", "fontWeight": "400" }], "title-3": ["20px", { "lineHeight": "25px", "letterSpacing": "-0.45px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#141219;color:#e6e0eb;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-body text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">electric_bolt</span></div><h1 class="font-headline text-headline text-on-surface tracking-tight">Saved</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Search saved items" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">search</span></button><button aria-label="Manage collections" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">folder_managed</span></button><div class="w-8 h-8 ml-space-xs rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface px-margin"><div class="flex flex-col w-full space-y-space-md">
+<!-- Header Section with iOS Large Title cadence -->
+<div class="flex items-end justify-between pt-1">
+<div class="space-y-0.5">
+<h1 class="font-large-title text-large-title text-on-surface tracking-tight">History</h1>
+<p class="font-subheadline text-subheadline text-on-surface-variant">42 generations across 6 profiles</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Filter history items" class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+</button>
+<button aria-label="Batch actions or clear options" class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">auto_delete</span>
+</button>
+</div>
+</div>
+<!-- Weekly Outcome & Momentum Stats Banner -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-low p-space-md shadow-lg shadow-black/20">
+<div class="absolute -right-4 -bottom-6 w-28 h-28 rounded-full bg-primary-container/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline text-headline text-on-surface">This week's momentum</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-tertiary-container/25 text-tertiary font-caption-2 text-caption-2 font-semibold">Active</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant mt-0.5">
+<span class="text-on-surface font-medium">14</span> generated · <span class="text-tertiary font-medium">88%</span> reply rate · <span class="text-primary font-medium">2 dates locked 🍸</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Search Input Bar -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container text-on-surface placeholder:text-outline font-callout text-callout focus:outline-none focus:ring-1 focus:ring-primary-container shadow-inner" placeholder="Search history, matches, or quotes..." type="text"/>
+</div>
+<!-- Filter & Grouping Pills (Horizontal Scroll) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="shrink-0 h-9 px-4 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-headline text-footnote font-semibold shadow-md shadow-primary-container/20 active:scale-95 transition-all">
+      All (42)
+    </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container text-on-surface-variant font-headline text-footnote hover:text-on-surface active:scale-95 transition-all">
+      Openers (24)
+    </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container text-on-surface-variant font-headline text-footnote hover:text-on-surface active:scale-95 transition-all">
+      Replies (15)
+    </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container text-on-surface-variant font-headline text-footnote hover:text-on-surface active:scale-95 transition-all">
+      Copied (29)
+    </button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container text-on-surface-variant font-headline text-footnote hover:text-on-surface active:scale-95 transition-all">
+      Favorites (18)
+    </button>
+</div>
+<!-- Chronological Section 1: TODAY -->
+<div class="space-y-space-sm pt-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-caption-2 text-caption-2 font-semibold uppercase tracking-wider text-outline">Today</span>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant">2 new sparks</span>
+</div>
+<!-- Card 1: Elena (Hinge) -->
+<article class="relative flex flex-col rounded-xl bg-surface-container p-space-md space-y-3 shadow-md shadow-black/20">
+<!-- Card Top: Avatar, Name, App Badge, Tone Badge -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-11 h-11 shrink-0">
+<img class="w-full h-full rounded-full object-cover" data-alt="Editorial portrait of a stylish woman with warm natural curls smiling gently in an atmospheric café with soft glowing amber ambient lighting and deep violet tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqOq2RE9E8Q1plgQRKPIXgSzRvznGUJoUgZ1Myr8qAkUChZRFtFNDKZd3bcFQtrR6F99xSOYM3-PjoE_FaDfuy-rDDthvd5ZHBZA6np_TAUZNMMvnYyB2UxXyhBfFT1EWsoDDKa8p1ECEbWyXJDj5mB5ixwVEyUVlhuvKoR7d8IbqT_BqinqCLLhbzseNhpNRdQNyFVPrxRxwntYriBVaY1wBR1zZmnZE0t5_e_J2r"/>
+<span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-on-surface">
+              H
+            </span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline text-headline text-on-surface">Elena</h2>
+<span class="font-footnote text-footnote text-outline">· 2h ago</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant">Continue Chat Reply</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-caption-2 text-caption-2 font-semibold">
+          Smooth &amp; Flirty
+        </span>
+</div>
+<!-- Prompt Context Snippet -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-footnote text-footnote">
+<span class="material-symbols-outlined text-[16px] text-outline">psychology</span>
+<span class="truncate">Context: Responding to croissant critique bio prompt</span>
+</div>
+<!-- Generated Message Quote -->
+<blockquote class="pl-3 py-1 text-on-surface font-body text-body border-l-2 border-primary-container">
+        “I only judge croissant taste if you think grocery store dough counts as pastry art. Otherwise, you're safe. What's your gold standard spot?”
+      </blockquote>
+<!-- Card Action Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-caption-2 text-caption-2 font-medium">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+            Copied
+          </span>
+<button class="h-9 px-3 rounded-full bg-surface-container-high text-on-surface font-subheadline text-subheadline hover:bg-surface-bright active:scale-95 transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy Again
+          </button>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite suggestion" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container hover:bg-surface-container-high active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-on-surface active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Clara (Hinge) -->
+<article class="relative flex flex-col rounded-xl bg-surface-container p-space-md space-y-3 shadow-md shadow-black/20">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-11 h-11 shrink-0">
+<img class="w-full h-full rounded-full object-cover" data-alt="Candid lifestyle portrait of a young woman laughing softly wearing a cozy cream knit sweater beside ceramic pottery studio equipment with warm soft-focus rim light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1MbnvEeir6m5haftz1p5w2NpZwgaAuymXgQtUt9r27_LT3OwH7rha9oYLa8hQInvyjIIPLpwF6kSpnrXV5nFTBrMlelZNJ7G69pglWE7_nemidtR2hqwG4ggeIRqwt4f2f5d03Np3FjIvuDG49LGrinDHLzd2fGpPsT1E7fYmPGQHQRsE9CKumh5-arSQT1oEaVl0KfUf33Sj_j9v-o9C5axcHTqGYAE3rigtnkWH"/>
+<span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-on-surface">
+              H
+            </span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline text-headline text-on-surface">Clara</h2>
+<span class="font-footnote text-footnote text-outline">· 5h ago</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant">Opener Generation</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-caption-2 text-caption-2 font-semibold">
+          Witty &amp; Banter
+        </span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-footnote text-footnote">
+<span class="material-symbols-outlined text-[16px] text-outline">interests</span>
+<span class="truncate">Context: Ceramics &amp; Golden retriever mom prompt</span>
+</div>
+<blockquote class="pl-3 py-1 text-on-surface font-body text-body border-l-2 border-secondary">
+        “Scale of 1 to 10, how likely is your golden retriever to judge my pottery attempts when I inevitably make an asymmetrical coffee mug?”
+      </blockquote>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<button class="h-9 px-3.5 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-subheadline text-subheadline font-semibold shadow-sm shadow-primary-container/20 active:scale-95 transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy to Clipboard
+          </button>
+<button class="h-9 px-3 rounded-full bg-surface-container-high text-on-surface-variant font-subheadline text-subheadline hover:text-on-surface active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            Variant
+          </button>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite suggestion" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-primary-container active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button aria-label="More options" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-on-surface active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Chronological Section 2: YESTERDAY -->
+<div class="space-y-space-sm pt-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-caption-2 text-caption-2 font-semibold uppercase tracking-wider text-outline">Yesterday</span>
+<span class="font-caption-2 text-caption-2 text-tertiary">1 conversion</span>
+</div>
+<!-- Card 3: Sophia (Tinder) -->
+<article class="relative flex flex-col rounded-xl bg-surface-container p-space-md space-y-3 shadow-md shadow-black/20">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-11 h-11 shrink-0">
+<img class="w-full h-full rounded-full object-cover" data-alt="Cinematic portrait of an artistic brunette woman in a dimly lit cocktail lounge holding an espresso martini with neon magenta highlights reflected in background mirrors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8U57tXTPCx6E0Ep-LQEeAarc8yVVW--gy_f3701Dnxilx8pAUiuY8lPkpLo8KypTZvc0Jdg6p-yOXU-Mm8urfUooCMS47etkbpHJEXi-nYuyvtD-2xMDdcP1bUXlF4mNswuGGevg8vqAS-gk5hIRLXG7ew4abrtlU3Dm48DD5f-xBeyRMA9oME7puMnxqBfLeoA27C4B0pU0kqncPdIYYTrCxvwYFG4xirMMxkgFx"/>
+<span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-primary-container">
+              T
+            </span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline text-headline text-on-surface">Sophia</h2>
+<span class="font-footnote text-footnote text-outline">· 6:40 PM</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant">Date Invite Pivot</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-high text-tertiary font-caption-2 text-caption-2 font-semibold">
+          Direct &amp; Casual
+        </span>
+</div>
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-surface-container-low text-footnote font-footnote">
+<span class="text-on-surface-variant truncate">Context: Bantering about favorite espresso bars</span>
+<span class="inline-flex items-center gap-1 text-tertiary font-caption-2 text-caption-2 shrink-0 font-medium">
+<span class="material-symbols-outlined text-[14px]">event_available</span>
+          Led to date
+        </span>
+</div>
+<blockquote class="pl-3 py-1 text-on-surface font-body text-body border-l-2 border-tertiary">
+        “Deal. Only fair way to settle this is on neutral ground with two flat whites and whatever pastry you think can pass my inspection. How's this Thursday?”
+      </blockquote>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-caption-2 text-caption-2 font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            Copied &amp; Sent
+          </span>
+<button class="h-9 px-3 rounded-full bg-surface-container-high text-on-surface font-subheadline text-subheadline hover:bg-surface-bright active:scale-95 transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy Again
+          </button>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite suggestion" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container hover:bg-surface-container-high active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-on-surface active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Chronological Section 3: THIS WEEK -->
+<div class="space-y-space-sm pt-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-caption-2 text-caption-2 font-semibold uppercase tracking-wider text-outline">This Week</span>
+<span class="font-caption-2 text-caption-2 text-outline">Earlier</span>
+</div>
+<!-- Card 4: Maya (Instagram) -->
+<article class="relative flex flex-col rounded-xl bg-surface-container p-space-md space-y-3 shadow-md shadow-black/20">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-11 h-11 shrink-0">
+<img class="w-full h-full rounded-full object-cover" data-alt="Vibrant portrait of an architectural designer with sharp bangs and minimalist gold hoop earrings outdoors during golden hour sunset in an urban loft rooftop terrace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3ZQTN2oe6vBDSvA5yq0gXVlg_hppo0ZvGVy-lYG_5_DcR4tnzWs00WOdfzY_A4o4eEFZJpob6OwsK5Pyjhla7HP769DK9YlQTGiRZ2A3WyRwCRtWJlRly0zoEwrLSjyZWK1uTxgGbHEzxz6eFIkiKqLLx67Wdnk1z0tqWXM_4CqC6mvrOk23XoZihd36RqTL4Z4SmEdFdiyAPNQLfwqqleRptZkS98DVScBqOqowz"/>
+<span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-secondary">
+              IG
+            </span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline text-headline text-on-surface">Maya</h2>
+<span class="font-footnote text-footnote text-outline">· 3d ago</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant">Story Reply Opener</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-caption-2 text-caption-2 font-semibold">
+          Playful Tease
+        </span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-footnote text-footnote">
+<span class="material-symbols-outlined text-[16px] text-outline">camera_alt</span>
+<span class="truncate">Context: Natural wine tasting story photo</span>
+</div>
+<blockquote class="pl-3 py-1 text-on-surface font-body text-body border-l-2 border-primary">
+        “That natural wine bar in Bushwick has a 90% chance of great orange wine and a 10% chance of pretension. How did it rank?”
+      </blockquote>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<button class="h-9 px-3.5 rounded-full bg-surface-container-high text-on-surface font-subheadline text-subheadline hover:bg-surface-bright active:scale-95 transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy to Clipboard
+          </button>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite suggestion" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-primary-container active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<button aria-label="More options" class="w-10 h-10 rounded-full flex items-center justify-center text-outline hover:text-on-surface active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- End of Feed Security & Privacy Footnote -->
+<div class="pt-4 pb-2 flex flex-col items-center justify-center text-center space-y-1">
+<div class="flex items-center gap-1.5 text-outline font-caption-2 text-caption-2">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>History is encrypted on-device. Auto-cleanses after 90 days.</span>
+</div>
+<button class="font-caption-1 text-caption-1 text-primary hover:underline">
+      Manage retention settings
+    </button>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for active tab glow in global nav
+  document.addEventListener('DOMContentLoaded', () => {
+    const historyTab = document.querySelector('nav a[data-path="history"]');
+    if (historyTab) {
+      historyTab.classList.remove('text-on-surface-variant');
+      historyTab.classList.add('text-primary-container', 'font-semibold');
+      const icon = historyTab.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.style.fontVariationSettings = "'FILL' 1";
+      }
+    }
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.12)]" data-active-classes="text-primary-container font-semibold drop-shadow-[0_0_12px_rgba(255,77,125,0.45)]"><div class="h-16 px-gutter flex items-center justify-around"><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">local_fire_department</span><span class="font-caption-2 text-caption-2 tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="people" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-caption-2 text-caption-2 tracking-tight">People</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="history" href="#"><span class="material-symbols-outlined text-[22px]">forum</span><span class="font-caption-2 text-caption-2 tracking-tight">History</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="saved" href="#"><span class="material-symbols-outlined text-[22px]">bookmark_heart</span><span class="font-caption-2 text-caption-2 tracking-tight">Saved</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-caption-2 text-caption-2 tracking-tight">Profile</span></a></div></nav></body></html>

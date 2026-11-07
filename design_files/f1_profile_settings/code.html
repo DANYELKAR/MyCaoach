@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1d1a22", "surface-container-high": "#2b2931", "on-primary": "#660026", "on-primary-fixed-variant": "#900038", "primary-fixed": "#ffd9de", "inverse-primary": "#b90f4d", "on-tertiary-fixed": "#002114", "background": "#141219", "on-error": "#690005", "tertiary-container": "#00a574", "surface-dim": "#141219", "on-tertiary-container": "#003120", "outline": "#a9898d", "secondary-container": "#571bc1", "inverse-on-surface": "#322f37", "on-error-container": "#ffdad6", "surface-bright": "#3b3840", "secondary-fixed": "#e9ddff", "primary-fixed-dim": "#ffb2be", "tertiary-fixed": "#68fcbf", "on-surface-variant": "#e1bec2", "outline-variant": "#5a4044", "surface-container": "#211e26", "on-primary-container": "#5a0020", "on-background": "#e6e0eb", "on-secondary-fixed": "#23005c", "on-tertiary": "#003825", "on-secondary": "#3c0091", "on-primary-fixed": "#400015", "secondary": "#d0bcff", "primary-container": "#ff4d7d", "on-tertiary-fixed-variant": "#005137", "primary": "#ffb2be", "surface-tint": "#ffb2be", "on-secondary-fixed-variant": "#5516be", "inverse-surface": "#e6e0eb", "surface-variant": "#36333b", "on-secondary-container": "#c4abff", "on-surface": "#e6e0eb", "tertiary": "#45dfa4", "surface": "#141219", "error-container": "#93000a", "surface-container-highest": "#36333b", "error": "#ffb4ab", "tertiary-fixed-dim": "#45dfa4", "surface-container-lowest": "#0f0d14", "secondary-fixed-dim": "#d0bcff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.25rem", "space-xl": "2rem" }, "fontFamily": { "large-title": ["Inter"], "caption-2": ["Inter"], "subheadline": ["Inter"], "footnote": ["Inter"], "title-1": ["Inter"], "caption-1": ["Inter"], "body": ["Inter"], "headline": ["Inter"], "title-2": ["Inter"], "callout": ["Inter"], "title-3": ["Inter"] }, "fontSize": { "large-title": ["34px", { "lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700" }], "caption-2": ["11px", { "lineHeight": "13px", "letterSpacing": "0.07px", "fontWeight": "500" }], "subheadline": ["15px", { "lineHeight": "20px", "letterSpacing": "-0.24px", "fontWeight": "400" }], "footnote": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.08px", "fontWeight": "400" }], "title-1": ["28px", { "lineHeight": "34px", "letterSpacing": "0.36px", "fontWeight": "700" }], "caption-1": ["12px", { "lineHeight": "16px", "letterSpacing": "0px", "fontWeight": "400" }], "body": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "400" }], "headline": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "600" }], "title-2": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.26px", "fontWeight": "600" }], "callout": ["16px", { "lineHeight": "21px", "letterSpacing": "-0.32px", "fontWeight": "400" }], "title-3": ["20px", { "lineHeight": "25px", "letterSpacing": "-0.45px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#141219;color:#e6e0eb;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-body text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">electric_bolt</span></div><h1 class="font-headline text-headline text-on-surface tracking-tight">Saved</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Search saved items" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">search</span></button><button aria-label="Manage collections" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">folder_managed</span></button><div class="w-8 h-8 ml-space-xs rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface px-margin"><div class="flex flex-col w-full pb-8 space-y-space-lg">
+<!-- Title & Profile Header Quick Action -->
+<div class="flex items-end justify-between pt-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-caption-2 text-caption-2 text-tertiary uppercase tracking-wider font-semibold">AI Synced</span>
+</div>
+<h2 class="font-title-1 text-title-1 text-on-surface tracking-tight mt-0.5">Profile</h2>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Share Profile" class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+</button>
+<button aria-label="Edit Profile" class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<!-- User Identity Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-lg">
+<!-- Ambient glow behind avatar -->
+<div class="absolute -top-12 -left-12 w-36 h-36 rounded-full bg-primary-container/20 blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-secondary-container/30 blur-2xl pointer-events-none"></div>
+<div class="relative flex items-center gap-space-md">
+<!-- Glow Avatar -->
+<div class="relative shrink-0">
+<div class="w-20 h-20 rounded-full p-[2.5px] bg-gradient-to-tr from-primary-container via-secondary to-tertiary shadow-[0_0_20px_rgba(255,77,125,0.35)]">
+<img class="w-full h-full object-cover rounded-full bg-surface-container-high" data-alt="Editorial portrait of Alex, a charismatic 28-year-old creative professional smiling warm and confidently at night, cinematic neon rose and indigo rim lighting, cinematic grain, dark moody aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHetlvVYnuyfImSGNUYecTR3chWvjO4tM2FaaPdYEbPLhC5nCGzflbvM1nB4HsiuOfLabv7c2bnLYQHh0ARJXtz0vCS5jL54d2IGcQt57NvWKRa7JK7SUTbznye1Qu1sg6qqdCCJK-Nt0fJVlyh9ujlx7BU9WgzCtEQB9OQIZ0DLNbyPrdzIgOFzviILW1_udWA0m_oehV4SGq1VKoHPVbKwR6Hr1FlyRHJv33tjL2"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center p-0.5 shadow-md">
+<div class="w-full h-full rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[13px] text-white" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+</div>
+<!-- Identity Details -->
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline text-headline text-on-surface truncate">Alex Mercer</h3>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-subheadline text-subheadline text-on-surface-variant truncate">28 • Brooklyn, NY</p>
+<div class="mt-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-container/15 text-primary-fixed">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-caption-2 text-caption-2 font-semibold tracking-wide">Spark Plus Active</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats Bento Row -->
+<div class="grid grid-cols-3 gap-2 mt-4 pt-4 bg-surface-container-low/70 -mx-space-md -mb-space-md p-space-md rounded-b-xl">
+<div class="flex flex-col items-center text-center">
+<span class="font-title-2 text-title-2 text-on-surface font-bold tracking-tight">128</span>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant mt-0.5">Openers Used</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="flex items-center gap-0.5">
+<span class="font-title-2 text-title-2 text-tertiary font-bold tracking-tight">84%</span>
+<span class="material-symbols-outlined text-tertiary text-[14px]">trending_up</span>
+</div>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant mt-0.5">Reply Rate</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="font-title-2 text-title-2 text-secondary font-bold tracking-tight">9</span>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant mt-0.5">Dates Set</span>
+</div>
+</div>
+</div>
+<!-- Subscription Hero Banner (Spark Plus) -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary-container/25 via-secondary-container/30 to-surface-container-high p-4 shadow-md">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-container to-secondary flex items-center justify-center shrink-0 shadow-[0_4px_16px_rgba(255,77,125,0.4)]">
+<span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings: 'FILL' 1;">crown</span>
+</div>
+<div>
+<h4 class="font-headline text-headline text-on-surface flex items-center gap-1.5">
+            Spark Plus Tier
+            <span class="text-caption-2 font-caption-2 px-1.5 py-0.5 rounded bg-primary-container text-white font-bold">UNLIMITED</span>
+</h4>
+<p class="font-footnote text-footnote text-on-surface-variant mt-0.5">Renews Oct 24, 2025 • Priority GPU queue</p>
+</div>
+</div>
+</div>
+<p class="font-footnote text-footnote text-on-surface-variant/90 mt-3 leading-relaxed">
+      Full screenshot OCR engine, instant opener suggestions, and tailored persona calibration.
+    </p>
+<div class="mt-3.5 flex items-center justify-between">
+<button class="h-9 px-4 rounded-full bg-surface-container text-on-surface hover:bg-surface-bright active:scale-95 transition-all font-footnote text-footnote font-semibold flex items-center gap-1">
+<span>Manage Subscription</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</button>
+<span class="font-caption-1 text-caption-1 text-primary">All Perks Unlocked</span>
+</div>
+</div>
+<!-- AI Wingman Calibration Section (iOS Grouped Inset) -->
+<div class="space-y-2">
+<span class="px-2 font-caption-1 text-caption-1 uppercase tracking-wider text-outline font-semibold">AI Wingman Settings</span>
+<div class="rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<!-- Default Vibe -->
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/15 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<span class="font-body text-body text-on-surface">Default Vibe</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-subheadline text-subheadline">Witty &amp; Banter</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</button>
+<!-- Humor Calibration -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+</div>
+<span class="font-body text-body text-on-surface">Humor Calibration</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-subheadline text-subheadline text-primary font-medium">Spicy / Teasing</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</button>
+<!-- Dating Goals -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</div>
+<span class="font-body text-body text-on-surface">Dating Goals</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-subheadline text-subheadline truncate max-w-[140px]">Looking for connection</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</button>
+<!-- Persona Bio Hooks -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<span class="font-body text-body text-on-surface">Your Persona Bio</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-subheadline text-subheadline">2 hooks active</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Privacy & Security Group -->
+<div class="space-y-2">
+<span class="px-2 font-caption-1 text-caption-1 uppercase tracking-wider text-outline font-semibold">Privacy &amp; Security</span>
+<div class="rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<!-- On-Device OCR Switch -->
+<div class="w-full h-14 px-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body text-body text-on-surface">On-Device Processing</span>
+<span class="font-caption-2 text-caption-2 text-outline">OCR runs locally without saving photos</span>
+</div>
+</div>
+<!-- iOS Toggle Active -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="ocr-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- History Retention -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">history_toggle_off</span>
+</div>
+<span class="font-body text-body text-on-surface">History Auto-Retention</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-subheadline text-subheadline">90 Days</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</button>
+<!-- App Lock (Face ID) -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<div class="w-full h-14 px-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</div>
+<span class="font-body text-body text-on-surface">Require Face ID</span>
+</div>
+<!-- iOS Toggle Active -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="faceid-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Destructive Clear Action -->
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-error-container/20 active:bg-error-container/30 transition-colors text-left group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</div>
+<span class="font-body text-body text-error font-medium">Clear All Stored Data</span>
+</div>
+<span class="material-symbols-outlined text-error/70 text-[18px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Support & Legal Group -->
+<div class="space-y-2">
+<span class="px-2 font-caption-1 text-caption-1 uppercase tracking-wider text-outline font-semibold">Support &amp; Community</span>
+<div class="rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">tips_and_updates</span>
+</div>
+<span class="font-body text-body text-on-surface">Wingman Tips &amp; Best Matches</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
+</button>
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<span class="font-body text-body text-on-surface">Dating Safety Guidelines</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
+</button>
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<button class="w-full h-14 px-4 flex items-center justify-between hover:bg-surface-container-high active:bg-surface-container-highest transition-colors text-left">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-bright flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<span class="font-body text-body text-on-surface">Terms &amp; Privacy Policy</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">chevron_right</span>
+</button>
+<div class="h-px bg-surface-container-highest mx-4"></div>
+<div class="w-full h-12 px-4 flex items-center justify-between text-left">
+<span class="font-subheadline text-subheadline text-outline">Build Version</span>
+<span class="font-footnote text-footnote text-outline font-mono">v2.4.1 (184)</span>
+</div>
+</div>
+</div>
+<!-- Sign Out & Warm Brand Footer -->
+<div class="flex flex-col items-center pt-3 pb-6 space-y-4">
+<button class="w-full h-12 rounded-full bg-surface-container text-on-surface-variant hover:text-error hover:bg-surface-container-high active:scale-[0.99] transition-all font-headline text-headline flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Log Out</span>
+</button>
+<div class="flex flex-col items-center gap-1 text-center">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="font-footnote text-footnote">Spark AI</span>
+<span class="text-[10px] text-outline">•</span>
+<span class="font-footnote text-footnote">Crafted with</span>
+<span class="text-primary-container text-[14px]">♥</span>
+<span class="font-footnote text-footnote">in Brooklyn</span>
+</div>
+<span class="font-caption-2 text-caption-2 text-outline">Encrypted &amp; private conversational agent</span>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Tab highlight sync for Profile tab in the persistent shell
+  (function() {
+    const profileTab = document.querySelector('nav a[data-path="profile"]');
+    if (profileTab) {
+      const activeClasses = (profileTab.parentElement.dataset.activeClasses || 'text-primary-container font-semibold').split(' ');
+      
+      // Clear sibling active states
+      profileTab.parentElement.querySelectorAll('a').forEach(link => {
+        link.classList.remove('text-primary-container', 'font-semibold', 'drop-shadow-[0_0_12px_rgba(255,77,125,0.45)]');
+        link.classList.add('text-on-surface-variant');
+      });
+
+      // Highlight active profile tab
+      profileTab.classList.remove('text-on-surface-variant');
+      profileTab.classList.add(...activeClasses);
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.12)]" data-active-classes="text-primary-container font-semibold drop-shadow-[0_0_12px_rgba(255,77,125,0.45)]"><div class="h-16 px-gutter flex items-center justify-around"><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">local_fire_department</span><span class="font-caption-2 text-caption-2 tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="people" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-caption-2 text-caption-2 tracking-tight">People</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="history" href="#"><span class="material-symbols-outlined text-[22px]">forum</span><span class="font-caption-2 text-caption-2 tracking-tight">History</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="saved" href="#"><span class="material-symbols-outlined text-[22px]">bookmark_heart</span><span class="font-caption-2 text-caption-2 tracking-tight">Saved</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-caption-2 text-caption-2 tracking-tight">Profile</span></a></div></nav></body></html>

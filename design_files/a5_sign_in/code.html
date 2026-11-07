@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#141219;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#00a574","inverse-primary":"#b90f4d","on-primary-fixed-variant":"#900038","surface-container-low":"#1d1a22","on-secondary":"#3c0091","on-surface":"#e6e0eb","primary":"#ffb2be","surface-tint":"#ffb2be","tertiary-fixed":"#68fcbf","primary-fixed-dim":"#ffb2be","primary-container":"#ff4d7d","on-error-container":"#ffdad6","outline":"#a9898d","on-error":"#690005","inverse-on-surface":"#322f37","secondary-fixed":"#e9ddff","inverse-surface":"#e6e0eb","on-surface-variant":"#e1bec2","surface-container-high":"#2b2931","on-tertiary-container":"#003120","on-secondary-container":"#c4abff","secondary-container":"#571bc1","tertiary":"#45dfa4","on-secondary-fixed":"#23005c","surface-bright":"#3b3840","on-primary-container":"#5a0020","on-tertiary-fixed-variant":"#005137","secondary":"#d0bcff","on-background":"#e6e0eb","on-primary":"#660026","error":"#ffb4ab","surface-container":"#211e26","outline-variant":"#5a4044","surface":"#141219","background":"#141219","on-primary-fixed":"#400015","surface-container-lowest":"#0f0d14","on-secondary-fixed-variant":"#5516be","surface-variant":"#36333b","on-tertiary-fixed":"#002114","tertiary-fixed-dim":"#45dfa4","error-container":"#93000a","surface-container-highest":"#36333b","primary-fixed":"#ffd9de","surface-dim":"#141219","secondary-fixed-dim":"#d0bcff","on-tertiary":"#003825"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-xl":"2rem","space-md":"1rem","gutter":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","margin":"1.25rem"},"fontFamily":{"title-1":["Inter"],"caption-2":["Inter"],"footnote":["Inter"],"large-title":["Inter"],"subheadline":["Inter"],"title-3":["Inter"],"caption-1":["Inter"],"body":["Inter"],"headline":["Inter"],"callout":["Inter"],"title-2":["Inter"]},"fontSize":{"title-1":["28px",{"lineHeight":"34px","letterSpacing":"0.36px","fontWeight":"700"}],"caption-2":["11px",{"lineHeight":"13px","letterSpacing":"0.07px","fontWeight":"500"}],"footnote":["13px",{"lineHeight":"18px","letterSpacing":"-0.08px","fontWeight":"400"}],"large-title":["34px",{"lineHeight":"41px","letterSpacing":"0.37px","fontWeight":"700"}],"subheadline":["15px",{"lineHeight":"20px","letterSpacing":"-0.24px","fontWeight":"400"}],"title-3":["20px",{"lineHeight":"25px","letterSpacing":"-0.45px","fontWeight":"600"}],"caption-1":["12px",{"lineHeight":"16px","letterSpacing":"0px","fontWeight":"400"}],"body":["17px",{"lineHeight":"22px","letterSpacing":"-0.43px","fontWeight":"400"}],"headline":["17px",{"lineHeight":"22px","letterSpacing":"-0.43px","fontWeight":"600"}],"callout":["16px",{"lineHeight":"21px","letterSpacing":"-0.32px","fontWeight":"400"}],"title-2":["22px",{"lineHeight":"28px","letterSpacing":"-0.26px","fontWeight":"600"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-body text-on-surface flex flex-col min-h-screen selection:bg-primary selection:text-on-primary"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-margin flex items-center justify-between"><button aria-label="Go back" class="min-w-[44px] min-h-[44px] -ml-space-xs flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span></button><span class="font-headline text-headline text-on-surface truncate">Sign In</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-safe bg-surface px-margin"><div class="flex flex-col w-full pb-6 select-none relative">
+<!-- Ambient Atmospheric Glows -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 right-0 w-48 h-48 bg-secondary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Hero Branding & Value Prop -->
+<div class="flex flex-col items-center text-center mt-2 px-space-xs relative z-10">
+<!-- Brand Logo Mark with refined dual-ring radial glow -->
+<div class="relative flex items-center justify-center mb-6">
+<div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-primary-container to-secondary-container opacity-40 blur-md"></div>
+<div class="relative w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center shadow-lg shadow-primary-container/10">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<!-- Subtle Floating Badge Accent -->
+<span class="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-surface-container-lowest">
+<span class="h-2.5 w-2.5 rounded-full bg-tertiary"></span>
+</span>
+</div>
+<!-- Title and Subtitle -->
+<h1 class="font-title-1 text-title-1 text-on-surface tracking-tight">Create your account</h1>
+<p class="font-subheadline text-subheadline text-on-surface-variant max-w-[280px] mt-2">
+      Save your people, history and favorites securely.
+    </p>
+<!-- Trust & Privacy Chip -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 mt-5 rounded-full bg-surface-container-high/70 shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-tertiary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant font-medium">End-to-end encrypted · Private & discrete</span>
+</div>
+</div>
+<!-- Auth Action Matrix Stack -->
+<div class="flex flex-col w-full gap-3.5 mt-8 px-space-xs relative z-10">
+<!-- 1. Official Apple Sign-In Pattern (Pure White Capsule, HIG authentic) -->
+<button class="group relative w-full h-[52px] rounded-full bg-white text-black active:scale-[0.985] transition-all duration-150 flex items-center justify-center px-5 shadow-md shadow-white/5 cursor-pointer" id="apple-auth-btn" type="button">
+<div class="flex items-center justify-center gap-2.5">
+<!-- Crisp SVG Apple Monogram -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 170 170">
+<path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.08-7.77-7.94-12.24-14.58-6.19-9.16-10.97-19.67-14.34-31.54-3.37-11.87-5.06-23.01-5.06-33.43 0-14.28 3.51-26.04 10.53-35.28 7.02-9.24 16.03-14.07 27.03-14.5 4.35 0 9.28 1.25 14.79 3.75 5.51 2.5 9.38 3.86 11.61 4.08 2.02-.22 6.03-1.63 12.03-4.23 6-2.6 11.16-3.8 15.48-3.6 11.45.65 20.62 4.97 27.5 12.98-9.87 5.99-14.7 14.33-14.5 25.02.2 8.49 3.42 15.7 9.66 21.64 6.24 5.94 13.79 9.39 22.65 10.35-2.29 6.86-5.18 14.13-8.68 21.82zM119.22 31.84c0-7.39 2.65-14.53 7.95-21.43 5.3-6.9 11.96-11.37 19.98-13.41 1.09 7.72-1.31 14.94-7.2 21.65-5.89 6.71-12.79 10.74-20.73 12.1-.22-.32-.4-.95-.55-1.91z"></path>
+</svg>
+<span class="font-headline text-headline tracking-tight text-black font-semibold">Sign in with Apple</span>
+</div>
+</button>
+<!-- 2. Google Identity Pattern -->
+<button class="group relative w-full h-[52px] rounded-full bg-surface-container-high text-on-surface active:scale-[0.985] transition-all duration-150 flex items-center justify-center px-5 shadow-sm cursor-pointer" id="google-auth-btn" type="button">
+<div class="flex items-center justify-center gap-2.5">
+<!-- Canonical Multi-color Google SVG Glyph -->
+<svg class="w-5 h-5 shrink-0" viewbox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.14z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+<span class="font-headline text-headline text-on-surface font-semibold tracking-tight">Continue with Google</span>
+</div>
+</button>
+<!-- 3. Secure Email Flow -->
+<div class="flex flex-col items-center w-full">
+<button class="group relative w-full h-[52px] rounded-full bg-surface-container active:scale-[0.985] transition-all duration-150 flex items-center justify-center px-5 shadow-sm cursor-pointer" id="email-auth-btn" type="button">
+<div class="flex items-center justify-center gap-2.5 text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-primary transition-colors">mail</span>
+<span class="font-headline text-headline font-semibold tracking-tight">Continue with email</span>
+</div>
+</button>
+<span class="font-footnote text-footnote text-on-surface-variant/70 mt-2">We'll send you a one-time code.</span>
+</div>
+</div>
+<!-- Subtle Divider -->
+<div class="relative flex items-center justify-center my-6 px-space-xs">
+<div class="w-full h-[1px] bg-surface-variant"></div>
+<span class="absolute px-3 bg-surface text-on-surface-variant font-footnote text-footnote">or</span>
+</div>
+<!-- Guest / Skip Passkey Option -->
+<div class="flex justify-center px-space-xs">
+<button class="h-11 px-5 rounded-full bg-surface-container-low hover:bg-surface-container active:scale-95 transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer" id="guest-auth-btn" type="button">
+<span class="font-subheadline text-subheadline font-medium">Continue as guest</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Interactive Demo Drawer for Email Input (Hidden by default, triggered on Email Tap) -->
+<div class="hidden fixed inset-0 z-40 bg-surface-container-lowest/80 backdrop-blur-sm flex items-end justify-center" id="email-modal">
+<div class="w-full bg-surface-container-high rounded-t-3xl p-6 pt-3 shadow-2xl flex flex-col gap-4 animate-in slide-in-from-bottom duration-200">
+<!-- iOS Pull Down Handle -->
+<div class="w-9 h-1 rounded-full bg-surface-variant mx-auto mb-2"></div>
+<div class="flex items-center justify-between">
+<h2 class="font-title-3 text-title-3 text-on-surface">Enter your email</h2>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant" id="close-modal-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">alternate_email</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-body text-body w-full placeholder:text-on-surface-variant/50" id="email-input-field" placeholder="name@example.com" type="email"/>
+</div>
+<button class="w-full h-[52px] rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-surface font-headline text-headline font-semibold shadow-lg shadow-primary-container/20 active:opacity-90 transition-opacity" id="send-code-btn">
+        Send one-time code
+      </button>
+</div>
+</div>
+<!-- Bottom Legal & Consent Footnote (Comfortably padded above home indicator) -->
+<div class="mt-8 px-space-md text-center">
+<p class="font-footnote text-footnote text-on-surface-variant leading-relaxed">
+      By continuing you agree to our 
+      <a class="text-primary hover:underline font-medium inline-block p-1 -m-1" href="#terms">Terms</a> 
+      and 
+      <a class="text-primary hover:underline font-medium inline-block p-1 -m-1" href="#privacy">Privacy Policy</a>.
+    </p>
+</div>
+</div>
+<script>
+  (function() {
+    const emailBtn = document.getElementById('email-auth-btn');
+    const modal = document.getElementById('email-modal');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const inputField = document.getElementById('email-input-field');
+    const sendBtn = document.getElementById('send-code-btn');
+    const appleBtn = document.getElementById('apple-auth-btn');
+    const googleBtn = document.getElementById('google-auth-btn');
+    const guestBtn = document.getElementById('guest-auth-btn');
+
+    if (emailBtn && modal) {
+      emailBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        setTimeout(() => inputField && inputField.focus(), 50);
+      });
+    }
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    }
+
+    if (sendBtn) {
+      sendBtn.addEventListener('click', () => {
+        const email = inputField.value.trim();
+        if (email) {
+          sendBtn.innerText = 'Checking...';
+          setTimeout(() => {
+            sendBtn.innerText = 'Code Sent!';
+            setTimeout(() => {
+              modal.classList.add('hidden');
+              sendBtn.innerText = 'Send one-time code';
+            }, 700);
+          }, 600);
+        } else {
+          inputField.focus();
+        }
+      });
+    }
+
+    // Gentle tactile feedback micro-interactions
+    [appleBtn, googleBtn, guestBtn].forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          btn.style.opacity = '0.7';
+          setTimeout(() => { btn.style.opacity = '1'; }, 150);
+        });
+      }
+    });
+  })();
+</script></main></body></html>

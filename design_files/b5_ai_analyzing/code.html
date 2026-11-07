@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-error": "#690005", "error-container": "#93000a", "on-secondary": "#3c0091", "inverse-on-surface": "#322f37", "tertiary-fixed-dim": "#45dfa4", "background": "#141219", "primary-container": "#ff4d7d", "secondary-container": "#571bc1", "primary": "#ffb2be", "surface-container-low": "#1d1a22", "surface-tint": "#ffb2be", "surface": "#141219", "on-primary-container": "#5a0020", "on-primary-fixed-variant": "#900038", "surface-container-lowest": "#0f0d14", "on-tertiary": "#003825", "on-tertiary-fixed": "#002114", "secondary-fixed": "#e9ddff", "primary-fixed": "#ffd9de", "inverse-primary": "#b90f4d", "on-error-container": "#ffdad6", "outline-variant": "#5a4044", "tertiary-fixed": "#68fcbf", "outline": "#a9898d", "on-secondary-fixed": "#23005c", "on-surface": "#e6e0eb", "inverse-surface": "#e6e0eb", "on-primary-fixed": "#400015", "on-primary": "#660026", "surface-container-high": "#2b2931", "on-background": "#e6e0eb", "on-secondary-container": "#c4abff", "on-tertiary-container": "#003120", "tertiary-container": "#00a574", "on-surface-variant": "#e1bec2", "surface-variant": "#36333b", "primary-fixed-dim": "#ffb2be", "surface-bright": "#3b3840", "surface-container": "#211e26", "surface-dim": "#141219", "tertiary": "#45dfa4", "error": "#ffb4ab", "secondary-fixed-dim": "#d0bcff", "on-tertiary-fixed-variant": "#005137", "on-secondary-fixed-variant": "#5516be", "secondary": "#d0bcff", "surface-container-highest": "#36333b" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "2rem", "margin": "1.25rem", "space-lg": "1.5rem", "gutter": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, fontFamily: { "subheadline": ["Inter"], "title-3": ["Inter"], "callout": ["Inter"], "headline": ["Inter"], "caption-1": ["Inter"], "footnote": ["Inter"], "title-2": ["Inter"], "large-title": ["Inter"], "title-1": ["Inter"], "body": ["Inter"], "caption-2": ["Inter"] }, fontSize: { "subheadline": ["15px", { "lineHeight": "20px", "letterSpacing": "-0.24px", "fontWeight": "400" }], "title-3": ["20px", { "lineHeight": "25px", "letterSpacing": "-0.45px", "fontWeight": "600" }], "callout": ["16px", { "lineHeight": "21px", "letterSpacing": "-0.32px", "fontWeight": "400" }], "headline": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "600" }], "caption-1": ["12px", { "lineHeight": "16px", "letterSpacing": "0px", "fontWeight": "400" }], "footnote": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.08px", "fontWeight": "400" }], "title-2": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.26px", "fontWeight": "600" }], "large-title": ["34px", { "lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700" }], "title-1": ["28px", { "lineHeight": "34px", "letterSpacing": "0.36px", "fontWeight": "700" }], "body": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "400" }], "caption-2": ["11px", { "lineHeight": "13px", "letterSpacing": "0.07px", "fontWeight": "500" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-body text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between px-margin h-14"><button aria-label="Cancel" class="w-11 h-11 flex items-center justify-center -ml-2 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">close</span></button><h1 class="font-headline text-headline text-on-surface tracking-tight text-center truncate max-w-[200px]">Analyzing Chat</h1><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-14 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl relative overflow-hidden select-none">
+<!-- Ambient Atmospheric Glows -->
+<div class="absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gradient-to-tr from-primary-container/20 via-secondary-container/25 to-transparent blur-3xl pointer-events-none -z-10 animate-pulse" style="animation-duration: 4s;"></div>
+<div class="absolute top-80 -left-12 w-64 h-64 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute bottom-16 right-0 w-72 h-72 rounded-full bg-primary-container/10 blur-3xl pointer-events-none -z-10"></div>
+<!-- Profile Context Pill Header -->
+<div class="flex items-center justify-between w-full mt-space-sm mb-space-md">
+<div class="inline-flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-high/70 backdrop-blur-md shadow-sm">
+<div class="w-6 h-6 rounded-full overflow-hidden shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="Close-up candid portrait of Elena, a 27-year-old female architect with soft brown curls and an effortless aesthetic, warm golden hour natural window light, muted moody tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA526QDbb0-D9n8QZVevxuZwwdwsG82khruU-KPi8BPlMxdjLzRZm4frKmJtxHU0B0PPEKy8z1sjZkuTWsMbpH2H_Slj3viv9NHqBvrV0SYQk2DH9jsHj3Fl1JRf9rDU9-YV7yP3LrSG6s0LokKs7rcQyaYkfcjqJV3DycFDAkveDrfoVdNTrZ2EvY8i7p8meQ0WnjjRy8N84ydPYfTaf4kw-4K7NVYnjJbaDGZsHKO"/>
+</div>
+<span class="font-footnote text-footnote text-on-surface font-medium tracking-tight">Elena, 27</span>
+<span class="text-outline text-caption-2">•</span>
+<span class="font-caption-1 text-caption-1 text-on-surface-variant">Hinge Banter</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-tertiary shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="font-caption-2 text-caption-2 uppercase tracking-wider font-semibold text-tertiary">Live Engine</span>
+</div>
+</div>
+<!-- Hero Visual: AI Orbital Pulsing Orb -->
+<div class="relative flex flex-col items-center justify-center my-space-md min-h-[220px]">
+<!-- Outer Glow Wave Rings -->
+<div class="absolute w-52 h-52 rounded-full bg-gradient-to-br from-primary-container/20 to-secondary-container/10 blur-xl animate-pulse" style="animation-duration: 3s;"></div>
+<!-- Concentric Soft Radii -->
+<div class="absolute w-44 h-44 rounded-full bg-surface-container-low/40 backdrop-blur-xl flex items-center justify-center shadow-lg">
+<div class="w-36 h-36 rounded-full bg-surface-container/60 flex items-center justify-center"></div>
+</div>
+<!-- Floating Orbital Clue Badges -->
+<div class="absolute -top-1 left-2 animate-bounce" style="animation-duration: 3.2s;">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-highest/90 shadow-md backdrop-blur-md">
+<span class="material-symbols-outlined text-[13px] text-primary" style="font-variation-settings: 'FILL' 1;">local_cafe</span>
+<span class="font-caption-2 text-caption-2 text-on-surface font-medium">Lyon Bakery</span>
+</div>
+</div>
+<div class="absolute top-12 right-0 animate-bounce" style="animation-duration: 2.7s; animation-delay: 0.6s;">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container text-on-primary-fixed shadow-md shadow-primary-container/30 backdrop-blur-md">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-caption-2 text-caption-2 font-semibold">Flirty Tone</span>
+</div>
+</div>
+<div class="absolute -bottom-2 right-4 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.3s;">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container shadow-md backdrop-blur-md">
+<span class="material-symbols-outlined text-[13px]">architecture</span>
+<span class="font-caption-2 text-caption-2 font-medium">Architect Hook</span>
+</div>
+</div>
+<!-- Center Luminous Spark Orb -->
+<div class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-primary-container via-secondary-container to-primary flex items-center justify-center shadow-xl shadow-primary-container/40 p-1">
+<div class="w-full h-full rounded-full bg-surface-container-lowest/70 backdrop-blur-md flex flex-col items-center justify-center relative overflow-hidden group">
+<!-- Center Sparkle Graphic -->
+<span class="material-symbols-outlined text-primary-fixed text-[34px] animate-spin" style="font-variation-settings: 'FILL' 1; animation-duration: 9s;">auto_awesome</span>
+<span class="font-caption-2 text-caption-2 text-on-surface-variant font-bold tracking-tighter mt-0.5">GPT-4o</span>
+</div>
+</div>
+</div>
+<!-- Hero Titles -->
+<div class="text-center px-space-sm mb-space-md">
+<h2 class="font-title-2 text-title-2 text-on-surface tracking-tight mb-1">
+      Analyzing Elena's Chat...
+    </h2>
+<p class="font-footnote text-footnote text-on-surface-variant leading-relaxed max-w-[310px] mx-auto">
+      Calibrating high-EQ replies for sourdough cravings, Paris banter, and playful wit.
+    </p>
+</div>
+<!-- Dynamic Progress Bar & Shimmer Indicator -->
+<div class="w-full bg-surface-container-high/60 backdrop-blur-md p-space-sm rounded-xl mb-space-md shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px] animate-pulse">psychology</span>
+<span class="font-footnote text-footnote text-on-surface font-semibold">Synthesis Pipeline</span>
+</div>
+<span class="font-caption-1 text-caption-1 text-primary font-bold tracking-tight">85% Complete</span>
+</div>
+<!-- Shimmering Bar -->
+<div class="relative w-full h-2 rounded-full bg-surface-container-lowest overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container via-primary to-secondary-container transition-all duration-700 ease-out" id="progress-bar-fill" style="width: 85%;">
+<!-- Shimmer highlight sweep -->
+<div class="w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-0.5 text-on-surface-variant font-caption-2 text-caption-2">
+<span>Calibrating magnetic banter</span>
+<span>~2 sec remaining</span>
+</div>
+</div>
+<!-- Real-time Multi-step Pipeline Checklist -->
+<div class="w-full bg-surface-container-low/85 backdrop-blur-xl rounded-xl p-space-md shadow-md mb-space-md flex flex-col gap-space-sm">
+<!-- Step 1: Complete -->
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px] font-bold">done</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-subheadline text-subheadline text-on-surface font-medium truncate">OCR & Chat Transcript Scanned</span>
+<span class="font-caption-2 text-caption-2 text-tertiary font-semibold ml-2 shrink-0">100%</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant truncate">
+          Found: "Train to Lyon" & sourdough bakery debate
+        </p>
+</div>
+</div>
+<!-- Step 2: Complete -->
+<div class="flex items-start gap-space-sm">
+<div class="w-6 h-6 rounded-full bg-tertiary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px] font-bold">done</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-subheadline text-subheadline text-on-surface font-medium truncate">Personality Vibe Decoding</span>
+<span class="font-caption-2 text-caption-2 text-tertiary font-semibold ml-2 shrink-0">100%</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant truncate">
+          Detected: Dry humor, architectural eye, light tease
+        </p>
+</div>
+</div>
+<!-- Step 3: Active Pulsing Step -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg bg-surface-container-high/50 transition-colors">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm shadow-primary-container/30">
+<span class="material-symbols-outlined text-on-primary-fixed text-[15px] animate-spin" style="animation-duration: 2s;">sync</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-subheadline text-subheadline text-primary font-semibold truncate">Generating 4 Reply Angles</span>
+<span class="font-caption-2 text-caption-2 text-primary font-bold ml-2 shrink-0">Crafting...</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-on-surface-variant">
+          Styling: Playful Challenge, Smooth Architect Callback
+        </p>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="flex items-start gap-space-sm opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-outline text-[15px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-subheadline text-subheadline text-on-surface truncate">Optimizing Response Likelihood</span>
+<span class="font-caption-2 text-caption-2 text-outline ml-2 shrink-0">Next</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-outline truncate">
+          Balancing banter curiosity to maximize instant replies
+        </p>
+</div>
+</div>
+</div>
+<!-- Spark Dating High-EQ Delight Card -->
+<div class="w-full bg-gradient-to-r from-secondary-container/40 via-surface-container-high/60 to-surface-container-high/40 rounded-xl p-space-md mb-space-lg shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">tips_and_updates</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption-1 text-caption-1 uppercase tracking-wider text-secondary font-bold">Spark Dating Psychology</span>
+<p class="font-footnote text-footnote text-on-surface mt-0.5 leading-snug">
+        Referencing a mutual niche passion (like sourdough fermentation or indie French cinema) within your first 3 replies doubles date conversion rate.
+      </p>
+</div>
+</div>
+<!-- Discreet Bottom Cancel Action -->
+<div class="flex justify-center items-center w-full">
+<button class="h-11 px-6 rounded-full text-on-surface-variant font-footnote text-footnote font-medium hover:text-on-surface transition-colors active:scale-95" onclick="history.back()" type="button">
+      Cancel generation
+    </button>
+</div>
+</div>
+<script>
+  (function initAnalyzingInteractions() {
+    let progress = 85;
+    const bar = document.getElementById('progress-bar-fill');
+    if (!bar) return;
+
+    // Gentle micro-increments simulating high-end neural pipeline activity
+    const interval = setInterval(() => {
+      if (progress < 98) {
+        progress += Math.random() * 2.5;
+        if (progress > 98) progress = 98;
+        bar.style.width = progress.toFixed(1) + '%';
+      } else {
+        clearInterval(interval);
+      }
+    }, 450);
+  })();
+</script></main></body></html>

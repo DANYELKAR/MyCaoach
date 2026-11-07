@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1d1a22", "surface-container-high": "#2b2931", "on-primary": "#660026", "on-primary-fixed-variant": "#900038", "primary-fixed": "#ffd9de", "inverse-primary": "#b90f4d", "on-tertiary-fixed": "#002114", "background": "#141219", "on-error": "#690005", "tertiary-container": "#00a574", "surface-dim": "#141219", "on-tertiary-container": "#003120", "outline": "#a9898d", "secondary-container": "#571bc1", "inverse-on-surface": "#322f37", "on-error-container": "#ffdad6", "surface-bright": "#3b3840", "secondary-fixed": "#e9ddff", "primary-fixed-dim": "#ffb2be", "tertiary-fixed": "#68fcbf", "on-surface-variant": "#e1bec2", "outline-variant": "#5a4044", "surface-container": "#211e26", "on-primary-container": "#5a0020", "on-background": "#e6e0eb", "on-secondary-fixed": "#23005c", "on-tertiary": "#003825", "on-secondary": "#3c0091", "on-primary-fixed": "#400015", "secondary": "#d0bcff", "primary-container": "#ff4d7d", "on-tertiary-fixed-variant": "#005137", "primary": "#ffb2be", "surface-tint": "#ffb2be", "on-secondary-fixed-variant": "#5516be", "inverse-surface": "#e6e0eb", "surface-variant": "#36333b", "on-secondary-container": "#c4abff", "on-surface": "#e6e0eb", "tertiary": "#45dfa4", "surface": "#141219", "error-container": "#93000a", "surface-container-highest": "#36333b", "error": "#ffb4ab", "tertiary-fixed-dim": "#45dfa4", "surface-container-lowest": "#0f0d14", "secondary-fixed-dim": "#d0bcff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem", "gutter": "1rem", "margin": "1.25rem", "space-xl": "2rem" }, "fontFamily": { "large-title": ["Inter"], "caption-2": ["Inter"], "subheadline": ["Inter"], "footnote": ["Inter"], "title-1": ["Inter"], "caption-1": ["Inter"], "body": ["Inter"], "headline": ["Inter"], "title-2": ["Inter"], "callout": ["Inter"], "title-3": ["Inter"] }, "fontSize": { "large-title": ["34px", { "lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700" }], "caption-2": ["11px", { "lineHeight": "13px", "letterSpacing": "0.07px", "fontWeight": "500" }], "subheadline": ["15px", { "lineHeight": "20px", "letterSpacing": "-0.24px", "fontWeight": "400" }], "footnote": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.08px", "fontWeight": "400" }], "title-1": ["28px", { "lineHeight": "34px", "letterSpacing": "0.36px", "fontWeight": "700" }], "caption-1": ["12px", { "lineHeight": "16px", "letterSpacing": "0px", "fontWeight": "400" }], "body": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "400" }], "headline": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.43px", "fontWeight": "600" }], "title-2": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.26px", "fontWeight": "600" }], "callout": ["16px", { "lineHeight": "21px", "letterSpacing": "-0.32px", "fontWeight": "400" }], "title-3": ["20px", { "lineHeight": "25px", "letterSpacing": "-0.45px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#141219;color:#e6e0eb;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-body text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[20px]">electric_bolt</span></div><h1 class="font-headline text-headline text-on-surface tracking-tight">Saved</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Search saved items" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">search</span></button><button aria-label="Manage collections" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[24px]">folder_managed</span></button><div class="w-8 h-8 ml-space-xs rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface px-margin"><div class="flex flex-col w-full pb-8 space-y-space-md">
+<!-- Title & Action Utility Header -->
+<div class="flex items-end justify-between pt-1">
+<div>
+<h2 class="font-title-1 text-title-1 text-on-surface tracking-tight">Saved</h2>
+<p class="font-subheadline text-subheadline text-on-surface-variant mt-0.5">18 curated lines &amp; openers</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-3 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface font-footnote text-footnote font-semibold flex items-center justify-center">
+        Select
+      </button>
+<button aria-label="New collection" class="h-9 w-9 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">create_new_folder</span>
+</button>
+</div>
+</div>
+<!-- iOS Search Pill Input -->
+<div class="relative w-full">
+<div class="flex items-center w-full h-11 px-3.5 rounded-full bg-surface-container-low text-on-surface-variant shadow-sm focus-within:bg-surface-container focus-within:text-on-surface transition-all">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant shrink-0">search</span>
+<input class="w-full bg-transparent border-0 px-2.5 font-subheadline text-subheadline text-on-surface placeholder:text-outline focus:outline-none" placeholder="Search in saved lines, tags, or names..." type="search"/>
+<button aria-label="Voice search" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[19px]">mic</span>
+</button>
+</div>
+</div>
+<!-- Filter Category Chips (Horizontal Scrollable) -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar -mx-margin px-margin py-1">
+<button class="shrink-0 h-9 px-4 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-footnote text-footnote font-semibold flex items-center gap-1.5 shadow-[0_4px_16px_rgba(255,77,125,0.3)]">
+<span>All</span>
+<span class="bg-surface-container-lowest/30 px-1.5 py-0.5 rounded-full text-caption-2 font-caption-2">18</span>
+</button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-footnote text-footnote flex items-center gap-1.5 transition-colors">
+<span>Top Openers</span>
+<span class="bg-surface-container-high px-1.5 py-0.5 rounded-full text-caption-2 font-caption-2 text-on-surface">7</span>
+</button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-footnote text-footnote flex items-center gap-1.5 transition-colors">
+<span>Banter &amp; Tease</span>
+<span class="bg-surface-container-high px-1.5 py-0.5 rounded-full text-caption-2 font-caption-2 text-on-surface">5</span>
+</button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-footnote text-footnote flex items-center gap-1.5 transition-colors">
+<span>Date Invites</span>
+<span class="bg-surface-container-high px-1.5 py-0.5 rounded-full text-caption-2 font-caption-2 text-on-surface">4</span>
+</button>
+<button class="shrink-0 h-9 px-4 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-footnote text-footnote flex items-center gap-1.5 transition-colors">
+<span>Smooth Pivots</span>
+<span class="bg-surface-container-high px-1.5 py-0.5 rounded-full text-caption-2 font-caption-2 text-on-surface">2</span>
+</button>
+</div>
+<!-- Quick Stat / Efficiency Card -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-secondary-container/40 via-surface-container to-surface-container p-3.5 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/60 text-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">hotel_class</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline text-headline text-on-surface text-[15px]">89% Overall Response Rate</span>
+</div>
+<p class="font-footnote text-footnote text-on-surface-variant mt-0.5">
+          Tap any card to instantly copy, or adapt line structure for a new match.
+        </p>
+</div>
+</div>
+</div>
+<!-- Card List -->
+<div class="flex flex-col space-y-space-md">
+<!-- Card 1 (Opener - Linked to Elena) -->
+<article class="bg-surface-container rounded-xl p-4 shadow-md flex flex-col space-y-3 relative group">
+<!-- Top Row: Badge & Heart -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-caption-1 text-caption-1 font-semibold tracking-wide uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+          Top Opener · 94% Response
+        </span>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite" class="w-9 h-9 rounded-full flex items-center justify-center text-primary-container hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Message Quotation -->
+<blockquote class="font-callout text-callout text-on-surface font-medium leading-relaxed pl-1">
+        “Be honest: when you booked that one-way train to Lyon, was it 70% architecture curiosity or 100% just chasing the holy grail of butter laminations?”
+      </blockquote>
+<!-- Person Meta & Tags -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<div class="flex items-center gap-1.5 bg-surface-container-high px-2 py-1 rounded-full">
+<div class="w-5 h-5 rounded-full overflow-hidden bg-primary-container/20 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover" data-alt="Editorial portrait of Elena, chic smiling young woman in natural soft lighting, warm modern cafe background, dark aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Llcf-Rq4MCgy7MfrE6NktnRyyFZN4u7XjHAzELXfxOSGNIMKp_pE8aDPlSCoP845ZrkOkQ6iVJYRSze5lPmhwGMCnVXjqj21jcppddgkADS7PCDtmDcXChdRPsc0iB0gwQsvyysd9ESWfiaVCZVH35dBI0IinNLHutrkhfYiqK_ckoa2MNsLm4w1v2WEIQ-jOJ2WvTYLjSSnfXxUuIpTy9qaCXRStlwirwsF2D0k"/>
+</div>
+<span class="font-caption-1 text-caption-1 text-on-surface font-medium">Elena · Hinge</span>
+</div>
+<span class="bg-surface-container-low text-secondary font-caption-1 text-caption-1 px-2.5 py-1 rounded-full">
+          Witty / Challenger
+        </span>
+<span class="font-caption-2 text-caption-2 text-outline ml-auto self-center flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">content_copy</span> Copied 3x
+        </span>
+</div>
+<!-- Action Buttons Row -->
+<div class="pt-2 flex items-center gap-2">
+<button class="copy-btn flex-1 h-10 px-4 rounded-full bg-gradient-to-r from-primary-container to-secondary-container hover:opacity-95 active:scale-[0.98] transition-all text-on-primary font-footnote text-footnote font-semibold flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(255,77,125,0.25)]">
+<span class="material-symbols-outlined text-[18px]">copy_all</span>
+<span class="btn-label">Copy to Clipboard</span>
+</button>
+<button class="h-10 px-3.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-footnote text-footnote font-medium flex items-center justify-center gap-1.5 transition-colors" title="Use on another match">
+<span class="material-symbols-outlined text-[17px] text-primary">auto_fix_high</span>
+<span class="hidden sm:inline">Adapt</span>
+</button>
+</div>
+</article>
+<!-- Card 2 (Playful Tease / High Banter - Universal) -->
+<article class="bg-surface-container rounded-xl p-4 shadow-md flex flex-col space-y-3 relative group">
+<!-- Top Row -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary font-caption-1 text-caption-1 font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[13px]">local_fire_department</span>
+          Banter &amp; Tease · High Intent
+        </span>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite" class="w-9 h-9 rounded-full flex items-center justify-center text-primary-container hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Message Quotation -->
+<blockquote class="font-callout text-callout text-on-surface font-medium leading-relaxed pl-1">
+        “No judgment, but there is a strict blind taste-test clause in our future friendship agreement. You pick the bakery, I'll bring the honest critique.”
+      </blockquote>
+<!-- Context Meta -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<div class="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface font-caption-1 text-caption-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">public</span>
+<span>Universal Hook · Food &amp; Coffee</span>
+</div>
+<span class="font-caption-2 text-caption-2 text-tertiary font-medium ml-auto self-center flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Copied 5x · 100% replied
+        </span>
+</div>
+<!-- Action Buttons Row -->
+<div class="pt-2 flex items-center gap-2">
+<button class="copy-btn flex-1 h-10 px-4 rounded-full bg-surface-container-high hover:bg-surface-bright active:scale-[0.98] transition-all text-on-surface font-footnote text-footnote font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">copy_all</span>
+<span class="btn-label">Copy to Clipboard</span>
+</button>
+<button aria-label="Quick adapt" class="h-10 w-10 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</article>
+<!-- Card 3 (Smooth Date Invite) -->
+<article class="bg-surface-container rounded-xl p-4 shadow-md flex flex-col space-y-3 relative group">
+<!-- Top Row -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-caption-1 text-caption-1 font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[13px]">calendar_today</span>
+          Date Invite · Low Pressure
+        </span>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite" class="w-9 h-9 rounded-full flex items-center justify-center text-primary-container hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Message Quotation -->
+<blockquote class="font-callout text-callout text-on-surface font-medium leading-relaxed pl-1">
+        “Deal. Only fair way to settle this is on neutral ground with two flat whites and whatever pastry you think can pass my inspection. How's Thursday evening?”
+      </blockquote>
+<!-- Context Meta -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<div class="flex items-center gap-1.5 bg-surface-container-high px-2 py-1 rounded-full">
+<div class="w-5 h-5 rounded-full overflow-hidden bg-secondary-container/40 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover" data-alt="Candid photograph of Sophia with stylish glasses and a laughing smile at an outdoor evening bistro, moody warm cinematic tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSCxk30MbvNxwrR1G0Fw6Ox_7z2gvPI3KB43QsmR8c6rQ8Z5mXQTud2BZeC56fXEZPgwKVkzzqtveDKbtlA5UDacJhwbxIVJ3VvqcgV2LZyDlYDhu93opqQGdWSR4gW7zsOke8fVp6SRlvCM20zLY8__izP1qHAcsC1IIFsquwUKpNHphDFdZc_U1EAEaC4oHaQfNIFCpzAt7JUjkrXCqe1vPeL9uG1hAyyGKMMV9z"/>
+</div>
+<span class="font-caption-1 text-caption-1 text-on-surface font-medium">Sophia · Tinder</span>
+</div>
+<span class="bg-surface-container-low text-on-surface-variant font-caption-1 text-caption-1 px-2.5 py-1 rounded-full">
+          Casual &amp; Confident
+        </span>
+<span class="font-caption-2 text-caption-2 text-outline ml-auto self-center">
+          Copied 2x
+        </span>
+</div>
+<!-- Action Buttons Row -->
+<div class="pt-2 flex items-center gap-2">
+<button class="copy-btn flex-1 h-10 px-4 rounded-full bg-surface-container-high hover:bg-surface-bright active:scale-[0.98] transition-all text-on-surface font-footnote text-footnote font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">copy_all</span>
+<span class="btn-label">Copy to Clipboard</span>
+</button>
+<button class="h-10 px-3.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-footnote text-footnote font-medium flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[17px] text-tertiary">send</span>
+<span class="hidden sm:inline">Send</span>
+</button>
+</div>
+</article>
+<!-- Card 4 (Niche Callback - Architect / Creative) -->
+<article class="bg-surface-container rounded-xl p-4 shadow-md flex flex-col space-y-3 relative group">
+<!-- Top Row -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-caption-1 text-caption-1 font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[13px]">lightbulb</span>
+          Bio Callback · Niche Hook
+        </span>
+<div class="flex items-center gap-1">
+<button aria-label="Favorite" class="w-9 h-9 rounded-full flex items-center justify-center text-primary-container hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button aria-label="More options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Message Quotation -->
+<blockquote class="font-callout text-callout text-on-surface font-medium leading-relaxed pl-1">
+        “As long as you promise not to analyze the structural load-bearing integrity of our coffee table like an architect, we have a deal.”
+      </blockquote>
+<!-- Context Meta -->
+<div class="flex flex-col space-y-1.5 pt-1">
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 bg-surface-container-high px-2 py-1 rounded-full">
+<div class="w-5 h-5 rounded-full overflow-hidden bg-primary-container/20 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover" data-alt="Profile photo of Elena with minimalist black sweater in an art gallery, moody ambient lighting with deep violet tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcaZoDpd5xDWyfEZtI2mtPA2iRzSur8uMh8kGFq3bGBtf5CNYLZwIowTn8B_Qs4ZGxXJ-9Hr2n_RV_3iHXvgXAb1JH9S6vwwMxb_XwgALzOhYAHBpFnIy9lJqmszNESHhI9-XkQ_zWulnjRbur-B4vjU5bwTx2l2pQAJE8_vmSmantwUNHVpxcixqnFvfsPeH8HfDvdNOAPTx_nxSWqgjlQr5usdG31EOTCdb3mBbK"/>
+</div>
+<span class="font-caption-1 text-caption-1 text-on-surface font-medium">Elena · Hinge</span>
+</div>
+<span class="font-caption-2 text-caption-2 text-outline ml-auto">Copied 1x</span>
+</div>
+<p class="font-caption-1 text-caption-1 text-outline italic pl-0.5">
+          Pro-tip: Works well for architects, industrial designers &amp; engineers.
+        </p>
+</div>
+<!-- Action Buttons Row -->
+<div class="pt-2 flex items-center gap-2">
+<button class="copy-btn flex-1 h-10 px-4 rounded-full bg-surface-container-high hover:bg-surface-bright active:scale-[0.98] transition-all text-on-surface font-footnote text-footnote font-semibold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">copy_all</span>
+<span class="btn-label">Copy to Clipboard</span>
+</button>
+<button aria-label="Adapt hook" class="h-10 w-10 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Bottom Interactive CTA Card / Add Custom Line -->
+<button class="w-full mt-2 p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-center gap-3 text-on-surface-variant hover:text-on-surface group active:scale-[0.99]">
+<div class="w-9 h-9 rounded-full bg-surface-container-high group-hover:bg-primary-container/20 group-hover:text-primary transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] text-primary">add</span>
+</div>
+<div class="text-left">
+<p class="font-subheadline text-subheadline font-semibold text-on-surface">Have a line that crushed it in real life?</p>
+<p class="font-footnote text-footnote text-outline">+ Add custom line to collection</p>
+</div>
+</button>
+</div>
+<script>
+  // Lightweight client-side micro-interactions for copy feedback
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const label = btn.querySelector('.btn-label');
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (!label) return;
+      const originalText = label.textContent;
+      const originalIcon = icon ? icon.textContent : '';
+
+      label.textContent = 'Copied!';
+      if (icon) icon.textContent = 'check';
+
+      setTimeout(() => {
+        label.textContent = originalText;
+        if (icon) icon.textContent = originalIcon;
+      }, 1800);
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.12)]" data-active-classes="text-primary-container font-semibold drop-shadow-[0_0_12px_rgba(255,77,125,0.45)]"><div class="h-16 px-gutter flex items-center justify-around"><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">local_fire_department</span><span class="font-caption-2 text-caption-2 tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="people" href="#"><span class="material-symbols-outlined text-[22px]">group</span><span class="font-caption-2 text-caption-2 tracking-tight">People</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="history" href="#"><span class="material-symbols-outlined text-[22px]">forum</span><span class="font-caption-2 text-caption-2 tracking-tight">History</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 transition-colors text-primary-container font-semibold drop-shadow-[0_0_12px_rgba(255,77,125,0.45)]" data-path="saved" href="#"><span class="material-symbols-outlined text-[22px]">bookmark_heart</span><span class="font-caption-2 text-caption-2 tracking-tight">Saved</span></a><a class="flex flex-col items-center justify-center w-16 h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-caption-2 text-caption-2 tracking-tight">Profile</span></a></div></nav></body></html>
