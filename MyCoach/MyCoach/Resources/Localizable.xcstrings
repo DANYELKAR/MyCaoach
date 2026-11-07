@@ -1,0 +1,496 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "A clever observation, without trying too hard.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A clever observation, without trying too hard."
+          }
+        }
+      }
+    },
+    "A little charm. A respectful first step.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A little charm. A respectful first step."
+          }
+        }
+      }
+    },
+    "A little context. A tone that feels like you. A first message worth sending.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A little context. A tone that feels like you. A first message worth sending."
+          }
+        }
+      }
+    },
+    "A little more you.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A little more you."
+          }
+        }
+      }
+    },
+    "A voice that feels like you.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A voice that feels like you."
+          }
+        }
+      }
+    },
+    "About message tones": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About message tones"
+          }
+        }
+      }
+    },
+    "Better hellos.\nMore you.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Better hellos.\nMore you."
+          }
+        }
+      }
+    },
+    "Bold": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bold"
+          }
+        }
+      }
+    },
+    "Casual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Casual"
+          }
+        }
+      }
+    },
+    "Clear, self-assured, and pressure-free.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear, self-assured, and pressure-free."
+          }
+        }
+      }
+    },
+    "Confident": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confident"
+          }
+        }
+      }
+    },
+    "Daring and memorable. Always respectful.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daring and memorable. Always respectful."
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Easygoing, warm, and naturally you.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Easygoing, warm, and naturally you."
+          }
+        }
+      }
+    },
+    "Every connection has a story.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every connection has a story."
+          }
+        }
+      }
+    },
+    "Find your tone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find your tone"
+          }
+        }
+      }
+    },
+    "Flirty": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flirty"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "Home": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        }
+      }
+    },
+    "Keep a little context": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep a little context"
+          }
+        }
+      }
+    },
+    "Keep the little details, interests, and conversations together.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the little details, interests, and conversations together."
+          }
+        }
+      }
+    },
+    "Keep the ones you love.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the ones you love."
+          }
+        }
+      }
+    },
+    "Lighthearted with a little personality.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lighthearted with a little personality."
+          }
+        }
+      }
+    },
+    "Make it your own": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make it your own"
+          }
+        }
+      }
+    },
+    "Make room for the details that matter.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make room for the details that matter."
+          }
+        }
+      }
+    },
+    "MyCoach": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MyCoach"
+          }
+        }
+      }
+    },
+    "MyCoach Plus": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MyCoach Plus"
+          }
+        }
+      }
+    },
+    "MyCoach is for adults 18+. You stay in control of what you share and send.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MyCoach is for adults 18+. You stay in control of what you share and send."
+          }
+        }
+      }
+    },
+    "MyCoach · Version 1.0": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MyCoach · Version 1.0"
+          }
+        }
+      }
+    },
+    "Open profile": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open profile"
+          }
+        }
+      }
+    },
+    "PLUS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PLUS"
+          }
+        }
+      }
+    },
+    "People": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "People"
+          }
+        }
+      }
+    },
+    "People, not just profiles": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "People, not just profiles"
+          }
+        }
+      }
+    },
+    "Playful": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Playful"
+          }
+        }
+      }
+    },
+    "Profile": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile"
+          }
+        }
+      }
+    },
+    "Romantic": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Romantic"
+          }
+        }
+      }
+    },
+    "Room for your next hello.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Room for your next hello."
+          }
+        }
+      }
+    },
+    "START WITH SOMETHING REAL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "START WITH SOMETHING REAL"
+          }
+        }
+      }
+    },
+    "Saved": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved"
+          }
+        }
+      }
+    },
+    "Sound like yourself.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sound like yourself."
+          }
+        }
+      }
+    },
+    "Thoughtful, sincere, and a little sweet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thoughtful, sincere, and a little sweet."
+          }
+        }
+      }
+    },
+    "Try again": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "Witty": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Witty"
+          }
+        }
+      }
+    },
+    "YOUR DEFAULT TONE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YOUR DEFAULT TONE"
+          }
+        }
+      }
+    },
+    "Your favorite messages, in one little collection.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your favorite messages, in one little collection."
+          }
+        }
+      }
+    },
+    "Your message history will live here, ready when you need it.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your message history will live here, ready when you need it."
+          }
+        }
+      }
+    },
+    "Your tone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your tone"
+          }
+        }
+      }
+    },
+    "Your tone is a starting point. Keep things respectful, specific, and easy to reply to.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your tone is a starting point. Keep things respectful, specific, and easy to reply to."
+          }
+        }
+      }
+    },
+    "Your words. Your choice.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your words. Your choice."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

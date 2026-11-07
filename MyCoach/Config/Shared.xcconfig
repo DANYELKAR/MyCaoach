@@ -1,0 +1,6 @@
+// Only public client configuration belongs here. Never add server/service-role keys.
+MYCOACH_SUPABASE_URL =
+MYCOACH_SUPABASE_PUBLISHABLE_KEY =
+MYCOACH_GOOGLE_CLIENT_ID =
+MYCOACH_REVENUECAT_PUBLIC_KEY =
+#include? "Local.xcconfig"

@@ -1,0 +1,6 @@
+#include "Shared.xcconfig"
+MYCOACH_URL_SLASH = /
+MYCOACH_API_BASE_URL = https:$(MYCOACH_URL_SLASH)$(MYCOACH_URL_SLASH)api.mycoach.example
+MYCOACH_BACKEND_MODE = supabase
+INFOPLIST_FILE = Config/Info-Release.plist
+#include? "Local.xcconfig"

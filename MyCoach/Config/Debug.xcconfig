@@ -1,0 +1,6 @@
+#include "Shared.xcconfig"
+MYCOACH_URL_SLASH = /
+MYCOACH_API_BASE_URL = http:$(MYCOACH_URL_SLASH)$(MYCOACH_URL_SLASH)localhost:8080
+MYCOACH_BACKEND_MODE = local
+INFOPLIST_FILE = Config/Info-Debug.plist
+#include? "Local.xcconfig"

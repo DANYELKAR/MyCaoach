@@ -6,11 +6,48 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		307A3F5871C32A523D0E4961 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = B0B4379EBBB7664ED5CE0CC6 /* Supabase */; };
+		5B286076D4D28855C2CB4CB9 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = B1D5BC377DFBCD10F1B5D0BB /* RevenueCat */; };
+		BAFCB84B4D5FA6342B0DB406 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F877F42CF391BDA6AD9EE973 /* GoogleSignIn */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		193751E8823CB1B1B604626F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE97C2F4309F74A50044B95A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE97C2FB309F74A50044B95A;
+			remoteInfo = MyCoach;
+		};
+		E47D4ECAE3D3826F93C9A8B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE97C2F4309F74A50044B95A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE97C2FB309F74A50044B95A;
+			remoteInfo = MyCoach;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1FF0BE1C034BF150DE2EFB0E /* MyCoachUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MyCoachUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9537EA6C722D980AE95006C0 /* Config/Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Debug.xcconfig; sourceTree = "<group>"; };
+		D17667D32DE8A213C0578247 /* Config/Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Release.xcconfig; sourceTree = "<group>"; };
+		D9E9B47121F112BE5735EF04 /* MyCoachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = MyCoachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE97C2FC309F74A50044B95A /* MyCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		6422C8FF0BFB34B1CFEFDAF2 /* MyCoachUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyCoachUITests;
+			sourceTree = "<group>";
+		};
+		710D1391D5B5DA95DEA8D7B9 /* MyCoachTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MyCoachTests;
+			sourceTree = "<group>";
+		};
 		FE97C2FE309F74A50044B95A /* MyCoach */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MyCoach;
@@ -19,10 +56,27 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1FF9CC7011235AA738D76532 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8DF1223A41791AA6E75B4E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE97C2F9309F74A50044B95A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307A3F5871C32A523D0E4961 /* Supabase in Frameworks */,
+				BAFCB84B4D5FA6342B0DB406 /* GoogleSignIn in Frameworks */,
+				5B286076D4D28855C2CB4CB9 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				FE97C2FE309F74A50044B95A /* MyCoach */,
+				6422C8FF0BFB34B1CFEFDAF2 /* MyCoachUITests */,
+				710D1391D5B5DA95DEA8D7B9 /* MyCoachTests */,
+				9537EA6C722D980AE95006C0 /* Config/Debug.xcconfig */,
+				D17667D32DE8A213C0578247 /* Config/Release.xcconfig */,
 				FE97C2FD309F74A50044B95A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				FE97C2FC309F74A50044B95A /* MyCoach.app */,
+				1FF0BE1C034BF150DE2EFB0E /* MyCoachUITests.xctest */,
+				D9E9B47121F112BE5735EF04 /* MyCoachTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +108,48 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E76F5EE6A0F4F70AE4160260 /* MyCoachTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6970E7931930394EC6D001 /* Build configuration list for PBXNativeTarget "MyCoachTests" */;
+			buildPhases = (
+				F0CA93A72510CA1CB0366BB2 /* Sources */,
+				1FF9CC7011235AA738D76532 /* Frameworks */,
+				3F9D911F1E54C527EC3435E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC7D41F92A969EEAD0ADB8AF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				710D1391D5B5DA95DEA8D7B9 /* MyCoachTests */,
+			);
+			name = MyCoachTests;
+			productName = MyCoachTests;
+			productReference = D9E9B47121F112BE5735EF04 /* MyCoachTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E770147971D6C50EF39E5275 /* MyCoachUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BCBC7A9C10484EF1E77689B /* Build configuration list for PBXNativeTarget "MyCoachUITests" */;
+			buildPhases = (
+				1EA862F23F41287085C73C10 /* Sources */,
+				A8DF1223A41791AA6E75B4E7 /* Frameworks */,
+				3B56E932E28217FC94FA9BC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10F8BDA0F978F095F3BC6E71 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6422C8FF0BFB34B1CFEFDAF2 /* MyCoachUITests */,
+			);
+			name = MyCoachUITests;
+			productName = MyCoachUITests;
+			productReference = 1FF0BE1C034BF150DE2EFB0E /* MyCoachUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FE97C2FB309F74A50044B95A /* MyCoach */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE97C307309F74A60044B95A /* Build configuration list for PBXNativeTarget "MyCoach" */;
@@ -65,6 +167,9 @@
 			);
 			name = MyCoach;
 			packageProductDependencies = (
+				B0B4379EBBB7664ED5CE0CC6 /* Supabase */,
+				F877F42CF391BDA6AD9EE973 /* GoogleSignIn */,
+				B1D5BC377DFBCD10F1B5D0BB /* RevenueCat */,
 			);
 			productName = MyCoach;
 			productReference = FE97C2FC309F74A50044B95A /* MyCoach.app */;
@@ -94,17 +199,38 @@
 			);
 			mainGroup = FE97C2F3309F74A50044B95A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				43FF49986F54BB75BD0FAB4F /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				F4152D69C5F19C350E721E66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				33FF7B75C0F83A0352E5A286 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FE97C2FD309F74A50044B95A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FE97C2FB309F74A50044B95A /* MyCoach */,
+				E770147971D6C50EF39E5275 /* MyCoachUITests */,
+				E76F5EE6A0F4F70AE4160260 /* MyCoachTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B56E932E28217FC94FA9BC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F9D911F1E54C527EC3435E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE97C2FA309F74A50044B95A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +241,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1EA862F23F41287085C73C10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0CA93A72510CA1CB0366BB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE97C2F8309F74A50044B95A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +264,78 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		10F8BDA0F978F095F3BC6E71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE97C2FB309F74A50044B95A /* MyCoach */;
+			targetProxy = E47D4ECAE3D3826F93C9A8B3 /* PBXContainerItemProxy */;
+		};
+		EC7D41F92A969EEAD0ADB8AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE97C2FB309F74A50044B95A /* MyCoach */;
+			targetProxy = 193751E8823CB1B1B604626F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		02B888C786C224ACD5FC06FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danyelkar.mycoach.MyCoachUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyCoach;
+			};
+			name = Release;
+		};
+		5C30352329FDA3E5520BD6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danyelkar.mycoach.MyCoachUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MyCoach;
+			};
+			name = Debug;
+		};
+		8D9D50D8C810429E12293E70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danyelkar.mycoach.MyCoachTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCoach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyCoach";
+			};
+			name = Release;
+		};
+		C84D7E6559E1228423A93ED6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danyelkar.mycoach.MyCoachTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCoach.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyCoach";
+			};
+			name = Debug;
+		};
 		FE97C305309F74A60044B95A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -177,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -234,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -246,6 +457,7 @@
 		};
 		FE97C308309F74A60044B95A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9537EA6C722D980AE95006C0 /* Config/Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -270,13 +482,14 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		FE97C309309F74A60044B95A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D17667D32DE8A213C0578247 /* Config/Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,14 +514,32 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1BCBC7A9C10484EF1E77689B /* Build configuration list for PBXNativeTarget "MyCoachUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C30352329FDA3E5520BD6AE /* Debug */,
+				02B888C786C224ACD5FC06FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6970E7931930394EC6D001 /* Build configuration list for PBXNativeTarget "MyCoachTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C84D7E6559E1228423A93ED6 /* Debug */,
+				8D9D50D8C810429E12293E70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FE97C2F7309F74A50044B95A /* Build configuration list for PBXProject "MyCoach" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -328,6 +559,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33FF7B75C0F83A0352E5A286 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.102.3;
+			};
+		};
+		43FF49986F54BB75BD0FAB4F /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.55.6;
+			};
+		};
+		F4152D69C5F19C350E721E66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0B4379EBBB7664ED5CE0CC6 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43FF49986F54BB75BD0FAB4F /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		B1D5BC377DFBCD10F1B5D0BB /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33FF7B75C0F83A0352E5A286 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		F877F42CF391BDA6AD9EE973 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4152D69C5F19C350E721E66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE97C2F4309F74A50044B95A /* Project object */;
 }

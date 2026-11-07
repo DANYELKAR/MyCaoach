@@ -1,0 +1,14 @@
+{
+  "result": "Passed",
+  "passedTests": 12,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "unitTests": 9,
+  "uiTests": 3,
+  "device": "iPhone 17 Pro",
+  "os": "iOS 26.2 Simulator",
+  "xcode": "26.2",
+  "swift": "6.2.3",
+  "finishedAt": "2026-11-08T00:23:01.264000+03:00",
+  "resultBundle": "mycoach-ios-phase0-final.xcresult"
+}

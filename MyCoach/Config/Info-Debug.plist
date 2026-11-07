@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>MyCoach</string>
+	<key>MyCoachAPIBaseURL</key>
+	<string>$(MYCOACH_API_BASE_URL)</string>
+	<key>MyCoachBackendMode</key>
+	<string>$(MYCOACH_BACKEND_MODE)</string>
+	<key>MyCoachGoogleClientID</key>
+	<string>$(MYCOACH_GOOGLE_CLIENT_ID)</string>
+	<key>MyCoachRevenueCatPublicKey</key>
+	<string>$(MYCOACH_REVENUECAT_PUBLIC_KEY)</string>
+	<key>MyCoachSupabasePublishableKey</key>
+	<string>$(MYCOACH_SUPABASE_PUBLISHABLE_KEY)</string>
+	<key>MyCoachSupabaseURL</key>
+	<string>$(MYCOACH_SUPABASE_URL)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
