@@ -1,43 +1,48 @@
 # MyCoach iOS
 
-Native SwiftUI uygulaması; mevcut Xcode projesi `MyCoach/MyCoach.xcodeproj` altında korunur. Ürün adı MyCoach, tasarımlardaki Spark önceki çalışma adıdır.
+Swift 6 / SwiftUI / Observation, iPhone, iOS 17+. Mevcut proje `MyCoach/MyCoach.xcodeproj` altında. Tasarım referansları `design_files/` içinde salt okunur; Spark eski ürün adıdır.
 
-## Faz 0: uygulama temeli
+## Yerelde çalışan akışlar
 
-- iPhone, minimum iOS 17, Swift 6, MVVM/Observation için AppState ve sekme bazlı NavigationStack.
-- Home, People, History, Saved, Profile sekmeleri. İlk fazda People/History/Saved boş durumları gösterir; hesap ve sunucu verisi bağlı değildir.
-- Warm Electric renkleri, Dynamic Type, SF Symbols, kartlar, butonlar, ton chip'leri ve boş/hata/toast bileşenleri.
-- Yedi ton arasından seçilen varsayılan ton UserDefaults ile cihazda saklanır. Henüz backend profil tercihi olarak senkronize edilmez.
-- Supabase, Google Sign-In ve RevenueCat Swift Package Manager bağımlılıkları; config ve istemci factory temeli. Paketlerin linklenmesi gerçek giriş/satın alma akışının tamamlandığı anlamına gelmez.
-- PrivacyInfo.xcprivacy ve English String Catalog. Bu fazda analytics, tracking, fotoğraf yükleme veya AI çağrısı yoktur.
-- Ortak Xcode scheme, unit/UI test target'ları ve macOS CI workflow.
+- Welcome/personalization, 18+ ve üçüncü taraf AI onayı; onaylar backend profilinde saklanır.
+- Debug yerel hesap açma/giriş, Keychain oturumu, çıkış ve yeniden giriş. URLSession + Codable API, typed errors, Supabase token refresh/retry adaptörü.
+- Fotoğraf seçimi/kamera adaptörü, arka planda ImageIO ile en fazla 1024 px / JPEG 0.8; Opener için 5, Continue Chat için 4 öneri. Kopyalama, kaydetme, feedback, gönderildi/yanıt durumu ve raporlama.
+- People CRUD/detay, filtre/search, geçmiş ve timeline, Saved/klasörler/template düzenleme. Sayfalama, yenileme, boş/hata/yükleme durumları.
+- Sunucudan kredi ve plan, Plus kapıları, paywall ve abonelik ekranı. Yerel test Plus/Free geçişi ücret oluşturmaz.
+- Özel ton oluşturma/düzenleme/silme ve varsayılan ton; My Style örnekleri, analiz, kullanım toggle'ı ve silme.
+- Privacy and Data tercihleri, geçmiş silme, görünüm/default tone/timezone ayarı, hesap silme ve temiz oturum dönüşü.
+- Açık/koyu/sistem görünümü, Dynamic Type, erişilebilir etiketler, English String Catalog, privacy manifest, consent'e bağlı no-op analytics.
+
+PR #2, backend PR #1 üzerine sıralanır; iOS branch checkout'u gerekli backend dosyalarını da içerir. Review sırası: önce backend #1, sonra iOS #2. PR'lar otomatik birleştirilmez.
 
 ## Çalıştırma
 
-Xcode 16.3+ (Swift 6.1 paket çözümlemesi için), önerilen Xcode 26.2. Projeyi Xcode'da açıp MyCoach scheme'iyle bir iPhone Simulator seç.
-
-Komut satırında sistem Xcode seçimi farklıysa global ayarı değiştirmeden:
+Xcode 26.2 önerilir. Docker Desktop açıkken proje kökünde:
 
 ```sh
-export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
-xcodebuild -resolvePackageDependencies -project MyCoach/MyCoach.xcodeproj -scheme MyCoach
-xcodebuild test -project MyCoach/MyCoach.xcodeproj -scheme MyCoach \
-  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
-  -derivedDataPath /tmp/mycoach-ios-derived CODE_SIGNING_ALLOWED=NO
+docker compose up -d
+open MyCoach/MyCoach.xcodeproj
 ```
 
-Gerçek cihaz derlemesi için Xcode'da kişisel signing team seçilmelidir. Simulator code signing gerektirmez.
+MyCoach scheme'i ve bir iPhone Simulator seç. Debug localhost:8080 API'sine bağlanır. Onboarding sonunda **local development** hesabı oluştur; parola 10–72 UTF-8 byte olmalıdır. Local AI çıktıları deterministik test verisidir. Subscription ekranındaki test Plus bir App Store satın alımı değildir. Simulator Mac'in localhost API'sini kullanır; gerçek cihaz HTTP/LAN erişimi bu yapılandırmada açılmaz.
 
-## Yapılandırma
+Testler, Simulator'da Keychain için ad-hoc imza kullanır; Apple hesabı gerekmez:
 
-`MyCoach/Config/Debug.xcconfig` yerel HTTP localhost API adresini, Release HTTPS adresini kullanır. Release'teki `api.mycoach.example` yayın adresi değildir; gerçek HTTPS endpoint ile değiştirilmelidir. `Local.xcconfig.example` → `Local.xcconfig` kopyalanarak yerel override yapılabilir; gerçek override dosyası Git'e alınmaz.
+```sh
+bash scripts/test_ios.sh
+MYCOACH_RUN_LOCAL_E2E=1 bash scripts/test_ios.sh
+```
 
-Yalnız publishable/anon Supabase anahtarı, Google client ID ve RevenueCat public SDK anahtarı mobil config'e girebilir. Supabase secret/service_role, Gemini, RevenueCat server veya webhook secret'ı iOS uygulamasına eklenmez. Config parser, localhost dışındaki HTTP adreslerini ve Supabase server anahtarlarını reddeder. Debug ATS izni yalnız yerel ağ içindir; Release'te HTTP izni yoktur.
+İlk komut mock ağ/birim ve temel UI testlerini çalıştırır; iki Docker E2E testi açıkça skip olur. İkinci komut çalışan Docker API'sine karşı hesap/üretim/bellek/Plus/stil/gizlilik/silme akışlarını da çalıştırır. Testler benzersiz hesaplarını temizler. Sonuç paketi `/tmp/mycoach-tests-*.xcresult` altında. Global `xcode-select` değiştirilmez; script gerekirse `DEVELOPER_DIR` seçer.
 
-SDK pinleri: Supabase 2.55.6, GoogleSignIn 10.1.0, RevenueCat 5.102.3. Transitive sürümler `Package.resolved` ile sabitlenir.
+## SDK ve canlı yapılandırma
 
-## Sonraki fazlar
+SPM kilidi: Supabase **2.55.6**, GoogleSignIn **10.1.0**, RevenueCat **5.102.3**. Auth, Supabase session'ını özel Keychain storage ile saklar; Apple nonce/SHA-256, Google ID token ve email OTP kod akışları uygulanmıştır. RevenueCat kimliği, backend ile aynı küçük harfli Supabase UUID'sidir; plan backend `/billing/sync` yanıtından gelir. Otomatik attribution device identifier toplama kapalıdır.
 
-Önce bu temel derleme/test/Simulator ile doğrulanır. Sonra onboarding/yaş ve AI onayı, Keychain/session, Supabase Apple/Google/OTP ve yalnız Debug için mevcut yerel backend auth adaptörü bağlanır. Ardından PhotosPicker/kamera, JPEG küçültme, URLSession API istemcisi ve Opener sonuçları gelir. Satın alma/stil/bellek ekranları ürün brief'indeki sırayla ilerler.
+`MyCoach/Config/Local.xcconfig.example` → `Local.xcconfig` kopyala; gerçek dosya Git'e alınmaz. Yalnız public Supabase key, Google iOS client ID / reversed scheme ve RevenueCat `appl_` public SDK key'i girilir. Sunucu `.env` dosyasına Gemini, service-role ve RevenueCat server/webhook anahtarları girer; mobil uygulamaya eklenmez.
 
-[Doğrulama raporu](verification.md): 9 unit + 3 UI test ve Debug/Release Simulator build kontrolleri başarılı.
+Release varsayılan domain'i `api.mycoach.example` yayın adresi değildir. Release config eksikse uygulama güvenli biçimde yapılandırma ekranında durur; HTTP/local login üretime açılmaz. Gerçek HTTPS API, Supabase/Google/Apple ayarları, publisher support ve hosted Terms/Privacy URL'leri ayrıca gereklidir.
+
+**Kullanıcı kararı: bulut projeleri henüz hazır değil.** Gerçek Apple/Google/OTP teslimatı, Gemini, RevenueCat/App Store sandbox purchase/restore ve imzalı cihaz/TestFlight doğrulaması tamamlandı olarak sunulmaz. Kamera gerçek iPhone üzerinde ayrıca denenmelidir. Yerel kabuller bunların yerine geçmez.
+
+[Doğrulama](verification.md) · [Yayın kontrol listesi](release-checklist.md)

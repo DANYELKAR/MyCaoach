@@ -20,7 +20,7 @@ final class BillingService {
             throw APIError(code: "CONFIGURATION", message: "Subscriptions aren't configured for this build.", requestId: nil)
         }
         let user = id.uuidString.lowercased()
-        if !Purchases.isConfigured { Purchases.logLevel = .error; Purchases.configure(withAPIKey: key, appUserID: user) }
+        if !Purchases.isConfigured { Purchases.logLevel = .error; Purchases.configure(with: RevenueCat.Configuration.Builder(withAPIKey: key).with(appUserID: user).with(automaticDeviceIdentifierCollectionEnabled: false).build()) }
         else if Purchases.shared.appUserID != user { _ = try await Purchases.shared.logIn(user) }
     }
     func purchase(_ package: Package, runtime: AppRuntime) async {
@@ -30,6 +30,7 @@ final class BillingService {
             try await configure(runtime: runtime)
             let result = try await Purchases.shared.purchase(package: package)
             if result.userCancelled { return }
+            if result.customerInfo.entitlements["plus"]?.periodType == .trial { runtime.track(.trialStarted) }
             try await sync(runtime: runtime)
             if runtime.profile?.isPlus == true { runtime.showPaywall = false }
             else { error = "Your purchase is processing. Use Refresh plan in Subscription in a moment." }

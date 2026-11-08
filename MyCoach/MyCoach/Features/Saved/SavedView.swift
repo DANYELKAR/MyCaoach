@@ -15,8 +15,8 @@ struct SavedView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     if let title = item.title, !title.isEmpty { Text(title).font(.headline) }
                     Text(item.text).textSelection(.enabled)
-                    HStack { Button("Copy", systemImage: "doc.on.doc") { UIPasteboard.general.string = item.text; state.runtime?.toast = "Copied to clipboard" }; Spacer(); Button("Edit") { selected = item } }.buttonStyle(.borderless)
-                }.padding(.vertical, 8).swipeActions { Button("Delete", role: .destructive) { Task { do { try await state.runtime?.api.delete("v1/saved/\(item.id)"); await load() } catch { state.runtime?.handle(error) } } } }
+                    HStack { Button("Copy", systemImage: "doc.on.doc") { UIPasteboard.general.string = item.text; state.runtime?.toast = "Copied to clipboard" }; Spacer(); Button("Edit") { if item.kind == "TEMPLATE" { state.runtime?.requirePlus { selected = item } } else { selected = item } } }.buttonStyle(.borderless)
+                }.padding(.vertical, 8).swipeActions { Button("Delete", role: .destructive) { Task { do { try await state.runtime?.api.delete("v1/saved/\(item.id)"); state.runtime?.noteSavedMutation(); if let id = item.suggestionId { state.runtime?.savedSuggestions[id] = nil }; await load() } catch { state.runtime?.handle(error) } } } }
             }
             if data.items.isEmpty && !data.isLoading && data.error == nil { EmptyStateView(symbol: "heart", title: "Keep the ones you love.", message: "Save a suggestion with the heart button, or create a reusable template with Plus.") }
             CollectionFooter(collection: data) { await load(reset: data.error != nil) }

@@ -11,6 +11,13 @@ final class AuthService {
     private let keychain: KeychainStore
     private var localSession: LocalSession?
     var userID: UUID?
+    var localPasswordContentType: UITextContentType {
+        #if DEBUG
+        // Keep opt-in E2E fixtures independent of the simulator's iCloud AutoFill UI.
+        if ProcessInfo.processInfo.arguments.contains("-e2e") { return .oneTimeCode }
+        #endif
+        return .password
+    }
     var isLocal: Bool { configuration.backendMode == .local }
     deinit {}
     init(configuration: AppConfiguration, namespace: String = "com.danyelkar.mycoach.auth") {

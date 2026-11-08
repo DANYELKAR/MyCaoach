@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(AppState.self) private var state
     @State private var showToneGuide = false
     @State private var showOpener = false
@@ -9,10 +10,10 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
                 HStack(spacing: 12) {
-                    BrandMark()
+                    if !dynamicTypeSize.isAccessibilitySize { BrandMark() }
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("MyCoach").font(.title2.weight(.bold)).foregroundStyle(Theme.label)
-                        Text("A little more you.").font(.caption).foregroundStyle(Theme.muted)
+                        Text("MyCoach").font(.title2.weight(.bold)).lineLimit(1).minimumScaleFactor(0.6).foregroundStyle(Theme.label)
+                        if !dynamicTypeSize.isAccessibilitySize { Text("A little more you.").font(.caption).foregroundStyle(Theme.muted) }
                     }
                     Spacer()
                     Button { state.selectedTab = .profile } label: {
@@ -22,7 +23,7 @@ struct HomeView: View {
                 }
                 VStack(alignment: .leading, spacing: 18) {
                     Label("START WITH SOMETHING REAL", systemImage: "sparkle")
-                        .font(.caption.weight(.bold)).tracking(1.3).foregroundStyle(Color(hex: 0xFFAAC2))
+                        .font(.caption.weight(.bold)).tracking(1.3).foregroundStyle(Theme.primary)
                     Text("Better hellos.\nMore you.")
                         .font(.system(.largeTitle, design: .rounded).weight(.bold)).foregroundStyle(Theme.label)
                         .fixedSize(horizontal: false, vertical: true)
@@ -39,7 +40,7 @@ struct HomeView: View {
                 if let runtime = state.runtime {
                     PlusFeatureLink(title: "Continue Chat", symbol: "bubble.left.and.bubble.right") { GenerationView(reply: true) }.accessibilityIdentifier("home.reply")
                     if let usage = runtime.usage { Text("\(usage.remainingToday) of \(usage.dailyLimit) credits left today").font(.subheadline.bold()).foregroundStyle(Theme.label) }
-                    Button { showOpener = true } label: { Label("Create an opener", systemImage: "sparkles").font(.headline).frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(Theme.label).background(Theme.actionGradient, in: Capsule()) }.buttonStyle(.plain).accessibilityIdentifier("home.opener").accessibilityValue(showOpener ? "Opening" : "Ready")
+                    Button { showOpener = true } label: { Label("Create an opener", systemImage: "sparkles").font(.headline).frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(Theme.actionLabel).background(Theme.actionGradient, in: Capsule()) }.buttonStyle(.plain).accessibilityIdentifier("home.opener").disabled(runtime.isUpdatingTone)
                 }
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
@@ -53,7 +54,7 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
                                 ForEach(BuiltInTone.allCases) { tone in
-                                    ToneChip(tone: tone, selected: state.defaultTone == tone) { state.defaultTone = tone }
+                                    ToneChip(tone: tone, selected: state.defaultTone == tone) { state.chooseTone(tone) }.disabled(state.runtime?.isUpdatingTone == true)
                                         .id(tone.id)
                                 }
                             }.padding(.vertical, 2)
@@ -70,7 +71,7 @@ struct HomeView: View {
                     Text("Keep a little context").font(.title3.weight(.bold)).foregroundStyle(Theme.label)
                     Button { state.selectedTab = .people } label: {
                         HStack(spacing: 16) {
-                            Image(systemName: "person.2").font(.title3).foregroundStyle(Color(hex: 0xC5AAFF)).frame(width: 44, height: 44)
+                            Image(systemName: "person.2").font(.title3).foregroundStyle(Theme.secondary).frame(width: 44, height: 44)
                                 .background(Theme.secondary.opacity(0.12), in: RoundedRectangle(cornerRadius: 14))
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("People, not just profiles").font(.headline).foregroundStyle(Theme.label)

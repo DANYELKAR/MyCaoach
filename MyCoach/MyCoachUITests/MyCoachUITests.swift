@@ -2,9 +2,9 @@ import XCTest
 
 @MainActor
 final class MyCoachUITests: XCTestCase {
-    private func launch(largeType: Bool = false) -> XCUIApplication {
+    private func launch(largeType: Bool = false, appearance: String = "dark") -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-ui-testing"]
+        app.launchArguments = ["-ui-testing", "-appearance", appearance]
         if largeType { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
         return app
@@ -52,4 +52,13 @@ final class MyCoachUITests: XCTestCase {
         screenshot.lifetime = .keepAlways
         add(screenshot)
     }
+    func testLightAppearanceAndLargeText() {
+        let app = launch(largeType: true, appearance: "light")
+        XCTAssertTrue(app.tabBars.buttons["Profile"].waitForExistence(timeout: 10))
+        let home = XCTAttachment(screenshot: app.screenshot()); home.name = "Light large text Home"; home.lifetime = .keepAlways; add(home)
+        app.tabBars.buttons["Profile"].tap()
+        XCTAssertTrue(app.buttons["profile.tone.casual"].exists)
+        let profile = XCTAttachment(screenshot: app.screenshot()); profile.name = "Light large text Profile"; profile.lifetime = .keepAlways; add(profile)
+    }
+
 }

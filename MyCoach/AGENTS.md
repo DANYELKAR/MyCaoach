@@ -8,4 +8,7 @@
 - Xcode seçimi CLT'ye işaret ediyorsa global xcode-select ayarını değiştirmeden komutlarda `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` kullan.
 - Shared MyCoach scheme'inde unit ve UI testlerini çalıştır. Sonuç/QA belgeleri `../docs/ios/` altındadır.
 - AppState'in açık deinit'i Swift 6.2 / eski iOS runtime crash workaround'udur. Regression testi geçmeden kaldırma: https://github.com/swiftlang/swift/issues/88036
-- Faz 0 yalnız uygulama temeli, yerel ton tercihi ve boş sekme durumlarıdır. Onboarding/auth/Opener henüz tamamlanmadı; boş durumları gerçek sunucu verisi olarak sunma.
+- Faz 2–8 yerel akışları bağlıdır. Debug Docker auth/AI/billing fixture kullanır; bunları canlı Supabase/Gemini/App Store doğrulaması olarak raporlama. Kullanıcı bulut hesaplarının henüz hazır olmadığını belirtti.
+- Testleri `MYCOACH_RUN_LOCAL_E2E=1 bash scripts/test_ios.sh` ile monorepo kökünden veya README komutlarıyla çalıştır. Simulator Keychain testleri ad-hoc imza gerektirir; CODE_SIGNING_ALLOWED=NO kullanma.
+- `-ui-testing` ve `-e2e` yalnız DEBUG test harness'ıdır. E2E yerel parola alanı, sistem AutoFill penceresinden bağımsız test için oneTimeCode content type kullanır. Normal uygulama parola alanı değişmez.
+- Yayın kapıları ve imzasız arşiv sınırı `../docs/ios/release-checklist.md` içinde. Gerçek key, hosted policy ve signing olmadan TestFlight hazır deme.

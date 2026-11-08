@@ -11,6 +11,7 @@ struct PaywallView: View {
                     BrandMark(size: 72)
                     Text("A little more possibility.").font(.largeTitle.bold())
                     Text("MyCoach Plus").font(.title2.bold())
+                    if let reason = state.runtime?.paywallReason { Text(reason).foregroundStyle(Theme.warning) }
                     ForEach(["Up to 100 generations per day", "Continue Chat with text or screenshots", "Unlimited people and history", "My Style, custom tones and templates"], id: \.self) { Label($0, systemImage: "checkmark.circle.fill").foregroundStyle(Theme.label) }
                     if let runtime = state.runtime {
                         let billing = runtime.billing
@@ -40,7 +41,7 @@ struct PaywallView: View {
                 }.padding(24)
             }.background(Theme.background).navigationTitle("MyCoach Plus").navigationBarTitleDisplayMode(.inline)
                 .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Close") { dismiss() }.accessibilityIdentifier("paywall.close") } }
-                .task { if let runtime = state.runtime { await runtime.billing.load(runtime: runtime) } }
+                .task { if let runtime = state.runtime { runtime.track(.paywallViewed); await runtime.billing.load(runtime: runtime) } }
         }.tint(Theme.primary)
     }
     private func period(_ value: SubscriptionPeriod) -> String {
@@ -79,13 +80,17 @@ struct SubscriptionView: View {
 
 struct PolicyView: View {
     let privacy: Bool
+    private var publishedURL: URL? {
+        guard let raw = Bundle.main.object(forInfoDictionaryKey: privacy ? "MyCoachPrivacyURL" : "MyCoachTermsURL") as? String, let url = URL(string: raw), url.scheme == "https", url.host != nil, url.user == nil, url.password == nil else { return nil }; return url
+    }
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 Text(privacy ? "Privacy and your data" : "Using MyCoach").font(.title.bold())
                 Text(privacy ? "MyCoach processes the account details, selected photos, conversation text, notes and feedback you submit to provide its features. Production sign-in uses Supabase Auth, generated suggestions use Google Gemini, and subscriptions use Apple and RevenueCat. Local development uses separate test providers. We do not track you across apps or websites." : "MyCoach is for adults 18 and over. Use only content you have permission to share. Keep messages respectful and PG-13. AI suggestions may be inaccurate; review and edit them before sending. No reply or relationship outcome is guaranteed.")
                 Text(privacy ? "Photos are not retained by default. The Store images setting controls optional retention; selected content is still processed to generate suggestions. You can delete conversation history, saved content, style samples and your account in the app. Deleting your account requests removal of its backend records and stored images. Clipboard copying happens only when you tap Copy." : "Subscription prices and periods come from the App Store. Subscriptions renew automatically until canceled in Apple account settings. Account deletion does not cancel an Apple subscription. You can restore eligible purchases from Subscription.")
-                Text("Development build: the publisher's final legal identity, support contact and hosted policy URLs must be configured and reviewed before App Store submission.").font(.footnote).foregroundStyle(Theme.muted)
+                if let publishedURL { Link("Read the published policy", destination: publishedURL) }
+                if publishedURL == nil { Text("Development build: the publisher's final legal identity, support contact and hosted policy URLs must be configured and reviewed before App Store submission.").font(.footnote).foregroundStyle(Theme.muted) }
             }.padding(24)
         }.background(Theme.background).navigationTitle(privacy ? "Privacy" : "Terms").navigationBarTitleDisplayMode(.inline)
     }

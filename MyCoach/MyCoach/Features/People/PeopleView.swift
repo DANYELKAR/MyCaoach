@@ -24,9 +24,16 @@ struct PeopleView: View {
         }.featureListStyle().navigationTitle("People").searchable(text: $search, prompt: "Search people")
             .toolbar { Button("Add person", systemImage: "plus") { adding = true }.accessibilityIdentifier("people.add") }
             .sheet(isPresented: $adding, onDismiss: { Task { await load() } }) { ContactEditor() }
-            .task { await load() }.refreshable { await load() }
+            .task(id: search + "|" + status) { do { try await Task.sleep(for: .milliseconds(250)); await load() } catch {} }.refreshable { await load() }
     }
-    private func load(reset: Bool = true) async { if let api = state.runtime?.api { await data.load(api, path: "v1/contacts", reset: reset) } }
+    private func load(reset: Bool = true) async {
+        if let api = state.runtime?.api {
+            var query = URLComponents(); query.queryItems = []
+            if status != "ALL" { query.queryItems?.append(URLQueryItem(name: "status", value: status)) }
+            if !search.isEmpty { query.queryItems?.append(URLQueryItem(name: "q", value: search)) }
+            await data.load(api, path: "v1/contacts" + (query.percentEncodedQuery.map { "?" + $0 } ?? ""), reset: reset)
+        }
+    }
 }
 
 struct ContactEditor: View {

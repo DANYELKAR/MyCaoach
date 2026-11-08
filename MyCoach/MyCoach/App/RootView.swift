@@ -14,6 +14,9 @@ struct RootView: View {
             } else { MainTabView() }
         }
         .task { await state.runtime?.start() }
+        .onChange(of: state.runtime?.profile?.defaultToneId) { _, id in
+            if let id, let name = state.runtime?.tones.first(where: { $0.id == id })?.name, let tone = BuiltInTone(rawValue: name.lowercased()) { state.defaultTone = tone }
+        }
         .sheet(isPresented: Binding(get: { state.runtime?.showPaywall == true }, set: { state.runtime?.showPaywall = $0 })) { PaywallView() }
         .alert("MyCoach", isPresented: Binding(get: { state.runtime?.errorMessage != nil }, set: { if !$0 { state.runtime?.errorMessage = nil } })) {
             Button("OK") { state.runtime?.errorMessage = nil }

@@ -10,6 +10,8 @@ struct GenerationView: View {
     @State private var showCamera = false
     @State private var inputMode = "Photos"
     @State private var contacts: [ContactDTO] = []
+    @State private var photoTask: Task<Void, Never>?
+    @FocusState private var inputFocused: Bool
     init(reply: Bool = false, contactID: UUID? = nil) { _model = State(initialValue: GenerationViewModel(reply: reply, contactID: contactID)) }
     var body: some View {
         if let runtime = state.runtime {
@@ -30,7 +32,7 @@ struct GenerationView: View {
                         Text(model.reply ? "Keep the conversation going." : "Start with something real.").font(.title.bold())
                         if model.reply { Picker("Conversation input", selection: $inputMode) { Text("Screenshots").tag("Photos"); Text("Paste text").tag("Text") }.pickerStyle(.segmented).onChange(of: inputMode) { _, mode in if mode == "Text" { model.images = [] } else { model.text = "" } } }
                         if inputMode == "Text" {
-                            TextField("Paste the conversation", text: $model.text, axis: .vertical).lineLimit(5...12).accessibilityIdentifier("generation.text")
+                            TextField("Paste the conversation", text: $model.text, axis: .vertical).lineLimit(5...12).focused($inputFocused).accessibilityIdentifier("generation.text")
                         } else {
                             PhotosPicker(selection: $selectedPhotos, maxSelectionCount: model.reply ? 3 : 1, matching: .images) {
                                 Label(model.images.isEmpty ? (model.reply ? "Choose up to 3 screenshots" : "Choose a photo") : "Change photos", systemImage: "photo.on.rectangle").frame(maxWidth: .infinity, minHeight: 100).padding(20).background(Theme.surface, in: RoundedRectangle(cornerRadius: 20))
@@ -48,7 +50,7 @@ struct GenerationView: View {
                         }
                         Picker("Tone", selection: $model.toneID) {
                             Text("Choose a tone").tag(nil as UUID?)
-                            ForEach(runtime.tones) { tone in Text("\(tone.emoji ?? "") \(tone.name)").tag(Optional(tone.id)) }
+                            ForEach(runtime.selectableTones) { tone in Text("\(tone.emoji ?? "") \(tone.name)").tag(Optional(tone.id)) }
                         }.accessibilityIdentifier("generation.tone")
                         Picker("Person (optional)", selection: $model.contactID) {
                             Text("No person").tag(nil as UUID?)
@@ -58,22 +60,22 @@ struct GenerationView: View {
                         Text("Selected content is sent to our backend and Google Gemini. Keep it respectful and don't share sensitive information.").font(.footnote).foregroundStyle(Theme.muted)
                         if runtime.auth.isLocal { Label("Test AI · local development", systemImage: "hammer").font(.footnote).foregroundStyle(Theme.warning) }
                         if let error = model.error { Text(error).foregroundStyle(Theme.destructive) }
-                        PrimaryButton(title: model.isLoading ? "Finding the right words…" : "Generate suggestions", symbol: "sparkles", isLoading: model.isLoading) { model.generate(runtime: runtime) }.disabled(!model.canGenerate || loadingImage).accessibilityIdentifier("generation.submit")
+                        PrimaryButton(title: model.isLoading ? "Finding the right words…" : "Generate suggestions", symbol: "sparkles", isLoading: model.isLoading) { inputFocused = false; UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil); model.generate(runtime: runtime) }.disabled(!model.canGenerate || loadingImage).accessibilityIdentifier("generation.submit")
                     }
-                }.padding(20).foregroundStyle(Theme.label)
-            }.onChange(of: model.result?.generation.id) { _, id in if id != nil { proxy.scrollTo("generation.top", anchor: .top) } }.background(Theme.background).navigationTitle(model.reply ? "Continue Chat" : "New opener").navigationBarTitleDisplayMode(.inline).toolbar(.visible, for: .navigationBar)
+                }.padding(20).foregroundStyle(Theme.label).disabled(model.isLoading)
+            }.scrollDismissesKeyboard(.interactively).onChange(of: model.result?.generation.id) { _, id in if id != nil { proxy.scrollTo("generation.top", anchor: .top) } }.background(Theme.background).navigationTitle(model.reply ? "Continue Chat" : "New opener").navigationBarTitleDisplayMode(.inline).toolbar(.visible, for: .navigationBar)
                 .task {
-                    model.toneID = runtime.profile?.defaultToneId ?? runtime.tones.first(where: { $0.name.lowercased() == state.defaultTone.rawValue })?.id ?? runtime.tones.first?.id
+                    if model.toneID == nil || !runtime.selectableTones.contains(where: { $0.id == model.toneID }) { model.toneID = runtime.initialTone(preference: state.defaultTone) }
                     do { contacts = try await runtime.api.request("v1/contacts") } catch { runtime.handle(error) }
                 }
                 .onChange(of: selectedPhotos) { _, items in
-                    loadingImage = true
-                    Task {
-                        do { var images: [Data] = []; for item in items { guard let data = try await item.loadTransferable(type: Data.self) else { throw ImageProcessor.ImageError.invalid }; images.append(try await ImageProcessor.jpeg(data)) }; model.images = images }
-                        catch { runtime.handle(error) }; loadingImage = false
+                    photoTask?.cancel(); loadingImage = true
+                    photoTask = Task {
+                        do { var images: [Data] = []; for item in items { guard let data = try await item.loadTransferable(type: Data.self) else { throw ImageProcessor.ImageError.invalid }; images.append(try await ImageProcessor.jpeg(data)) }; try Task.checkCancellation(); model.images = images }
+                        catch { if !Task.isCancelled { runtime.handle(error) } }; if !Task.isCancelled { loadingImage = false }
                     }
                 }
-                .onDisappear { model.cancel() }
+                .onDisappear { model.cancel(); photoTask?.cancel() }
                 .sheet(isPresented: $showCamera) { CameraPicker { data in Task { do { model.images = [try await ImageProcessor.jpeg(data)] } catch { runtime.handle(error) } } } }
             }
         }
@@ -99,12 +101,13 @@ struct CameraPicker: UIViewControllerRepresentable {
 }
 
 struct ResultsView: View {
+    @Environment(AppState.self) private var state
     let result: GenerationResult
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Make it yours.").font(.title.bold()).id("generation.top")
             Text("Review before sending. A suggestion is a starting point.").foregroundStyle(Theme.muted)
             ForEach(result.suggestions) { SuggestionCard(suggestion: $0) }
-        }
+        }.task { await state.runtime?.loadSavedSuggestions() }
     }
 }

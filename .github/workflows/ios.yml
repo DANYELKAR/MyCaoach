@@ -1,9 +1,10 @@
 name: iOS
 on:
   push:
-    paths: ["MyCoach/**", ".github/workflows/ios.yml"]
+    branches: ["main"]
+    paths: ["MyCoach/**", ".github/workflows/ios.yml", "scripts/test_ios.sh"]
   pull_request:
-    paths: ["MyCoach/**", ".github/workflows/ios.yml"]
+    paths: ["MyCoach/**", ".github/workflows/ios.yml", "scripts/test_ios.sh"]
 permissions:
   contents: read
 jobs:
@@ -48,7 +49,7 @@ jobs:
             -destination "platform=iOS Simulator,id=$IOS_TEST_DEVICE" \
             -clonedSourcePackagesDirPath /tmp/mycoach-ios-packages -disableAutomaticPackageResolution \
             -derivedDataPath /tmp/mycoach-derived -resultBundlePath /tmp/mycoach-tests.xcresult \
-            CODE_SIGNING_ALLOWED=NO
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
       - uses: actions/upload-artifact@v4
         if: always()
         with:

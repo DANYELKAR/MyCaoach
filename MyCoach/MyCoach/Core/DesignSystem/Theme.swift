@@ -1,23 +1,32 @@
 import SwiftUI
+import UIKit
 
 enum Theme {
-    static let background = Color(hex: 0x0F0D14)
-    static let surface = Color(hex: 0x1A1722)
-    static let elevated = Color(hex: 0x252233)
-    static let primary = Color(hex: 0xFF4D7D)
-    static let secondary = Color(hex: 0x8B5CF6)
-    static let label = Color(hex: 0xF5F3FA)
-    static let muted = Color(hex: 0xA09BB0)
-    static let separator = Color(hex: 0x3A3650)
-    static let success = Color(hex: 0x34D399)
-    static let warning = Color(hex: 0xFBBF24)
-    static let destructive = Color(hex: 0xF87171)
+    static let background = adaptive(dark: 0x0F0D14, light: 0xF6F3FA)
+    static let surface = adaptive(dark: 0x1A1722, light: 0xFFFFFF)
+    static let elevated = adaptive(dark: 0x252233, light: 0xEEE8F5)
+    static let primary = adaptive(dark: 0xFF4D7D, light: 0xB91F50)
+    static let secondary = adaptive(dark: 0x8B5CF6, light: 0x6841C5)
+    static let label = adaptive(dark: 0xF5F3FA, light: 0x201A2D)
+    static let muted = adaptive(dark: 0xA09BB0, light: 0x665D74)
+    static let separator = adaptive(dark: 0x3A3650, light: 0xCDC5D8)
+    static let success = adaptive(dark: 0x34D399, light: 0x08734C)
+    static let warning = adaptive(dark: 0xFBBF24, light: 0x7A4D00)
+    static let destructive = adaptive(dark: 0xF87171, light: 0xB32938)
     static let gradient = LinearGradient(colors: [primary, secondary], startPoint: .topLeading, endPoint: .bottomTrailing)
     // Darker action stops keep light button text above 4.5:1 contrast.
     static let actionStops: [UInt] = [0xC72658, 0x6841C5]
     static let actionGradient = LinearGradient(colors: actionStops.map { Color(hex: $0) }, startPoint: .leading, endPoint: .trailing)
+    static let actionLabel = Color(hex: 0xF5F3FA)
+    static let plusLabel = adaptive(dark: 0xDCCBFF, light: 0x4C267D)
     static let cardRadius: CGFloat = 20
     static let spacing: CGFloat = 8
+    private static func adaptive(dark: UInt, light: UInt) -> Color {
+        Color(uiColor: UIColor { traits in
+            let hex = traits.userInterfaceStyle == .light ? light : dark
+            return UIColor(red: CGFloat((hex >> 16) & 255) / 255, green: CGFloat((hex >> 8) & 255) / 255, blue: CGFloat(hex & 255) / 255, alpha: 1)
+        })
+    }
 
     static func contrast(_ first: UInt, _ second: UInt) -> Double {
         func luminance(_ rgb: UInt) -> Double {

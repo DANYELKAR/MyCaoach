@@ -10,8 +10,8 @@ struct PrivacyDataView: View {
                 Section("Your data") {
                     Toggle("Store images", isOn: Binding(get: { runtime.profile?.storeImages == true }, set: { update("storeImages", value: $0) })).disabled(busy).accessibilityIdentifier("privacy.storeImages")
                     Text("Off by default. Selected content is still sent to Google Gemini for generation. Turning this off affects future generations; delete history or your account to remove already stored inputs.").font(.footnote).foregroundStyle(Theme.muted)
-                    Toggle("Allow anonymous product analytics", isOn: Binding(get: { runtime.profile?.analyticsOptIn == true }, set: { update("analyticsOptIn", value: $0) })).disabled(busy)
-                    Text("The current build uses a no-op analytics provider. Photos, notes and message text are never analytics payloads.").font(.footnote).foregroundStyle(Theme.muted)
+                    Toggle("Allow product analytics", isOn: Binding(get: { runtime.profile?.analyticsOptIn == true }, set: { update("analyticsOptIn", value: $0) })).disabled(busy)
+                    Text("No analytics data is sent in this version. Photos, notes and messages are never included in product analytics.").font(.footnote).foregroundStyle(Theme.muted)
                 }
                 Section("Your controls") {
                     Button("Delete all history", role: .destructive) { deleteHistory = true }.disabled(busy)

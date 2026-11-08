@@ -18,12 +18,12 @@ struct PrimaryButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 8) {
-                if isLoading { ProgressView().tint(Theme.label) }
+                if isLoading { ProgressView().tint(Theme.actionLabel) }
                 else if let symbol { Image(systemName: symbol) }
                 Text(title).font(.headline)
             }.frame(maxWidth: .infinity).padding(.horizontal, 20).padding(.vertical, 14).frame(minHeight: 52)
         }
-        .buttonStyle(.plain).foregroundStyle(Theme.label).background(Theme.actionGradient, in: Capsule())
+        .buttonStyle(.plain).foregroundStyle(Theme.actionLabel).background(Theme.actionGradient, in: Capsule())
         .disabled(isLoading).accessibilityLabel(Text(title))
     }
 }
@@ -46,7 +46,7 @@ struct ToneChip: View {
         Button(action: action) {
             Label(tone.title, systemImage: tone.symbol).font(.subheadline.weight(.semibold))
                 .padding(.horizontal, 16).padding(.vertical, 12).frame(minHeight: 44)
-                .foregroundStyle(Theme.label)
+                .foregroundStyle(selected ? Theme.actionLabel : Theme.label)
                 .background { if selected { Capsule().fill(Theme.actionGradient) } else { Capsule().fill(Theme.elevated) } }
         }.buttonStyle(.plain).accessibilityLabel(tone.title)
             .accessibilityAddTraits(selected ? .isSelected : [])
@@ -58,7 +58,7 @@ struct PlusBadge: View {
     var body: some View {
         Text("PLUS").font(.caption2.weight(.heavy)).tracking(1.2)
             .padding(.horizontal, 9).padding(.vertical, 5)
-            .foregroundStyle(Color(hex: 0xDCCBFF)).background(Theme.secondary.opacity(0.2), in: Capsule())
+            .foregroundStyle(Theme.plusLabel).background(Theme.secondary.opacity(0.2), in: Capsule())
             .accessibilityLabel("MyCoach Plus")
     }
 }

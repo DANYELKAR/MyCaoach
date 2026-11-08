@@ -58,7 +58,7 @@ struct OnboardingView: View {
         if runtime.auth.isLocal {
             Label("Local development · test AI and billing", systemImage: "hammer").font(.footnote).foregroundStyle(Theme.warning)
             TextField("Email", text: $email).textContentType(.emailAddress).keyboardType(.emailAddress).textInputAutocapitalization(.never).autocorrectionDisabled().focused($focused, equals: .email).accessibilityIdentifier("auth.email")
-            SecureField("Password (10–72 characters)", text: $password).textContentType(.password).focused($focused, equals: .password).accessibilityIdentifier("auth.password")
+            SecureField("Password (10–72 characters)", text: $password).textContentType(runtime.auth.localPasswordContentType).focused($focused, equals: .password).accessibilityIdentifier("auth.password")
             Toggle("Create a local account", isOn: $register)
             PrimaryButton(title: "Sign in", isLoading: busy) {
                 run { try await runtime.auth.localSignIn(api: runtime.api, email: email, password: password, register: register); try await finish() }

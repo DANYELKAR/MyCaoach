@@ -20,9 +20,9 @@ struct ProfileView: View {
                 if let runtime = state.runtime {
                     VStack(alignment: .leading, spacing: 16) {
                         if let name = runtime.profile?.displayName, !name.isEmpty { Text(name).font(.title2.bold()) }
-                        NavigationLink("Privacy and Data") { PrivacyDataView() }
-                        NavigationLink("Settings") { SettingsView() }
-                        NavigationLink("Help and Feedback") { HelpView() }
+                        NavigationLink { PrivacyDataView() } label: { Text("Privacy and Data").frame(maxWidth: .infinity, minHeight: 44, alignment: .leading) }
+                        NavigationLink { SettingsView() } label: { Text("Settings").frame(maxWidth: .infinity, minHeight: 44, alignment: .leading) }
+                        NavigationLink { HelpView() } label: { Text("Help and Feedback").frame(maxWidth: .infinity, minHeight: 44, alignment: .leading) }
                         Button("Sign out", role: .destructive) { Task { await runtime.signOut(); state.selectedTab = .home } }
                     }.frame(maxWidth: .infinity, alignment: .leading).surfaceCard()
                 }
@@ -31,8 +31,7 @@ struct ProfileView: View {
                     Text("YOUR DEFAULT TONE").font(.caption.weight(.semibold)).tracking(1.2).foregroundStyle(Theme.muted)
                     ForEach(BuiltInTone.allCases) { tone in
                         Button {
-                            state.defaultTone = tone
-                            if let runtime = state.runtime, let id = runtime.tones.first(where: { $0.name.lowercased() == tone.rawValue })?.id { Task { do { try await runtime.updateProfile(["defaultToneId": .s(id.uuidString)]) } catch { runtime.handle(error) } } }
+                            state.chooseTone(tone)
                         } label: {
                             HStack(spacing: 14) {
                                 if !dynamicTypeSize.isAccessibilitySize {
@@ -43,7 +42,7 @@ struct ProfileView: View {
                                 if state.defaultTone == tone { Image(systemName: "checkmark.circle.fill").font(.system(size: 22)).foregroundStyle(Theme.success).accessibilityHidden(true) }
                             }.font(.body).frame(minHeight: 44)
                         }.buttonStyle(.plain).accessibilityLabel(tone.title).accessibilityAddTraits(state.defaultTone == tone ? .isSelected : [])
-                            .accessibilityIdentifier("profile.tone.\(tone.rawValue)")
+                            .accessibilityIdentifier("profile.tone.\(tone.rawValue)").disabled(state.runtime?.isUpdatingTone == true)
                     }
                 }.surfaceCard()
                 Label {

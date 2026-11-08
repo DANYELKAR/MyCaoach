@@ -41,18 +41,23 @@ final class LocalEndToEndTests: XCTestCase {
             if button.exists { button.tap(); XCTAssertTrue(button.waitForNonExistence(timeout: 5)); Thread.sleep(forTimeInterval: 1); break }
         }
     }
-    func testOnboardingConsentAndOpenerAgainstDocker() {
+    func testAllLocalFeaturesAgainstDocker() {
         onboard()
-        let before = XCTAttachment(screenshot: app.screenshot()); before.name = "Home before opener"; before.lifetime = .keepAlways; add(before)
+        capture("Home")
+        app.buttons["home.reply"].tap()
+        XCTAssertTrue(app.buttons["paywall.close"].waitForExistence(timeout: 5))
+        capture("Free plan paywall")
+        app.buttons["paywall.close"].tap()
+        XCTAssertTrue(app.buttons["paywall.close"].waitForNonExistence(timeout: 5))
         app.buttons["home.opener"].tap()
         if !app.buttons["generation.fixture"].waitForExistence(timeout: 5) { print("Opener navigation state: \(String(describing: app.buttons["home.opener"].value))"); print(app.debugDescription); XCTFail("Opener did not open"); return }
         app.buttons["generation.fixture"].tap()
         app.swipeUp()
         app.buttons["generation.submit"].tap()
         XCTAssertTrue(app.staticTexts["Make it yours."].waitForExistence(timeout: 30))
+        capture("Opener results")
         app.buttons["suggestion.save.1"].tap()
         wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Saved"), object: app.buttons["suggestion.save.1"])], timeout: 10)
-        if app.buttons["suggestion.save.1"].label != "Saved" { print(app.debugDescription) }
         app.buttons["Copy"].firstMatch.tap()
         app.tabBars.buttons["People"].tap()
         app.buttons["people.add"].tap()
@@ -64,6 +69,7 @@ final class LocalEndToEndTests: XCTestCase {
         XCTAssertTrue(app.cells.count > 1)
         app.tabBars.buttons["Saved"].tap()
         XCTAssertTrue(app.buttons["Edit"].firstMatch.waitForExistence(timeout: 5))
+        capture("Saved messages")
         app.buttons["Manage folders"].tap()
         app.buttons["Add folder"].tap()
         app.textFields["folder.name"].tap(); app.textFields["folder.name"].typeText("Favorites")
@@ -99,16 +105,31 @@ final class LocalEndToEndTests: XCTestCase {
         app.swipeUp()
         XCTAssertTrue(app.staticTexts["style.summary.source"].waitForExistence(timeout: 20))
         XCTAssertEqual(app.staticTexts["style.summary.source"].label, "local-fixture")
+        capture("My Style")
+        app.tabBars.buttons["Profile"].tap()
+        if app.navigationBars["My Style"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        app.buttons["Subscription"].tap(); app.buttons["billing.toggleTestPlan"].tap()
+        wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Enable test Plus"), object: app.buttons["billing.toggleTestPlan"])], timeout: 10)
+        app.tabBars.buttons["Home"].tap()
+        if app.navigationBars["Continue Chat"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        app.buttons["home.reply"].tap()
+        XCTAssertTrue(app.buttons["paywall.close"].waitForExistence(timeout: 5))
+        app.buttons["paywall.close"].tap()
+        XCTAssertTrue(app.buttons["paywall.close"].waitForNonExistence(timeout: 5))
         deleteAccountFromProfile()
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = "Live local backend opener"; image.lifetime = .keepAlways; add(image)
     }
+    private func capture(_ name: String) {
+        let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
+    }
     private func deleteAccountFromProfile() {
         app.tabBars.buttons["Profile"].tap()
-        if app.navigationBars["My Style"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        if app.navigationBars["My Style"].exists || app.navigationBars["Subscription"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
         app.buttons["Privacy and Data"].tap()
         XCTAssertTrue(app.switches["privacy.storeImages"].waitForExistence(timeout: 5))
         app.switches["privacy.storeImages"].switches.firstMatch.tap()
         wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: app.switches["privacy.storeImages"])], timeout: 10)
+        capture("Privacy and Data")
         app.buttons["Delete account"].tap()
         app.textFields["account.confirmation"].tap(); app.textFields["account.confirmation"].typeText("DELETE")
         app.buttons["account.delete"].tap()

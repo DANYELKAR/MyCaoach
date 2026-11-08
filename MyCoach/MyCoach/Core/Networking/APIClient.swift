@@ -26,7 +26,7 @@ final class APIClient {
     var token: (() async throws -> String?)?
     var refresh: (() async throws -> Void)?
     var unauthorized: (() -> Void)?
-    init(baseURL: URL, session: URLSession = .shared) { self.baseURL = baseURL; self.session = session }
+    init(baseURL: URL, session: URLSession = URLSession(configuration: .ephemeral)) { self.baseURL = baseURL; self.session = session }
 
     func request<T: Decodable>(_ path: String, method: String = "GET", body: [String: JSONValue]? = nil, authenticated: Bool = true) async throws -> T {
         let parts = path.split(separator: "?", maxSplits: 1)

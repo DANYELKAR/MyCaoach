@@ -46,9 +46,15 @@ struct AppConfiguration: Equatable {
         #if !DEBUG
         guard mode == .supabase, url.scheme == "https" else { throw ConfigurationError.insecureURL }
         #endif
+        #if !DEBUG
+        guard !(url.host?.hasSuffix(".example") ?? true) else { throw ConfigurationError.missingAPIURL }
+        #endif
         let supabaseRaw = value("MyCoachSupabaseURL")
         let key = value("MyCoachSupabasePublishableKey")
         guard (supabaseRaw == nil) == (key == nil) else { throw ConfigurationError.invalidSupabaseConfiguration }
+        #if !DEBUG
+        guard supabaseRaw != nil, key != nil else { throw ConfigurationError.invalidSupabaseConfiguration }
+        #endif
         let supabaseURL = supabaseRaw.flatMap(URL.init(string:))
         if supabaseRaw != nil {
             guard let supabaseURL, supabaseURL.scheme == "https", supabaseURL.host != nil else {
@@ -65,6 +71,7 @@ struct AppConfiguration: Equatable {
                 }
             }
         }
+        if let revenueKey = value("MyCoachRevenueCatPublicKey"), !revenueKey.hasPrefix("appl_") { throw ConfigurationError.serverKeyInClient }
         return Self(apiBaseURL: url, backendMode: mode, supabaseURL: supabaseURL, supabasePublishableKey: key,
                     googleClientID: value("MyCoachGoogleClientID"), revenueCatPublicKey: value("MyCoachRevenueCatPublicKey"))
     }
