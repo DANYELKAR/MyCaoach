@@ -71,6 +71,25 @@ final class NetworkingTests: XCTestCase {
         reply.text = "Hey, how was your weekend?"; XCTAssertTrue(reply.canGenerate)
         reply.images = Array(repeating: Data([1]), count: 4); XCTAssertFalse(reply.canGenerate)
     }
+    func testPaginationKeepsQueryAndLoadsNextPageWithoutDuplicates() async throws {
+        let api = client()
+        let page = (0..<50).map { ContactDTO(id: UUID(), name: "Person \($0)", source: "OTHER", status: "NEW", interests: [], notes: nil) }
+        let bytes = try JSONEncoder().encode(page)
+        MockURLProtocol.handler = { request in
+            XCTAssertEqual(request.url?.path, "/v1/contacts")
+            let query = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!
+            XCTAssertTrue(query.contains(URLQueryItem(name: "status", value: "NEW")))
+            let isFirst = query.contains(URLQueryItem(name: "page", value: "0"))
+            return (200, isFirst ? bytes : Data("[]".utf8))
+        }
+        let collection = RemoteCollection<ContactDTO>()
+        await collection.load(api, path: "v1/contacts?status=NEW")
+        XCTAssertEqual(collection.items.count, 50); XCTAssertTrue(collection.hasMore)
+        await collection.load(api, path: "v1/contacts?status=NEW", reset: false)
+        XCTAssertEqual(collection.items.count, 50); XCTAssertFalse(collection.hasMore)
+        await collection.load(api, path: "v1/contacts?status=NEW")
+        XCTAssertEqual(collection.items.count, 50)
+    }
     func testKeychainStoresUpdatesAndRemoves() throws {
         let store = KeychainStore(namespace: "MyCoach.unit.\(UUID())")
         defer { try? store.remove(key: "token") }

@@ -29,7 +29,11 @@ final class APIClient {
     init(baseURL: URL, session: URLSession = .shared) { self.baseURL = baseURL; self.session = session }
 
     func request<T: Decodable>(_ path: String, method: String = "GET", body: [String: JSONValue]? = nil, authenticated: Bool = true) async throws -> T {
-        var r = URLRequest(url: baseURL.appendingPathComponent(path))
+        let parts = path.split(separator: "?", maxSplits: 1)
+        var components = URLComponents(url: baseURL.appendingPathComponent(String(parts[0])), resolvingAgainstBaseURL: false)!
+        if parts.count > 1 { components.percentEncodedQuery = String(parts[1]) }
+        guard let url = components.url else { throw URLError(.badURL) }
+        var r = URLRequest(url: url)
         r.httpMethod = method
         if let body { r.httpBody = try JSONEncoder().encode(body); r.setValue("application/json", forHTTPHeaderField: "Content-Type") }
         return try await send(r, authenticated: authenticated)

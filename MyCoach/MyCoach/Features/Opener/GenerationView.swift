@@ -14,6 +14,7 @@ struct GenerationView: View {
     var body: some View {
         if let runtime = state.runtime {
             @Bindable var model = model
+            ScrollViewReader { proxy in
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     if let result = model.result {
@@ -54,7 +55,7 @@ struct GenerationView: View {
                         PrimaryButton(title: model.isLoading ? "Finding the right words…" : "Generate suggestions", symbol: "sparkles", isLoading: model.isLoading) { model.generate(runtime: runtime) }.disabled(!model.canGenerate || loadingImage).accessibilityIdentifier("generation.submit")
                     }
                 }.padding(20).foregroundStyle(Theme.label)
-            }.background(Theme.background).navigationTitle(model.reply ? "Continue Chat" : "New opener").navigationBarTitleDisplayMode(.inline).toolbar(.visible, for: .navigationBar)
+            }.onChange(of: model.result?.generation.id) { _, id in if id != nil { proxy.scrollTo("generation.top", anchor: .top) } }.background(Theme.background).navigationTitle(model.reply ? "Continue Chat" : "New opener").navigationBarTitleDisplayMode(.inline).toolbar(.visible, for: .navigationBar)
                 .task {
                     model.toneID = runtime.profile?.defaultToneId ?? runtime.tones.first(where: { $0.name.lowercased() == state.defaultTone.rawValue })?.id ?? runtime.tones.first?.id
                     do { contacts = try await runtime.api.request("v1/contacts") } catch { runtime.handle(error) }
@@ -68,6 +69,7 @@ struct GenerationView: View {
                 }
                 .onDisappear { model.cancel() }
                 .sheet(isPresented: $showCamera) { CameraPicker { data in Task { do { model.images = [try await ImageProcessor.jpeg(data)] } catch { runtime.handle(error) } } } }
+            }
         }
     }
 }
@@ -94,15 +96,9 @@ struct ResultsView: View {
     let result: GenerationResult
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("Make it yours.").font(.title.bold())
+            Text("Make it yours.").font(.title.bold()).id("generation.top")
             Text("Review before sending. A suggestion is a starting point.").foregroundStyle(Theme.muted)
-            ForEach(result.suggestions) { suggestion in
-                VStack(alignment: .leading, spacing: 16) {
-                    if suggestion.isTopPick { Label("Top pick", systemImage: "sparkles").font(.caption.bold()).foregroundStyle(Theme.primary) }
-                    Text(suggestion.text).textSelection(.enabled)
-                    Button("Copy", systemImage: "doc.on.doc") { UIPasteboard.general.string = suggestion.text }.frame(minHeight: 44)
-                }.frame(maxWidth: .infinity, alignment: .leading).surfaceCard().accessibilityIdentifier("suggestion.\(suggestion.rank)")
-            }
-        }.accessibilityIdentifier("generation.results")
+            ForEach(result.suggestions) { SuggestionCard(suggestion: $0) }
+        }
     }
 }
