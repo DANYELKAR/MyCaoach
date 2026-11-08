@@ -34,8 +34,11 @@ public class SupabaseAdminClient implements InputStorage, AuthAdmin {
       var builder =
           HttpRequest.newBuilder(URI.create(base + path))
               .timeout(Duration.ofSeconds(15))
-              .header("apikey", key)
-              .header("Authorization", "Bearer " + (token == null ? key : token));
+              .header("apikey", key);
+      // Publishable/secret API keys are opaque credentials, not JWT bearer tokens.
+      // Preserve legacy service-role JWT support and real user tokens for logout.
+      if (token != null) builder.header("Authorization", "Bearer " + token);
+      else if (!key.startsWith("sb_secret_")) builder.header("Authorization", "Bearer " + key);
       if (mime != null) builder.header("Content-Type", mime);
       var result =
           http.send(
