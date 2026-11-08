@@ -2,11 +2,14 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(AppState.self) private var state
+    @AppStorage("appearance") private var appearance = "dark"
     var body: some View {
         ZStack {
             if let runtime = state.runtime {
                 if runtime.isRestoring { ProgressView("Opening MyCoach…").frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.background) }
-                else if !runtime.hasSession || !runtime.onboardingComplete { OnboardingView(runtime: runtime) }
+                else if !runtime.hasSession { OnboardingView(runtime: runtime) }
+                else if runtime.profile == nil { ErrorStateView(title: "Let's reconnect", message: "Your profile couldn't be loaded. Check your connection and try again.") { Task { do { try await runtime.reload() } catch { runtime.handle(error) } } } }
+                else if !runtime.onboardingComplete { OnboardingView(runtime: runtime) }
                 else { MainTabView() }
             } else { MainTabView() }
         }
@@ -18,7 +21,7 @@ struct RootView: View {
         .overlay(alignment: .bottom) {
             if let message = state.runtime?.toast { ToastBanner(message: LocalizedStringKey(message)).padding(.bottom, 88).padding(.horizontal).task(id: message) { try? await Task.sleep(for: .seconds(2)); if state.runtime?.toast == message { state.runtime?.toast = nil } }.allowsHitTesting(false) }
         }
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(appearance == "system" ? nil : appearance == "light" ? .light : .dark)
     }
 }
 
@@ -45,7 +48,7 @@ struct MainTabView: View {
                 .tabItem { Label("Profile", systemImage: AppTab.profile.symbol) }.tag(AppTab.profile)
         }.tint(Theme.primary).toolbarBackground(Theme.surface, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
-            .preferredColorScheme(.dark)
+
     }
 }
 

@@ -99,6 +99,24 @@ final class LocalEndToEndTests: XCTestCase {
         app.swipeUp()
         XCTAssertTrue(app.staticTexts["style.summary.source"].waitForExistence(timeout: 20))
         XCTAssertEqual(app.staticTexts["style.summary.source"].label, "local-fixture")
+        deleteAccountFromProfile()
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = "Live local backend opener"; image.lifetime = .keepAlways; add(image)
     }
+    private func deleteAccountFromProfile() {
+        app.tabBars.buttons["Profile"].tap()
+        if app.navigationBars["My Style"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        app.buttons["Privacy and Data"].tap()
+        XCTAssertTrue(app.switches["privacy.storeImages"].waitForExistence(timeout: 5))
+        app.switches["privacy.storeImages"].switches.firstMatch.tap()
+        wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: app.switches["privacy.storeImages"])], timeout: 10)
+        app.buttons["Delete account"].tap()
+        app.textFields["account.confirmation"].tap(); app.textFields["account.confirmation"].typeText("DELETE")
+        app.buttons["account.delete"].tap()
+        XCTAssertTrue(app.buttons["onboarding.continue"].waitForExistence(timeout: 20))
+    }
+    func testPrivacyAndAccountDeletionAgainstDocker() {
+        onboard()
+        deleteAccountFromProfile()
+    }
+
 }
