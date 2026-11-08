@@ -33,6 +33,7 @@ struct TimelineView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 if let timeline {
+                    PlusFeatureLink(title: "Continue this chat", symbol: "bubble.left.and.bubble.right") { GenerationView(reply: true, contactID: timeline.thread.contactId) }
                     ForEach(timeline.generations, id: \.generation.id) { result in
                         Text(result.generation.type == "REPLY" ? "Replies" : "Opener").font(.headline)
                         ResultsView(result: result)

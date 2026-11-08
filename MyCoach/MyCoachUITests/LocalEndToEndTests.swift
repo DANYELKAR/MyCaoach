@@ -74,6 +74,17 @@ final class LocalEndToEndTests: XCTestCase {
         XCTAssertTrue(app.buttons["billing.toggleTestPlan"].waitForExistence(timeout: 5))
         app.buttons["billing.toggleTestPlan"].tap()
         wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Switch to test Free"), object: app.buttons["billing.toggleTestPlan"])], timeout: 10)
+        app.tabBars.buttons["Home"].tap()
+        if app.navigationBars["New opener"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        app.buttons["home.reply"].tap()
+        XCTAssertTrue(app.navigationBars["Continue Chat"].waitForExistence(timeout: 5))
+        app.segmentedControls.buttons["Paste text"].tap()
+        app.textFields["generation.text"].tap(); app.textFields["generation.text"].typeText("They said: How was your weekend? I went hiking.")
+        app.swipeUp()
+        app.buttons["generation.submit"].tap()
+        XCTAssertTrue(app.staticTexts["Make it yours."].waitForExistence(timeout: 30))
+        XCTAssertTrue(app.buttons["suggestion.save.4"].exists)
+        XCTAssertFalse(app.buttons["suggestion.save.5"].exists)
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = "Live local backend opener"; image.lifetime = .keepAlways; add(image)
     }
 }

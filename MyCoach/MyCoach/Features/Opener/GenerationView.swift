@@ -18,6 +18,12 @@ struct GenerationView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     if let result = model.result {
+                        if model.reply {
+                            DisclosureGroup("Conversation context") {
+                                if model.text.isEmpty { Text("\(model.images.count) selected screenshots").font(.footnote) }
+                                else { Text(model.text).font(.footnote).textSelection(.enabled) }
+                            }.surfaceCard()
+                        }
                         ResultsView(result: result)
                         SecondaryButton(title: "Start another") { model.startAgain() }
                     } else {

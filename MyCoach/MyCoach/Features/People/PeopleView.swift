@@ -73,6 +73,7 @@ struct PersonDetailView: View {
             Section {
                 Text(person.name).font(.title.bold())
                 Text(person.status.replacingOccurrences(of: "_", with: " ").capitalized).foregroundStyle(Theme.muted)
+                PlusFeatureLink(title: "Continue this chat", symbol: "bubble.left.and.bubble.right") { GenerationView(reply: true, contactID: person.id) }
                 NavigationLink("New opener") { GenerationView(contactID: person.id) }
             }
             Section("Interests") { if person.interests.isEmpty { Text("No interests added yet.").foregroundStyle(Theme.muted) }; ForEach(person.interests, id: \.self) { Text($0) } }

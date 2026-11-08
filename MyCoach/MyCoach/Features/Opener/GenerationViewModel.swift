@@ -18,8 +18,8 @@ final class GenerationViewModel {
     init(reply: Bool = false, contactID: UUID? = nil) { self.reply = reply; self.contactID = contactID }
     var canGenerate: Bool { toneID != nil && (reply ? (!text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty != !images.isEmpty) : images.count == 1) && images.count <= (reply ? 3 : 1) && note.utf16.count <= 1000 && text.utf16.count <= 10000 && !isLoading }
     private func resetKey() { idempotencyKey = UUID().uuidString; result = nil }
-    func generate(runtime: AppRuntime) {
-        guard canGenerate, let toneID else { return }
+    @discardableResult func generate(runtime: AppRuntime) -> Task<Void, Never>? {
+        guard canGenerate, let toneID else { return nil }
         isLoading = true; error = nil
         task = Task {
             defer { isLoading = false }
@@ -31,6 +31,7 @@ final class GenerationViewModel {
                 if !Task.isCancelled { self.error = error.localizedDescription; runtime.handle(error) }
             }
         }
+        return task
     }
     func cancel() { task?.cancel(); isLoading = false }
     func startAgain() { result = nil; resetKey() }

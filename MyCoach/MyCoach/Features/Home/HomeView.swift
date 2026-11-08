@@ -37,6 +37,7 @@ struct HomeView: View {
                         Circle().fill(Theme.secondary.opacity(0.08)).frame(width: 100, height: 100).blur(radius: 24).allowsHitTesting(false).accessibilityHidden(true)
                     }
                 if let runtime = state.runtime {
+                    PlusFeatureLink(title: "Continue Chat", symbol: "bubble.left.and.bubble.right") { GenerationView(reply: true) }.accessibilityIdentifier("home.reply")
                     if let usage = runtime.usage { Text("\(usage.remainingToday) of \(usage.dailyLimit) credits left today").font(.subheadline.bold()).foregroundStyle(Theme.label) }
                     Button { showOpener = true } label: { Label("Create an opener", systemImage: "sparkles").font(.headline).frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(Theme.label).background(Theme.actionGradient, in: Capsule()) }.buttonStyle(.plain).accessibilityIdentifier("home.opener").accessibilityValue(showOpener ? "Opening" : "Ready")
                 }
