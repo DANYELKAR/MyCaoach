@@ -200,6 +200,44 @@ class RemoteAdapterTest {
   }
 
   @Test
+  void supabaseOpaqueSecretUsesOnlyApiKeyAndUserLogoutKeepsItsOwnBearer() {
+    UUID user = UUID.randomUUID();
+    AtomicInteger calls = new AtomicInteger();
+    server.createContext(
+        "/auth/v1/admin/users/" + user,
+        x -> {
+          assertThat(x.getRequestHeaders().getFirst("apikey")).isEqualTo("sb_secret_test_fixture");
+          assertThat(x.getRequestHeaders().getFirst("Authorization")).isNull();
+          calls.incrementAndGet();
+          respond(x, 200, Map.of());
+        });
+    server.createContext(
+        "/auth/v1/logout",
+        x -> {
+          assertThat(x.getRequestHeaders().getFirst("apikey")).isEqualTo("sb_secret_test_fixture");
+          assertThat(x.getRequestHeaders().getFirst("Authorization")).isEqualTo("Bearer user-jwt");
+          calls.incrementAndGet();
+          respond(x, 200, Map.of());
+        });
+    new SupabaseAdminClient(json, base, "sb_secret_test_fixture").revoke(user, "user-jwt");
+    assertThat(calls.get()).isEqualTo(2);
+  }
+
+  @Test
+  void supabaseLegacyServerKeyStillUsesBearerAuthorization() {
+    UUID user = UUID.randomUUID();
+    server.createContext(
+        "/auth/v1/admin/users/" + user,
+        x -> {
+          assertThat(x.getRequestHeaders().getFirst("apikey")).isEqualTo("legacy-jwt-fixture");
+          assertThat(x.getRequestHeaders().getFirst("Authorization"))
+              .isEqualTo("Bearer legacy-jwt-fixture");
+          respond(x, 200, Map.of());
+        });
+    new SupabaseAdminClient(json, base, "legacy-jwt-fixture").deleteUser(user);
+  }
+
+  @Test
   void supabaseSignsPrivateImageAccessForOnlySixtySeconds() {
     String path = UUID.randomUUID() + "/generation/photo.png";
     server.createContext(

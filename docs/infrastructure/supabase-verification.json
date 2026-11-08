@@ -1,0 +1,30 @@
+{
+  "projectRef": "yeoqhvqfwiheemxufuru",
+  "verifiedAt": "2026-11-08T19:23:10.867513+00:00",
+  "database": "PostgreSQL 17.11",
+  "transport": "JDBC session pooler, sslmode=require",
+  "checks": {
+    "successful_migrations": 5,
+    "failed_migrations": 0,
+    "rls_tables": 12,
+    "unprotected_app_tables": 0,
+    "public_policies": 0,
+    "builtin_tones": 7,
+    "auth_users_fk": 1
+  },
+  "containsUserData": false,
+  "servicesVerifiedAt": "2026-11-08T19:27:29.306348+00:00",
+  "serviceChecks": {
+    "auth_admin_read": true,
+    "storage_admin_read": true,
+    "bucket_private": true,
+    "bucket_5mib_limit": true,
+    "bucket_mime_restriction": true,
+    "backend_adapter_upload": true,
+    "anonymous_public_access_denied": true,
+    "signed_url_60_seconds": true,
+    "signed_download_matches_upload": true,
+    "synthetic_object_cleanup": true
+  },
+  "testData": "One synthetic 1x1 PNG, deleted after verification; no user account created"
+}
