@@ -1,0 +1,23 @@
+{
+  "verifiedAt": "2026-11-08T19:35:23.960739+00:00",
+  "projectRef": "yeoqhvqfwiheemxufuru",
+  "checks": [
+    "health_and_missing_invalid_jwt",
+    "real_supabase_jwt_profile_creation",
+    "cross_user_read_update_delete_isolation",
+    "free_contact_and_folder_limits",
+    "disabled_billing_never_grants_plus",
+    "disabled_ai_refunds_credit_and_cleans_storage",
+    "real_supabase_session_refresh",
+    "account_deletion_auth_removal_old_jwt_and_refresh_rejected"
+  ],
+  "syntheticAccountsCreatedAndDeleted": 2,
+  "aiInferencePerformed": false,
+  "purchasesPerformed": false,
+  "smtpEmailSent": false,
+  "note": "Deletion tombstones intentionally remain; no tokens, passwords, user IDs or user content included.",
+  "postDeletionDatabaseChecks": {
+    "deleted_profiles_remaining": 0,
+    "deleted_auth_users_remaining": 0
+  }
+}

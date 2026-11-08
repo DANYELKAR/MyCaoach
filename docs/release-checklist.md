@@ -15,8 +15,8 @@ Kanıtlar: `docs/backend/verification.md`.
 
 ## Gerçek servis yayını öncesi
 
-- Supabase development/production projeleri, private `inputs` bucket ve rol/RLS kontrolleri.
-- Apple, Google ve email OTP sağlayıcılarının Supabase Auth ayarları; production SMTP ve domain doğrulaması.
+- Tamamlandı (development): Supabase DB/Auth/private `inputs`, RLS/Flyway, gerçek JWT/refresh/izolasyon ve hesap silme. Production projesi ve production rol/yedek kontrolleri hâlâ açık.
+- Apple, Google ve email OTP sağlayıcılarının Supabase Auth ayarları; SMTP/domain kullanıcı kararıyla ertelendi.
 - Gerçek Gemini model erişimi, güvenlik ayarları, blocked/timeout vakaları ve maliyet limitleri.
 - RevenueCat `plus` entitlement'ı, App Store sandbox purchase/restore/expiry ve public HTTPS webhook adresi.
 - Gerçek hesap silme ile Auth/session/Storage/DB temizliğinin tekrar doğrulanması.

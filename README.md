@@ -95,19 +95,28 @@ docker compose down
 `.env.example` → `.env` kopyala, gerçek değerleri doldur; `.env` repoya girmez:
 
 ```sh
-docker compose down
 docker compose -f compose.supabase.yaml up --build -d --wait
 ```
 
 - Supabase DB host/kullanıcı adı panelin Session pooler JDBC bilgisinden alınır; TLS gerekir. `DATABASE_URL` bir JDBC URL'sidir; DB parolası ayrı alandadır.
 - Uygulama migration'larını Flyway yönetir; Hibernate `validate`. Supabase Auth şeması uygulama tarafından oluşturulmaz. `db/local` migration'ları yalnız `local` profiline aittir.
 - API JWT issuer/audience/imza/expiry doğrular. Asimetrik JWKS varsayılandır; legacy HS256 yalnız açık config ile desteklenir.
+- Bulut DB/Auth/Storage kullanan bu container yalnız `127.0.0.1:8081` adresine açılır (`SUPABASE_API_PORT` ile değiştirilebilir). Yerel fixture API'si `8080` üzerinde ayrı çalışabilir; iOS Debug varsayılanı yerel akışta kalır.
+- `AI_ENABLED=false` ve `BILLING_ENABLED=false` açıkça ayarlandığında bu iki entegrasyon kapalıdır: AI/billing çağrıları 503 döner, fixture sonuç veya Plus verilmez; billing webhook 401 ile reddedilir. Auth, CRUD, kota ve hesap silme gerçek Supabase üzerinden çalışır. Bayrakların uygulama varsayılanı `true` olduğu için canlı entegrasyonlar etkinse eksik anahtarlarla başlangıç reddedilir. Gerçek anahtarları ekleyip ilgili bayrağı `true` yaptıktan sonra container'ı yeniden oluştur.
 - Supabase projesinde private `inputs` bucket oluşturulmuş olmalı. Runtime JDBC rolü backend sahiplik kontrolleriyle RLS'i aşacak yetkiye ihtiyaç duyar; istemci anahtarlarıyla tablo erişimi açılmaz. RLS bütün iş tablolarında aktiftir.
 - Gemini model adı `GEMINI_MODEL` ile değiştirilebilir; gerçek model erişimi ve anahtar hesap üzerinde ayrıca doğrulanır. Timeout 25s; 5xx için en fazla bir retry. Güvenlik filtreleri ve JSON schema gönderilir.
 - RevenueCat `plus` entitlement'ı canonical subscriber API üzerinden doğrulanır. Webhook Authorization değeri secret ile birebir karşılaştırılır; event ID ve timestamp ile tekrar/sıralama korunur.
 - Storage ve Auth admin secret'ları mobil istemciye verilmez. Hesap silme erişimi kapatır, session/refresh erişimini iptal eder, dosyaları ve Auth kaydını siler. Yarım kalan silmeler gece göreviyle tekrar denenir. Sahipsiz 24 saatlik objeler temizlenir.
 
 Gerçek Supabase/Gemini/RevenueCat hesaplarına karşı canlı doğrulama yapılmadan production hazır iddiasında bulunulmaz. Docker Desktop internete açık deployment sağlamaz. iOS Simulator aynı Mac'te localhost kullanabilir; gerçek cihaz ve RevenueCat webhook için ayrıca erişilebilir HTTPS adresi gerekir.
+
+Development Supabase projesinde opt-in canlı smoke:
+
+```sh
+python3 scripts/smoke_supabase.py --allow-test-accounts
+```
+
+Bu komut özel `.env` ve iOS public config'ini okur; iki sentetik, e-posta göndermeyen Auth hesabı oluşturur ve siler. Gerçek JWT/refresh, sahiplik, Free sınırları, kapalı AI'da kredi/görsel temizliği ve hesap silme/eski JWT reddini doğrular. Yalnız loopback API'ye izin verir; AI/billing kapalı olmalıdır. Silinen hesapların güvenlik tombstone kayıtları korunur. Production projesinde çalıştırma. Token, parola veya kullanıcı içeriği kanıt dosyasına yazılmaz.
 
 ## Belgeler
 

@@ -1,6 +1,6 @@
 # MyCoach iOS yayın hazırlığı
 
-Yerel fazlar ile canlı yayını ayrı doğrula. Bulut projeleri henüz hazır olmadığından aşağıdaki dış servis kapıları açıktır.
+Yerel fazlar ile canlı yayını ayrı doğrula. Development Supabase DB/Auth/Storage backend üzerinden doğrulandı; aşağıdaki production ve iOS sağlayıcı kapıları açıktır. SMTP/domain kullanıcı kararıyla ertelendi.
 
 ## Derleme ve yerel kabul
 
@@ -27,7 +27,8 @@ python3 scripts/check_ios_release.py /tmp/MyCoach-verified.xcarchive/Products/Ap
 
 ## Hesaplar ve güvenli yayın ayarları
 
-- [ ] Gerçek HTTPS Spring Boot sunucusu, TLS/JDBC, backup/restore, private Storage ve Supabase RLS/Flyway doğrulaması. Docker Desktop tek başına production hosting değildir.
+- [x] Development Supabase: TLS/JDBC, V1–V5 Flyway, 12 RLS tablosu, private Storage, gerçek JWT/refresh/izolasyon ve backend hesap silme doğrulandı. [Kanıt](../infrastructure/supabase-runtime-verification.json).
+- [ ] Production HTTPS Spring Boot sunucusu, ayrı production DB ve backup/restore. Docker Desktop tek başına production hosting değildir.
 - [ ] Supabase development/production projeleri; Apple ve Google provider ayarları, email OTP template'i kod gösterecek şekilde, SMTP/domain teslimatı, JWT issuer/audience.
 - [ ] Google iOS bundle ID ve reversed client ID scheme; Apple Developer takımında Sign in with Apple capability/provisioning. Uygulama entitlement dosyası hazırdır.
 - [ ] Gerçek Gemini model/key, görsel ve mesaj onayı, blocked/timeouts, retry ve maliyet sınırları.

@@ -13,7 +13,7 @@ Swift 6 / SwiftUI / Observation, iPhone, iOS 17+. Mevcut proje `MyCoach/MyCoach.
 - Privacy and Data tercihleri, geçmiş silme, görünüm/default tone/timezone ayarı, hesap silme ve temiz oturum dönüşü.
 - Açık/koyu/sistem görünümü, Dynamic Type, erişilebilir etiketler, English String Catalog, privacy manifest, consent'e bağlı no-op analytics.
 
-PR #2, backend PR #1 üzerine sıralanır; iOS branch checkout'u gerekli backend dosyalarını da içerir. Review sırası: önce backend #1, sonra iOS #2. PR'lar otomatik birleştirilmez.
+PR #2, backend PR #1 üzerine sıralanır; iOS branch checkout'u gerekli backend dosyalarını da içerir. Review sırası: backend #1 → iOS #2 → Supabase #3 → sonraki runtime düzeltmeleri. PR'lar otomatik birleştirilmez.
 
 ## Çalıştırma
 
@@ -46,3 +46,6 @@ Release varsayılan domain'i `api.mycoach.example` yayın adresi değildir. Rele
 **Kullanıcı kararı: bulut projeleri henüz hazır değil.** Gerçek Apple/Google/OTP teslimatı, Gemini, RevenueCat/App Store sandbox purchase/restore ve imzalı cihaz/TestFlight doğrulaması tamamlandı olarak sunulmaz. Kamera gerçek iPhone üzerinde ayrıca denenmelidir. Yerel kabuller bunların yerine geçmez.
 
 [Doğrulama](verification.md) · [Yayın kontrol listesi](release-checklist.md)
+
+
+Development Supabase backend ayrı `127.0.0.1:8081` üzerinde gerçek DB/Auth/Storage ile doğrulandı; AI ve billing açıkça kapalıyken 503 döner. iOS Debug, tam yerel fixture akışında `8080` kullanır. Local.xcconfig içindeki public Supabase ayarları yerel oturuma dokunmaz. Bu backend testleri native Apple/Google/OTP veya gerçek satın alma testinin yerine geçmez. SMTP/domain ertelendi; [güncel altyapı durumu](../infrastructure/status.md).

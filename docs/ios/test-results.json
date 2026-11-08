@@ -1,9 +1,9 @@
 {
   "result": "Passed",
-  "finishedAt": "2026-11-08T14:46:03.055000+03:00",
-  "unitTests": 26,
+  "finishedAt": "2026-11-08T22:39:03.032000+03:00",
+  "unitTests": 27,
   "uiTests": 6,
-  "passed": 32,
+  "passed": 33,
   "failed": 0,
   "skipped": 0,
   "device": {
@@ -15,22 +15,24 @@
     "osVersion": "26.2",
     "platform": "iOS Simulator"
   },
-  "resultBundle": "/tmp/mycoach-ios-verified.xcresult",
+  "resultBundle": "/tmp/mycoach-remaining-ios-fixed.xcresult",
   "xcode": "26.2",
   "swift": "6.2.3",
   "releaseArchive": {
     "result": "Succeeded",
-    "path": "/tmp/MyCoach-verified.xcarchive",
+    "path": "/tmp/MyCoach-cloud-verified.xcarchive",
     "signed": false,
     "platform": "iPhoneOS",
-    "minimumOS": "17.0"
+    "minimumOS": "17.0",
+    "serverSecretsEmbedded": false
   },
   "backendVerification": {
-    "tests": 31,
+    "tests": 36,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
     "smoke": "Passed",
     "openAPIPaths": 26
-  }
+  },
+  "supabaseRuntimeVerification": "../infrastructure/supabase-runtime-verification.json"
 }

@@ -2,10 +2,8 @@
   "configurationReady": false,
   "missingOrInvalidFields": [
     "MyCoachAPIBaseURL",
-    "MyCoachSupabaseURL",
     "MyCoachPrivacyURL",
     "MyCoachTermsURL",
-    "MyCoachSupabasePublishableKey",
     "MyCoachRevenueCatPublicKey",
     "MyCoachGoogleClientID",
     "MyCoachSupportEmail"

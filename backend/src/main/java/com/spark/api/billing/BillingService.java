@@ -26,13 +26,14 @@ public class BillingService {
       ProfileService profiles,
       ProfileRepository repository,
       JdbcTemplate jdbc,
-      @Value("${REVENUECAT_WEBHOOK_SECRET}") String secret) {
-    if (secret.isBlank()) throw new IllegalArgumentException("Webhook secret required");
+      @Value("${REVENUECAT_WEBHOOK_SECRET:}") String secret,
+      @Value("${spark.billing.enabled:true}") boolean enabled) {
+    if (enabled && secret.isBlank()) throw new IllegalArgumentException("Webhook secret required");
     this.provider = provider;
     this.profiles = profiles;
     this.repository = repository;
     this.jdbc = jdbc;
-    this.secret = secret;
+    this.secret = enabled ? secret : "";
   }
 
   @Transactional
@@ -44,7 +45,8 @@ public class BillingService {
 
   @Transactional
   public void webhook(String authorization, JsonNode body) {
-    if (authorization == null
+    if (secret.isBlank()
+        || authorization == null
         || !MessageDigest.isEqual(
             secret.getBytes(StandardCharsets.UTF_8),
             authorization.getBytes(StandardCharsets.UTF_8))) throw BusinessException.unauthorized();

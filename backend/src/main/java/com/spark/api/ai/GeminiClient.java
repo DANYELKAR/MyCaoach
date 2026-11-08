@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("supabase")
+@org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(
+    name = "spark.ai.enabled",
+    havingValue = "true",
+    matchIfMissing = true)
 public class GeminiClient implements AiClient {
   private final ObjectMapper json;
   private final String key, model, base;

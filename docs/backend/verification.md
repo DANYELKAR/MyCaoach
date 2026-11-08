@@ -5,8 +5,8 @@
 ## Son sonuç
 
 - Java 21 / Spring Boot 3.5.16 / PostgreSQL 17.11.
-- Maven verify: **31 test, 0 failure, 0 error, 0 skipped**.
-- Format kontrolü: 85 Java dosyası, 0 uyumsuz dosya.
+- Maven verify: **36 test, 0 failure, 0 error, 0 skipped**.
+- Format kontrolü başarılı; kapalı entegrasyonlar ve webhook reddi için regresyon testleri eklendi.
 - Docker image build ve `docker compose up --build -d --wait` başarılı.
 - `spark-local-api-1`, `spark-local-postgres-1`: healthy.
 - Health, readiness ve Swagger UI HTTP 200.
@@ -69,3 +69,8 @@ Boot BOM'dan gelen Tomcat, Jackson, Log4j, JDBC ve Commons Lang sürümleri uyum
 ## Gerçek sağlayıcılar için kalan dış doğrulama
 
 Yerel çalışma `local` profilinde deterministik AI ve abonelik fixture'ları kullanır. Gerçek Gemini/Supabase/RevenueCat adaptörleri kodlanmış ve HTTP sözleşmeleri test edilmiştir; ancak canlı hesap anahtarlarıyla çalıştırıldıkları iddia edilmez. Supabase projesi/bucket, Apple/Google/SMTP ayarları, gerçek Gemini model erişimi ve App Store sandbox satın alma/restore testi ayrıca gerekir. GitHub Actions workflow hazırdır; repo `DANYELKAR/MyCaoach` olarak bağlandı. Yerel doğrulama sonucu ile PR üzerindeki GitHub Actions sonucu ayrı izlenir. HTTPS public webhook ve production deployment açılmadı.
+
+
+## 8 Kasım — gerçek Supabase
+
+Gerçek cloud migration/RLS, private Storage ve Java adapter testi, JWT/refresh/CRUD izolasyonu ve hesap silme [altyapı durumunda](../infrastructure/status.md) ve [runtime kanıtında](../infrastructure/supabase-runtime-verification.json) kayıtlıdır. AI ve billing açıkça kapalıyken core API çalışır; ilgili işlemler 503 döner, fixture sonuç/Plus verilmez. SMTP kullanıcı kararıyla ertelendi. Gerçek AI/RevenueCat/signed iOS yayını hâlâ ayrı kabul kapılarıdır.
