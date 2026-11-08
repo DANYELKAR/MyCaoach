@@ -16,5 +16,7 @@
 	<string>$(MYCOACH_SUPABASE_PUBLISHABLE_KEY)</string>
 	<key>MyCoachSupabaseURL</key>
 	<string>$(MYCOACH_SUPABASE_URL)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo to create a personalized opener. Selected photos are sent to our backend and Google Gemini with your consent.</string>
 </dict>
 </plist>

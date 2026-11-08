@@ -3,6 +3,7 @@ import Observation
 
 @MainActor @Observable
 final class AppState {
+    var runtime: AppRuntime?
     var selectedTab: AppTab = .home
     var defaultTone: BuiltInTone {
         didSet { preferences.set(defaultTone.rawValue, forKey: "defaultTone") }

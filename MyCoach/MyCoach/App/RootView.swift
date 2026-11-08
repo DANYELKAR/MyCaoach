@@ -3,6 +3,24 @@ import SwiftUI
 struct RootView: View {
     @Environment(AppState.self) private var state
     var body: some View {
+        ZStack {
+            if let runtime = state.runtime {
+                if runtime.isRestoring { ProgressView("Opening MyCoach…").frame(maxWidth: .infinity, maxHeight: .infinity).background(Theme.background) }
+                else if !runtime.hasSession || !runtime.onboardingComplete { OnboardingView(runtime: runtime) }
+                else { MainTabView() }
+            } else { MainTabView() }
+        }
+        .task { await state.runtime?.start() }
+        .alert("MyCoach", isPresented: Binding(get: { state.runtime?.errorMessage != nil }, set: { if !$0 { state.runtime?.errorMessage = nil } })) {
+            Button("OK") { state.runtime?.errorMessage = nil }
+        } message: { Text(state.runtime?.errorMessage ?? "") }
+        .preferredColorScheme(.dark)
+    }
+}
+
+struct MainTabView: View {
+    @Environment(AppState.self) private var state
+    var body: some View {
         @Bindable var state = state
         TabView(selection: $state.selectedTab) {
             NavigationStack { HomeView() }

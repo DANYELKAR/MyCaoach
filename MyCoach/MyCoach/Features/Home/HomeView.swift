@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(AppState.self) private var state
     @State private var showToneGuide = false
+    @State private var showOpener = false
 
     var body: some View {
         ScrollView {
@@ -35,6 +36,10 @@ struct HomeView: View {
                     .overlay(alignment: .topTrailing) {
                         Circle().fill(Theme.secondary.opacity(0.08)).frame(width: 100, height: 100).blur(radius: 24).allowsHitTesting(false).accessibilityHidden(true)
                     }
+                if let runtime = state.runtime {
+                    if let usage = runtime.usage { Text("\(usage.remainingToday) of \(usage.dailyLimit) credits left today").font(.subheadline.bold()).foregroundStyle(Theme.label) }
+                    Button { showOpener = true } label: { Label("Create an opener", systemImage: "sparkles").font(.headline).frame(maxWidth: .infinity, minHeight: 52).foregroundStyle(Theme.label).background(Theme.actionGradient, in: Capsule()) }.buttonStyle(.plain).accessibilityIdentifier("home.opener").accessibilityValue(showOpener ? "Opening" : "Ready")
+                }
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
                         Text("Find your tone").font(.title3.weight(.bold))
@@ -77,6 +82,7 @@ struct HomeView: View {
                 }
             }.padding(20).padding(.bottom, 16)
         }.background(Theme.background).toolbar(.hidden, for: .navigationBar)
+            .navigationDestination(isPresented: $showOpener) { GenerationView() }
             .sheet(isPresented: $showToneGuide) { ToneGuideView() }
     }
 }
