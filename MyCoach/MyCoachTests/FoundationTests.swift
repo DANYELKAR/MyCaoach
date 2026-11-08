@@ -8,7 +8,24 @@ final class FoundationTests: XCTestCase {
         let config = try AppConfiguration.load()
         XCTAssertEqual(config.apiBaseURL.absoluteString, "http://localhost:8080")
         XCTAssertEqual(config.backendMode, .local)
-        XCTAssertNil(config.supabasePublishableKey)
+        // Local.xcconfig may contain public cloud settings while Debug remains local.
+        XCTAssertEqual(config.supabaseURL == nil, config.supabasePublishableKey == nil)
+    }
+
+    func testLocalAuthNeverCreatesACloudClientEvenWithSupabaseSettings() async throws {
+        let config = try AppConfiguration.parse([
+            "MyCoachBackendMode": "local", "MyCoachAPIBaseURL": "http://localhost:8080",
+            "MyCoachSupabaseURL": "https://project.supabase.co",
+            "MyCoachSupabasePublishableKey": "sb_publishable_fixture"
+        ])
+        let auth = AuthService(configuration: config, namespace: "MyCoach.isolation.\(UUID())")
+        XCTAssertNil(auth.supabase)
+        let localUser = UUID()
+        auth.userID = localUser
+        await auth.restore()
+        XCTAssertEqual(auth.userID, localUser)
+        do { try await auth.refresh(); XCTFail("Local sessions cannot refresh against Supabase") }
+        catch { XCTAssertEqual((error as? APIError)?.code, "UNAUTHORIZED") }
     }
 
     func testHTTPIsLimitedToLocalDevelopmentLoopback() throws {

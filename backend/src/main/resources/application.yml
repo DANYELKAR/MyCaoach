@@ -28,6 +28,11 @@ server:
   error:
     include-message: never
     include-stacktrace: never
+spark:
+  ai:
+    enabled: ${AI_ENABLED:true}
+  billing:
+    enabled: ${BILLING_ENABLED:true}
 management:
   endpoints:
     web:

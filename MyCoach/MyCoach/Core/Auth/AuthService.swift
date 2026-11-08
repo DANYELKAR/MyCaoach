@@ -22,7 +22,7 @@ final class AuthService {
     deinit {}
     init(configuration: AppConfiguration, namespace: String = "com.danyelkar.mycoach.auth") {
         self.configuration = configuration; self.keychain = KeychainStore(namespace: namespace)
-        if let url = configuration.supabaseURL, let key = configuration.supabasePublishableKey {
+        if configuration.backendMode == .supabase, let url = configuration.supabaseURL, let key = configuration.supabasePublishableKey {
             supabase = SupabaseClient(supabaseURL: url, supabaseKey: key, options: .init(auth: .init(storage: KeychainStore(namespace: namespace), storageKey: "mycoach-session")))
         } else { supabase = nil }
         if isLocal, let data = try? keychain.retrieve(key: "local"), let value = try? JSONDecoder().decode(LocalSession.self, from: data) {

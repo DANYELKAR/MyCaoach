@@ -1,20 +1,20 @@
 # MyCoach iOS doğrulama
 
-8 Kasım 2026, Europe/Istanbul. Kullanıcı kararıyla bütün kalan **yerel** iOS fazları tamamlandı. Canlı servis hesapları henüz hazır değil; canlı sağlayıcı doğrulaması bu raporda başarılı sayılmaz.
+8 Kasım 2026, Europe/Istanbul. Kullanıcı kararıyla bütün kalan **yerel** iOS fazları tamamlandı. Development Supabase backend DB/Auth/Storage doğrulandı; native Apple/Google/OTP ve AI/App Store doğrulaması hâlâ bekliyor. SMTP/domain kullanıcı kararıyla ertelendi.
 
 ## Sonuç
 
 | Kontrol | Kanıt |
 |---|---|
-| iOS birim testleri | **26 geçti**, 0 failure/skip |
+| iOS birim testleri | **27 geçti**, 0 failure/skip |
 | iOS arayüz testleri | **6 geçti**, 0 failure/skip; ikisi çalışan Docker API'sine karşı |
-| Son test paketi | `/tmp/mycoach-ios-verified.xcresult`; sonuç: Passed |
+| Son test paketi | `/tmp/mycoach-remaining-ios-fixed.xcresult`; sonuç: Passed |
 | Ortam | Xcode 26.2 / Swift 6.2.3; iPhone 17 Pro / iOS 26.2 Simulator / arm64 |
-| Bitiş | 2026-11-08 14:46:03 +03:00 |
-| Release cihaz arşivi | `/tmp/MyCoach-verified.xcarchive`; **ARCHIVE SUCCEEDED**, iPhoneOS / iOS 17 minimum; **imzasız** |
+| Bitiş | 2026-11-08T22:39:03.032000+03:00 |
+| Release cihaz arşivi | `/tmp/MyCoach-cloud-verified.xcarchive`; **ARCHIVE SUCCEEDED**, iPhoneOS / iOS 17 minimum; **imzasız** |
 | Derlenmiş Release metadata | MyCoach adı, privacy manifest ve app icon var; HTTP/ATS istisnası yok |
 | Yayın preflight | Placeholder API ve eksik canlı ayarlar nedeniyle **beklenen şekilde başarısız**; [alan listesi](release-preflight.json) |
-| Backend tekrar kontrolü | Java 21 + Maven `fmt:check verify`: **31 test geçti**, 0 failure/error/skip |
+| Backend tekrar kontrolü | Java 21 + Maven `fmt:check verify`: **36 test geçti**, 0 failure/error/skip |
 | Çalışan API HTTP smoke | Auth/profile/ownership, opener/replay, saved/feedback/report, timeline, billing, reply, style/tones/template/history: geçti; OpenAPI 26 path; test hesapları silindi/eski JWT reddedildi |
 | SPM advisory sorgusu | 15 kilitli SwiftURL sürümü, OSV: **0 advisory eşleşmesi**; [kapsam ve sürümler](dependency-audit.json). Bu sorgu zafiyet bulunmadığının ispatı değildir. |
 
@@ -28,7 +28,7 @@ Docker E2E UI akışı: welcome/personalization → 18+/AI onayı → benzersiz 
 
 Temel UI testleri beş sekmeyi, ton senkronizasyonunu, rehber kapatmayı, en büyük Dynamic Type ve light appearance erişimini doğrular. E2E harness yalnız DEBUG'ta erişilir; test photos fixture'dır, üretim ve kayıtlar gerçek HTTP/backend/PostgreSQL yolunu kullanır. Sistem parola AutoFill penceresi E2E fixture'ında bastırılır; normal yerel parola alanı bu davranışı korur.
 
-CI, macOS üzerinde mock/birim + temel UI testlerini çalıştırır; Docker erişimi olmayan CI'da iki E2E testi açıkça skip olur. Tam yerel 32 test için `MYCOACH_RUN_LOCAL_E2E=1 bash scripts/test_ios.sh` kullan. Simulator Keychain testleri ad-hoc imzalanır; Apple hesabı gerekmez.
+CI, macOS üzerinde mock/birim + temel UI testlerini çalıştırır; Docker erişimi olmayan CI'da iki E2E testi açıkça skip olur. Tam yerel 33 test için `MYCOACH_RUN_LOCAL_E2E=1 bash scripts/test_ios.sh` kullan. Simulator Keychain testleri ad-hoc imzalanır; Apple hesabı gerekmez.
 
 ## Faz kanıtları ve bulunan sorunlar
 
@@ -46,6 +46,13 @@ Normal Home, sonuç kartları, Saved, paywall, stil ve privacy; ayrıca en büy�
 
 ## Açık dış servis kapıları
 
-Apple/Google/email OTP teslimatı, canlı Supabase Auth/Storage/DB, gerçek Gemini, RevenueCat/App Store sandbox purchase/restore/webhook, fiziksel kamera ve imzalı cihaz/TestFlight yayını **doğrulanmadı**. SDK adaptörlerinin derlenmesi bu kontroller yerine geçmez. Yerel Plus/AI fixture'ları ücret oluşturmaz ve gerçek sağlayıcı sonucu değildir.
+Apple/Google/email OTP teslimatı, iOS native Supabase oturum akışı, gerçek Gemini, RevenueCat/App Store sandbox purchase/restore/webhook, fiziksel kamera ve imzalı cihaz/TestFlight yayını **doğrulanmadı**. SDK adaptörlerinin derlenmesi bu kontroller yerine geçmez. Yerel Plus/AI fixture'ları ücret oluşturmaz ve gerçek sağlayıcı sonucu değildir.
 
 Yayıncı kimliği, destek e-postası, hosted Terms/Privacy ve gerçek HTTPS API henüz yapılandırılmadı. Release mevcut placeholder'larla kullanıma açılmaz. İmzasız arşiv TestFlight'a yüklenebilir build değildir. [Yayın kapıları](release-checklist.md) tamamlanmadan mağazaya gönderme.
+
+
+## Supabase sonrası regresyon
+
+Local.xcconfig public Supabase ayarları içerirken yerel AuthService artık bulut istemcisi oluşturmaz; yerel oturum cloud restore/refresh ile değişmez. Bu ayrımı kapsayan birim testi eklendi, bundle config testi public yerel override ile uyumlu hale getirildi. Son tam çalışma: 27 unit + 6 UI = 33 Passed, 0 failure/skip; iki UI testi gerçek yerel Docker API akışını çalıştırdı. Release cihaz arşivi tekrar başarılı; derlenmiş uygulama gerçek sunucu anahtar/parolaları açısından tarandı, hiçbiri bulunmadı. ATS/HTTPS koruması ve privacy manifest doğrulandı. Yayın preflight eksik HTTPS API/policy, billing, Google ve destek ayarlarını beklenen şekilde reddediyor; Supabase public alanları artık geçerli.
+
+Gerçek development Supabase backend `8081` üzerinde ayrıca doğrulandı: gerçek JWT/refresh, CRUD sahipliği, Free sınırları, kapalı AI'da kredi/görsel temizliği ve Auth/DB/Storage hesap silme. [Runtime kanıtı](../infrastructure/supabase-runtime-verification.json). Bu, native iOS sağlayıcı veya TestFlight doğrulaması değildir.

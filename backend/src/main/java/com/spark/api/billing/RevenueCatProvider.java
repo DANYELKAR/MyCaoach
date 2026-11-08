@@ -12,6 +12,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("supabase")
+@org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(
+    name = "spark.billing.enabled",
+    havingValue = "true",
+    matchIfMissing = true)
 public class RevenueCatProvider implements BillingProvider {
   private final ObjectMapper json;
   private final String key, base;
