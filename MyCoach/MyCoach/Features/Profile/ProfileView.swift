@@ -13,6 +13,7 @@ struct ProfileView: View {
                         Text("A voice that feels like you.").font(.subheadline).foregroundStyle(Theme.muted)
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading).surfaceCard()
+                if state.runtime != nil { NavigationLink("Subscription") { SubscriptionView() }.font(.headline).frame(minHeight: 44).surfaceCard() }
                 VStack(alignment: .leading, spacing: 16) {
                     Text("YOUR DEFAULT TONE").font(.caption.weight(.semibold)).tracking(1.2).foregroundStyle(Theme.muted)
                     ForEach(BuiltInTone.allCases) { tone in

@@ -11,6 +11,7 @@ struct RootView: View {
             } else { MainTabView() }
         }
         .task { await state.runtime?.start() }
+        .sheet(isPresented: Binding(get: { state.runtime?.showPaywall == true }, set: { state.runtime?.showPaywall = $0 })) { PaywallView() }
         .alert("MyCoach", isPresented: Binding(get: { state.runtime?.errorMessage != nil }, set: { if !$0 { state.runtime?.errorMessage = nil } })) {
             Button("OK") { state.runtime?.errorMessage = nil }
         } message: { Text(state.runtime?.errorMessage ?? "") }

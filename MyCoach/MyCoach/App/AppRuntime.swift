@@ -5,6 +5,7 @@ import Observation
 final class AppRuntime {
     let configuration: AppConfiguration
     let auth: AuthService
+    let billing = BillingService()
     let api: APIClient
     var profile: ProfileDTO?
     var usage: UsageDTO?
@@ -17,10 +18,10 @@ final class AppRuntime {
     var toast: String?
     var onboardingComplete: Bool { profile?.ageConfirmedAt != nil && profile?.aiConsentAt != nil }
     deinit {}
-    init(configuration: AppConfiguration, testNamespace: String? = nil) {
+    init(configuration: AppConfiguration, testNamespace: String? = nil, session: URLSession = .shared) {
         self.configuration = configuration
         auth = AuthService(configuration: configuration, namespace: testNamespace ?? "com.danyelkar.mycoach.auth")
-        api = APIClient(baseURL: configuration.apiBaseURL)
+        api = APIClient(baseURL: configuration.apiBaseURL, session: session)
         api.token = { [weak auth] in try await auth?.accessToken() }
         api.refresh = { [weak auth] in try await auth?.refresh() }
         api.unauthorized = { [weak self] in self?.hasSession = false; self?.profile = nil; self?.auth.clearLocal() }
@@ -46,7 +47,7 @@ final class AppRuntime {
         if let error = error as? APIError, ["FORBIDDEN_PLAN", "OUT_OF_CREDITS"].contains(error.code) { showPaywall = true }
         errorMessage = (error as? URLError) != nil ? "You're offline or the server is unavailable. Check your connection and try again." : error.localizedDescription
     }
-    func signOut() async { await auth.signOut(); reset() }
+    func signOut() async { await billing.signOut(); await auth.signOut(); reset() }
     func reset() { profile = nil; usage = nil; tones = []; hasSession = false; errorMessage = nil; toast = nil }
     func requirePlus(_ action: () -> Void) { if profile?.isPlus == true { action() } else { showPaywall = true } }
 }

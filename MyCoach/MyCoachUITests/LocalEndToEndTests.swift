@@ -69,6 +69,11 @@ final class LocalEndToEndTests: XCTestCase {
         app.textFields["folder.name"].tap(); app.textFields["folder.name"].typeText("Favorites")
         app.buttons["editor.save"].tap()
         XCTAssertTrue(app.buttons["Favorites"].waitForExistence(timeout: 5))
+        app.tabBars.buttons["Profile"].tap()
+        app.buttons["Subscription"].tap()
+        XCTAssertTrue(app.buttons["billing.toggleTestPlan"].waitForExistence(timeout: 5))
+        app.buttons["billing.toggleTestPlan"].tap()
+        wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Switch to test Free"), object: app.buttons["billing.toggleTestPlan"])], timeout: 10)
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = "Live local backend opener"; image.lifetime = .keepAlways; add(image)
     }
 }
