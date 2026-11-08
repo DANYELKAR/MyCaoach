@@ -1,0 +1,14 @@
+// Copy to Local.xcconfig. This file is ignored by Git.
+// URL values need the slash variable because // starts an xcconfig comment.
+MYCOACH_URL_SLASH = /
+// MYCOACH_API_BASE_URL = https:$(MYCOACH_URL_SLASH)$(MYCOACH_URL_SLASH)your-api-host
+// MYCOACH_SUPABASE_URL = https:$(MYCOACH_URL_SLASH)$(MYCOACH_URL_SLASH)your-project.supabase.co
+// MYCOACH_SUPABASE_PUBLISHABLE_KEY = sb_publishable_...
+// MYCOACH_GOOGLE_CLIENT_ID = your-public-client-id.apps.googleusercontent.com
+// MYCOACH_REVENUECAT_PUBLIC_KEY = appl_your_public_sdk_key
+
+// Google iOS client reversed URL scheme, e.g. com.googleusercontent.apps.<id>
+MYCOACH_GOOGLE_REVERSED_CLIENT_ID =
+MYCOACH_SUPPORT_EMAIL =
+MYCOACH_PRIVACY_URL =
+MYCOACH_TERMS_URL =

@@ -1,0 +1,57 @@
+name: iOS
+on:
+  push:
+    branches: ["main"]
+    paths: ["MyCoach/**", ".github/workflows/ios.yml", "scripts/test_ios.sh"]
+  pull_request:
+    paths: ["MyCoach/**", ".github/workflows/ios.yml", "scripts/test_ios.sh"]
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode and simulator
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re, subprocess
+          apps = list(pathlib.Path('/Applications').glob('Xcode*.app'))
+          def version(app):
+              try:
+                  result = subprocess.check_output([str(app/'Contents/Developer/usr/bin/xcodebuild'), '-version'], text=True)
+                  return tuple(map(int, re.search(r'Xcode (\d+(?:\.\d+)*)', result)[1].split('.')))
+              except Exception:
+                  return (0,)
+          stable = [p for p in apps if "beta" not in p.name.lower() and "preview" not in p.name.lower()]
+          selected = next((p for p in stable if p.name == "Xcode_26.2.app"), max(stable, key=version))
+          if version(selected) < (16, 3):
+              raise SystemExit('Xcode 16.3+ is required by the pinned SDKs')
+          developer = str(selected/'Contents/Developer')
+          env = dict(os.environ, DEVELOPER_DIR=developer)
+          devices = json.loads(subprocess.check_output(['xcrun','simctl','list','devices','available','-j'], env=env))['devices']
+          iphones = [d for runtime, values in devices.items() if 'iOS' in runtime for d in values if d['name'].startswith('iPhone') and d['isAvailable']]
+          if not iphones:
+              raise SystemExit('An available iPhone simulator is required')
+          with open(os.environ['GITHUB_ENV'], 'a') as out:
+              out.write('DEVELOPER_DIR='+developer+'\n')
+              out.write('IOS_TEST_DEVICE='+iphones[0]['udid']+'\n')
+          PY
+      - uses: actions/cache@v4
+        with:
+          path: /tmp/mycoach-ios-packages
+          key: ${{ runner.os }}-${{ runner.arch }}-spm-${{ hashFiles('MyCoach/**/Package.resolved') }}
+      - name: Build and test
+        run: |
+          xcodebuild test -project MyCoach/MyCoach.xcodeproj -scheme MyCoach \
+            -destination "platform=iOS Simulator,id=$IOS_TEST_DEVICE" \
+            -clonedSourcePackagesDirPath /tmp/mycoach-ios-packages -disableAutomaticPackageResolution \
+            -derivedDataPath /tmp/mycoach-derived -resultBundlePath /tmp/mycoach-tests.xcresult \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=-
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mycoach-ios-tests
+          path: /tmp/mycoach-tests.xcresult

@@ -1,0 +1,36 @@
+{
+  "result": "Passed",
+  "finishedAt": "2026-11-08T14:46:03.055000+03:00",
+  "unitTests": 26,
+  "uiTests": 6,
+  "passed": 32,
+  "failed": 0,
+  "skipped": 0,
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "44DE7D4C-70DC-41BE-B2D0-9330ED31B5A3",
+    "deviceName": "iPhone 17 Pro",
+    "modelName": "iPhone 17 Pro",
+    "osBuildNumber": "23C54",
+    "osVersion": "26.2",
+    "platform": "iOS Simulator"
+  },
+  "resultBundle": "/tmp/mycoach-ios-verified.xcresult",
+  "xcode": "26.2",
+  "swift": "6.2.3",
+  "releaseArchive": {
+    "result": "Succeeded",
+    "path": "/tmp/MyCoach-verified.xcarchive",
+    "signed": false,
+    "platform": "iPhoneOS",
+    "minimumOS": "17.0"
+  },
+  "backendVerification": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "smoke": "Passed",
+    "openAPIPaths": 26
+  }
+}

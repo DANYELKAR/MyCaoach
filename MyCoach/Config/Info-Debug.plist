@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>MyCoach</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Google Sign-In</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(MYCOACH_GOOGLE_REVERSED_CLIENT_ID)</string>
+			</array>
+		</dict>
+	</array>
+	<key>MyCoachAPIBaseURL</key>
+	<string>$(MYCOACH_API_BASE_URL)</string>
+	<key>MyCoachBackendMode</key>
+	<string>$(MYCOACH_BACKEND_MODE)</string>
+	<key>MyCoachGoogleClientID</key>
+	<string>$(MYCOACH_GOOGLE_CLIENT_ID)</string>
+	<key>MyCoachPrivacyURL</key>
+	<string>$(MYCOACH_PRIVACY_URL)</string>
+	<key>MyCoachRevenueCatPublicKey</key>
+	<string>$(MYCOACH_REVENUECAT_PUBLIC_KEY)</string>
+	<key>MyCoachSupabasePublishableKey</key>
+	<string>$(MYCOACH_SUPABASE_PUBLISHABLE_KEY)</string>
+	<key>MyCoachSupabaseURL</key>
+	<string>$(MYCOACH_SUPABASE_URL)</string>
+	<key>MyCoachSupportEmail</key>
+	<string>$(MYCOACH_SUPPORT_EMAIL)</string>
+	<key>MyCoachTermsURL</key>
+	<string>$(MYCOACH_TERMS_URL)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo to create a personalized opener. Selected photos are sent to our backend and Google Gemini with your consent.</string>
+</dict>
+</plist>
