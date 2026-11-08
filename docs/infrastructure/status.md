@@ -36,18 +36,18 @@ Kullanıcı projeyi oluşturdu. Dashboard üzerinden doğrulanan bilgiler:
 - Data API proje oluşturulunca açık gelmişti; kapatıldı, dashboard “Data API disabled” ile doğrulandı. Mobil istemciye tablo erişimi açılmadı.
 - Private `inputs` bucket oluşturuldu; public kapalı, 5 MB, yalnız `image/jpeg` ve `image/png`, 0 policy. Görsel yükleme/signed URL canlı testi henüz yapılmadı.
 - GitHub Supabase entegrasyonu açılmadı. Flyway tek uygulama şeması otoritesi.
-- `.env` (0600, Git dışında) gerçek JDBC/URL/JWKS ayarlarıyla hazır. DB parolası kullanıcı tarafından eklenecek. Dashboard mevcut secret anahtarını bu oturumda tam olarak göstermedi/kopyalamadı; `SUPABASE_SERVICE_KEY` henüz boş. Yeni anahtar oluşturulmadı.
+- `.env` (0600, Git dışında) gerçek JDBC/URL/JWKS ayarlarıyla hazır. DB parolası kullanıcı tarafından eklendi; gerçek JDBC bağlantısı doğrulandı. Dashboard mevcut secret anahtarını bu oturumda tam olarak göstermedi/kopyalamadı; `SUPABASE_SERVICE_KEY` henüz boş. Yeni anahtar oluşturulmadı.
 - iOS `Config/Local.xcconfig` (0600, Git dışında) yalnız proje URL'si ve publishable key içeriyor. Debug yerel backend akışında kaldı; bulut backend çalışıyor olarak sunulmuyor.
 - Gerçek proje Auth API kontrolü: JWKS HTTP 200, bir ES256 anahtarı; publishable key ile `/auth/v1/settings` HTTP 200, email açık, Apple/Google kapalı. Kullanıcı oluşturulmadı veya e-posta gönderilmedi.
 - Migration aracı ayrı, geçici PostgreSQL 17 üzerinde doğrulandı: 5 uygulama migration uygulandı ve validate geçti; 12 tabloda RLS, 7 built-in ton. Test container silindi; bulut verisine uygulanmış sayılmaz.
-- Bulut iş tabloları/migration henüz uygulanmadı. Dashboard başlangıçta “No migrations” gösterdi; DB parolası olmadan JDBC sorgusu yapılmadı.
+- Bulut PostgreSQL 17.11 bağlantısı TLS session pooler ile doğrulandı. Flyway 11.7.2 ile V1–V5 uygulandı, validate başarılı. Gerçek DB salt okunur sorguları: 5 başarılı / 0 başarısız migration, 12 RLS korumalı uygulama tablosu, 0 korumasız uygulama tablosu, 0 public schema policy, 7 built-in ton, `profiles → auth.users` foreign key mevcut. [Sayısal doğrulama kanıtı](supabase-verification.json). Kullanıcı hesabı veya görsel oluşturulmadı.
 - Mevcut opaque `sb_secret_...` anahtarlarını JWT Bearer olarak gönderen backend düzeltildi. Auth/Storage admin istekleri `apikey` kullanıyor; kullanıcı logout JWT'si ve legacy service-role JWT desteği korundu. İki ek regresyon testi dahil 33 test başarılı.
 - Auth > Emails mevcut hesapta şablon düzenlemek için custom SMTP istiyor. Varsayılan Magic link or OTP şablonu yalnız bağlantı içeriyor; iOS kod girişi için SMTP sonrasında `{{ .Token }}` içeren şablon gerekli. E-posta gönderilmedi, SMTP veya Apple/Google sağlayıcıları yapılandırılmadı.
 
 ### Sıradaki adımlar
 
-1. Mevcut DB parolasını yalnız kök `.env` içindeki `DATABASE_PASSWORD` alanına ekle. Sohbete veya Git'e koyma.
-2. `JAVA_HOME` Java 21 iken `python3 scripts/supabase_migrations.py info`, ardından `migrate` ve `validate`. Komut yalnız uygulamanın aynı Flyway sürümü/migration dosyalarını kullanır; Gemini/RevenueCat gerektirmez. `clean`/`baseline` açılmaz. SQL Editor'den DDL yapıştırma.
+1. Tamamlandı: mevcut DB parolası özel `.env` dosyasında; gerçek bulut migration ve RLS doğrulaması başarılı.
+2. Tamamlandı: Java 21 ile `python3 scripts/supabase_migrations.py info`, ardından `migrate` ve `validate` başarılı. Komut yalnız uygulamanın aynı Flyway sürümü/migration dosyalarını kullanır; Gemini/RevenueCat gerektirmez. `clean`/`baseline` açılmaz. SQL Editor'den DDL yapıştırma.
 3. Mevcut Supabase secret anahtarını yalnız `.env` içindeki `SUPABASE_SERVICE_KEY` alanına ekle; Auth/Storage API kontrolleri ve sentetik görsel signed URL testi yapılacak.
 4. SMTP/domain seçimi ve OTP şablonu, Apple/Google OAuth, Gemini ve RevenueCat ayarları ayrı ayrı tamamlanacak. Bunlar hazır olmadan `supabase` profilini anahtar yerine sahte değerlerle başlatma.
 
