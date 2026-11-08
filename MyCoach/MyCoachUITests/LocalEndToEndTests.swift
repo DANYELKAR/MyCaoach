@@ -85,6 +85,20 @@ final class LocalEndToEndTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Make it yours."].waitForExistence(timeout: 30))
         XCTAssertTrue(app.buttons["suggestion.save.4"].exists)
         XCTAssertFalse(app.buttons["suggestion.save.5"].exists)
+        app.tabBars.buttons["Profile"].tap()
+        if app.navigationBars["Subscription"].exists { app.navigationBars.buttons.element(boundBy: 0).tap() }
+        app.buttons["profile.tones"].tap(); app.buttons["tones.add"].tap()
+        app.textFields["toneEditor.name"].tap(); app.textFields["toneEditor.name"].typeText("Warm voice")
+        app.textFields["toneEditor.instruction"].tap(); app.textFields["toneEditor.instruction"].typeText("Write short, warm, specific questions.")
+        app.buttons["editor.save"].tap()
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Warm voice")).firstMatch.waitForExistence(timeout: 10))
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["profile.style"].tap()
+        for i in 0..<5 { let field = app.textFields["style.sample.\(i)"]; field.tap(); field.typeText("Hey there, how was your day?") }
+        app.buttons["style.analyze"].tap()
+        app.swipeUp()
+        XCTAssertTrue(app.staticTexts["style.summary.source"].waitForExistence(timeout: 20))
+        XCTAssertEqual(app.staticTexts["style.summary.source"].label, "local-fixture")
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = "Live local backend opener"; image.lifetime = .keepAlways; add(image)
     }
 }
