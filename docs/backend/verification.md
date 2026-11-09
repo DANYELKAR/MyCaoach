@@ -68,9 +68,14 @@ Boot BOM'dan gelen Tomcat, Jackson, Log4j, JDBC ve Commons Lang sürümleri uyum
 
 ## Gerçek sağlayıcılar için kalan dış doğrulama
 
-Yerel çalışma `local` profilinde deterministik AI ve abonelik fixture'ları kullanır. Gerçek Gemini/Supabase/RevenueCat adaptörleri kodlanmış ve HTTP sözleşmeleri test edilmiştir; ancak canlı hesap anahtarlarıyla çalıştırıldıkları iddia edilmez. Supabase projesi/bucket, Apple/Google/SMTP ayarları, gerçek Gemini model erişimi ve App Store sandbox satın alma/restore testi ayrıca gerekir. GitHub Actions workflow hazırdır; repo `DANYELKAR/MyCaoach` olarak bağlandı. Yerel doğrulama sonucu ile PR üzerindeki GitHub Actions sonucu ayrı izlenir. HTTPS public webhook ve production deployment açılmadı.
+Yerel çalışma `local` profilinde deterministik AI ve abonelik fixture'ları kullanır. Supabase DB/Auth/Storage ve Gemini Flash-Lite gerçek anahtarlarla sentetik development testlerinde doğrulandı; aşağıdaki güncellemeler ve altyapı kanıtları esas alınır. Apple/Google/SMTP, RevenueCat/App Store sandbox satın alma/restore ve gerçek cihaz kabulü ayrıca gerekir. GitHub Actions workflow hazırdır; repo `DANYELKAR/MyCaoach` olarak bağlandı. Yerel doğrulama sonucu ile PR üzerindeki GitHub Actions sonucu ayrı izlenir. HTTPS public webhook ve production deployment açılmadı.
 
 
 ## 8 Kasım — gerçek Supabase
 
 Gerçek cloud migration/RLS, private Storage ve Java adapter testi, JWT/refresh/CRUD izolasyonu ve hesap silme [altyapı durumunda](../infrastructure/status.md) ve [runtime kanıtında](../infrastructure/supabase-runtime-verification.json) kayıtlıdır. AI ve billing açıkça kapalıyken core API çalışır; ilgili işlemler 503 döner, fixture sonuç/Plus verilmez. SMTP kullanıcı kararıyla ertelendi. Gerçek AI/RevenueCat/signed iOS yayını hâlâ ayrı kabul kapılarıdır.
+
+
+## 9 Kasım — canlı Gemini
+
+MyCoach Free tier anahtarı ile gerçek Java adaptörünün opener (5), reply (4) ve stil analizi sözleşmeleri geçti. Model varsayılanı, gerçek testte timeout sınırını aşan 3.8 Flash yerine `gemini-3.5-flash-lite` oldu. Gerçek Supabase JWT + Spring Boot opener, replay/conflict, tek kredi, private görsel ve hesap/Storage temizliği `scripts/smoke_gemini.py` ile doğrulandı. [Kanıt](../infrastructure/gemini-verification.json). Maven verify yeniden 36/36, 0 failure/error/skip. Gerçek kişisel içerik kullanılmadı, billing açılmadı.

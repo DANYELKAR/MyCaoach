@@ -24,7 +24,7 @@ public class GeminiClient implements AiClient {
   public GeminiClient(
       ObjectMapper json,
       @Value("${GEMINI_API_KEY}") String key,
-      @Value("${GEMINI_MODEL:gemini-3.8-flash}") String model,
+      @Value("${GEMINI_MODEL:gemini-3.5-flash-lite}") String model,
       @Value("${GEMINI_BASE_URL:https://generativelanguage.googleapis.com/v1beta}") String base) {
     if (key.isBlank() || !model.matches("[a-zA-Z0-9._-]+"))
       throw new IllegalArgumentException("Gemini configuration required");

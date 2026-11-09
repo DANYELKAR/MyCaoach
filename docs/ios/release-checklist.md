@@ -31,7 +31,8 @@ python3 scripts/check_ios_release.py /tmp/MyCoach-verified.xcarchive/Products/Ap
 - [ ] Production HTTPS Spring Boot sunucusu, ayrı production DB ve backup/restore. Docker Desktop tek başına production hosting değildir.
 - [ ] Supabase development/production projeleri; Apple ve Google provider ayarları, email OTP template'i kod gösterecek şekilde, SMTP/domain teslimatı, JWT issuer/audience.
 - [ ] Google iOS bundle ID ve reversed client ID scheme; Apple Developer takımında Sign in with Apple capability/provisioning. Uygulama entitlement dosyası hazırdır.
-- [ ] Gerçek Gemini model/key, görsel ve mesaj onayı, blocked/timeouts, retry ve maliyet sınırları.
+- [x] Development Gemini model/key ve sentetik canlı opener/reply/style; replay/kredi/private görsel temizliği, Free tier doğrulandı. [Kanıt](../infrastructure/gemini-verification.json).
+- [ ] Gerçek kullanıcı verisi için provider veri şartları/policy onayı, temsili safety/quality seti, kota/maliyet limitleri ve gerçek cihaz AI kabulü. Ücretsiz teste kişisel veri gönderilmedi.
 - [ ] RevenueCat `plus` entitlement, haftalık/aylık/yıllık ürünler ve offerings; App Store Connect ürünleri, trial eligibility ve fiyat/dönem açıklamaları. Fiyatlar uygulamada sabitlenmez.
 - [ ] Sandbox purchase, restore, cancellation/expiry ve hesap değişimi; backend HTTPS webhook + secret, `/billing/sync`, Free'ye düşüşte kilitler.
 - [ ] Publisher yasal kimliği, destek e-postası ve çalışan HTTPS Terms/Privacy URL'leri. Uygulamadaki development metinleri final politika yerine geçmez.
