@@ -16,7 +16,7 @@
 | E2E / restart | Gerçek Compose servisine karşı smoke ve DB/API restart testi geçti; smoke hesapları silindi |
 | CI | Backend verify, Docker/HTTP smoke ve cleanup workflow'u hazır; PR oluşturulduğunda GitHub Actions sonucu ayrıca izlenecek |
 | Supabase bulut projesi | `mycoach-dev`, ref `yeoqhvqfwiheemxufuru`, Free/Nano, Frankfurt `eu-central-1`, dashboard Healthy |
-| Gemini / RevenueCat canlı erişim | Adaptör/sözleşme testleri hazır; canlı anahtarlarla doğrulanmadı |
+| Gemini / RevenueCat canlı erişim | Gemini Flash-Lite canlı opener/reply/style doğrulandı; RevenueCat kapalı ve canlı doğrulanmadı |
 
 Container'lar çalışır bırakıldı. Yerel hesaplar `/local/auth/register` ve `/local/auth/login` ile kullanılabilir. Yerel AI ve abonelik fixture'ları gerçek sağlayıcı sonucu/satın alımı değildir; ayrıntılar README'dedir. Auth signing key restart'ta yenilendiği için tekrar giriş gerekir, DB verileri korunur.
 
@@ -67,3 +67,18 @@ Flyway Maven kullanımı: [resmî dokümantasyon](https://documentation.red-gate
 Bu doğrulama iOS Apple/Google/email OTP teslimatı, gerçek AI veya App Store satın alımı değildir. SMTP/domain ertelendi; gerçek Gemini, RevenueCat/App Store ve Apple/Google hesap ayarları eksik. İnternete açık sunucu/HTTPS veya TestFlight yayını yapılmadı.
 
 Son yerel regresyon: güncel Docker image build/recreate + HTTP smoke başarılı; backend 36/36, iOS 27 unit + 6 UI = 33/33, sıfır failure/skip. Release cihaz arşivi `/tmp/MyCoach-cloud-verified.xcarchive` başarılı (imzasız), sunucu secret/parola gömülmediği ve ATS koruması kontrol edildi. Yayın preflight eksik dış servis/yasal/HTTPS ayarlarını bilerek reddediyor; TestFlight hazır değildir.
+
+
+## 9 Kasım 2026 — canlı Gemini
+
+Kullanıcı MyCoach projesinin API anahtarını özel `.env` dosyasına ekledi. AI Studio'da `MyCoach` projesi (`gen-lang-client-0953333474`) ve `MyCoach Development` anahtarı **Free tier** olarak görüldü; billing veya ücretli plan açılmadı. Anahtarın kendisi okunabilir çıktıya, mobil uygulamaya veya Git'e konmadı.
+
+Models list HTTP 200 ile erişilebilir. Önceki varsayılan `gemini-3.8-flash` iki küçük REST denemesinde 30 saniyede, gerçek Java adaptöründe 25 saniyede zaman aşımına uğradı. `gemini-3.5-flash-lite` sentetik probe'a 1.11s, gerçek Java opener adaptörüne 1.85s içinde yanıt verdi. Backend varsayılanı ve özel `.env` modeli Flash-Lite olarak değiştirildi. Bu küçük smoke ölçümü bir performans/kalite garantisi değildir.
+
+Güncel private config: `AI_ENABLED=true`, `GEMINI_MODEL=gemini-3.5-flash-lite`, `BILLING_ENABLED=false`. `spark-supabase-api-1` yeniden oluşturuldu ve healthy; gerçek Gemini etkin, RevenueCat hâlâ kapalı. Önceki tarihli kapalı-AI runtime raporu tarihsel kanıt olarak korunur.
+
+`python3 scripts/smoke_gemini.py --allow-test-account --free-tier-confirmed`: gerçek Supabase JWT + Spring Boot + Gemini + DB + private Storage üzerinden opener geçti. Beş farklı, en fazla 220 karakterlik öneri; yalnız bir kredi tüketimi; replay aynı sonucu döndürdü, değiştirilmiş içerik aynı idempotency key ile 409 aldı ve ek kredi harcamadı. Saklanan sentetik görsel byte eşitliğiyle indirildi. Test hesabı ve objeleri backend hesap silme akışıyla temizlendi; eski JWT reddedildi. Tam opener turu 4.82s. Ek olarak aynı gerçek Java adaptörünün reply (4 öneri) ve stil analizi alanları doğrulandı; bunlar Plus/RevenueCat satın alım testi değildir. [Gemini kanıtı](gemini-verification.json).
+
+36 backend testi, 0 failure/error/skip; Docker image build/recreate başarılı. iOS kaynakları değişmedi; Debug uygulaması hâlâ yerel fixture API `8080` kullanıyor. Canlı Gemini `8081` Supabase API'sinde aktiftir. Native Apple/Google/OTP, SMTP/domain, App Store/RevenueCat, production HTTPS ve imzalı cihaz/TestFlight kapıları açık kalır.
+
+Ücretsiz kullanım şartları nedeniyle yalnız oluşturulmuş düz PNG ve kurmaca yetişkin ilgi/mesaj örnekleri gönderildi; gerçek kişi fotoğrafı, özel sohbet veya kullanıcı içeriği gönderilmedi.

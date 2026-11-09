@@ -124,3 +124,14 @@ Bu komut özel `.env` ve iOS public config'ini okur; iki sentetik, e-posta gönd
 - [Kurulum durumu](docs/infrastructure/status.md)
 - [Doğrulama raporu](docs/backend/verification.md)
 - [OpenAPI snapshot](docs/api/openapi.json)
+
+
+## Canlı Gemini development smoke
+
+9 Kasım 2026 tarihinde MyCoach Free tier projesinde `gemini-3.5-flash-lite` gerçek Java adaptörü ve Supabase backend üzerinden doğrulandı. Anahtar yalnız `.env` içinde; `AI_ENABLED=true`, `BILLING_ENABLED=false`. iOS Debug yerel fixture akışında kalır; bu test native giriş veya App Store satın alımı değildir.
+
+```sh
+python3 scripts/smoke_gemini.py --allow-test-account --free-tier-confirmed
+```
+
+Önce AI Studio'da projenin Free tier olduğunu doğrula. Komut bir sentetik hesap ve düz PNG oluşturur, gerçek opener çağrısı yapar, replay/conflict ve krediyi doğrular, ardından hesabı/görseli siler. Gerçek kişisel veri göndermez, faturalandırma açmaz, key/token/içerik yazdırmaz. Ücretsiz kota hesaba bağlıdır; 429 durumunda ücretli veya farklı sağlayıcıya otomatik fallback yoktur. [Sonuç](docs/infrastructure/gemini-verification.json).

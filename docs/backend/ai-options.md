@@ -1,6 +1,6 @@
 # MyCoach için ücretsiz AI API araştırması
 
-Kontrol: 8 Kasım 2026. Resmî fiyat, kota ve veri kullanım belgeleri incelendi. Hesap açılıp API anahtarıyla gerçek çağrı yapılmadı; hız, kalite ve güvenlik çıktıları henüz karşılaştırılmadı. Ücretli plan veya faturalandırma etkinleştirilmedi.
+Kontrol: 8–9 Kasım 2026. Resmî fiyat, kota ve veri kullanım belgeleri incelendi. Kullanıcının oluşturduğu MyCoach Free tier anahtarıyla 9 Kasım sentetik canlı Gemini testleri geçti; [kanıt](../infrastructure/gemini-verification.json). Groq/OpenRouter/Ollama için hesap veya canlı benchmark yok. Ücretli plan veya faturalandırma etkinleştirilmedi.
 
 ## Sonuç ve önerilen sıra
 
@@ -28,7 +28,7 @@ Kotalar uygulama kullanıcısı başına ek hak değildir. Gemini proje, Groq or
 
 ## Uygulama planı
 
-1. Ücretsiz Supabase projesi: `mycoach-dev`, mevcut `danyelkar` Free organizasyonu, Frankfurt. Form hazır; parola ve son oluşturma adımı kullanıcıya devredildi. Henüz proje ID'si veya bulut DB bağlantısı doğrulanmadı.
+1. Ücretsiz Supabase projesi `mycoach-dev` Frankfurt'ta oluşturuldu; gerçek DB/Auth/Storage ve hesap silme doğrulandı. [Altyapı durumu](../infrastructure/status.md).
 2. AI servis hesabı ve public/private config sınırı: gerçek AI anahtarı yalnız backend'in Git'e alınmayan `.env` dosyasında tutulur. iOS'a konmaz, loglanmaz, sohbette paylaşılmaz.
 3. Test seti: kişisel olmayan tek fotoğraf, üç ekran görüntüsü yerine yapay sohbet görselleri, pasted text ve 5 stil örneği. Opener 5 / reply 4 farklı, en çok 220 karakterlik sonuç; JSON schema/validation, PG-13, hassas özellik çıkarsamama, block/timeout/429 ve tekrar denemede kredi/idempotency davranışı ölçülür.
 4. Groq veya Ollama seçilirse `AiClient` arkasına ayrı adaptör eklenir; Spring Boot korunur. Otomatik ücretli fallback açılmaz. Kota aşımı kullanıcıya doğru hata olarak dönmeli; sağlayıcı kotası başarısız çağrı ve retry davranışlarıyla birlikte kontrol edilir.
@@ -49,3 +49,10 @@ Mevcut Mac'te 16 GB RAM görüldü. Küçük bir vision modelini yerelde denemek
 - [Ollama vision](https://docs.ollama.com/capabilities/vision)
 - [Ollama structured outputs](https://docs.ollama.com/capabilities/structured-outputs)
 - [Ollama official FAQ / local-only privacy](https://github.com/ollama/ollama/blob/main/docs/faq.mdx)
+
+
+## 9 Kasım canlı seçim sonucu
+
+MyCoach Gemini projesi Free tier olarak doğrulandı. Model listesinde 3.8 Flash bulunmasına karşın küçük üretim testleri uygulamanın timeout sınırını aştı. Flash-Lite 3.5 aynı ücretsiz projede gerçek Java adaptörünün opener (5), reply (4) ve stil analizi sözleşmelerini sentetik içerikle geçti; varsayılan model `gemini-3.5-flash-lite` oldu. Tam Spring Boot/Supabase opener + replay/conflict/kredi/private görsel/hesap temizliği smoke'u geçti. Bu bir gerçek fotoğraf kalite/safety benchmark'ı değildir; kota ve ücretsiz veri şartları geçerlidir.
+
+Modelin vision ve structured output desteği: [resmî model sayfası](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite). Ücretsiz katman: [fiyatlandırma](https://ai.google.dev/gemini-api/docs/pricing). 3.8 Flash varsayılan reasoning/latency davranışı: [resmî model açıklaması](https://ai.google.dev/gemini-api/docs/latest-model).

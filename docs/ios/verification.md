@@ -46,7 +46,7 @@ Normal Home, sonuç kartları, Saved, paywall, stil ve privacy; ayrıca en büy�
 
 ## Açık dış servis kapıları
 
-Apple/Google/email OTP teslimatı, iOS native Supabase oturum akışı, gerçek Gemini, RevenueCat/App Store sandbox purchase/restore/webhook, fiziksel kamera ve imzalı cihaz/TestFlight yayını **doğrulanmadı**. SDK adaptörlerinin derlenmesi bu kontroller yerine geçmez. Yerel Plus/AI fixture'ları ücret oluşturmaz ve gerçek sağlayıcı sonucu değildir.
+Apple/Google/email OTP teslimatı, iOS native Supabase oturum akışı, RevenueCat/App Store sandbox purchase/restore/webhook, fiziksel kamera ve imzalı cihaz/TestFlight yayını **doğrulanmadı**. SDK adaptörlerinin derlenmesi bu kontroller yerine geçmez. Yerel Plus/AI fixture'ları ücret oluşturmaz ve gerçek sağlayıcı sonucu değildir.
 
 Yayıncı kimliği, destek e-postası, hosted Terms/Privacy ve gerçek HTTPS API henüz yapılandırılmadı. Release mevcut placeholder'larla kullanıma açılmaz. İmzasız arşiv TestFlight'a yüklenebilir build değildir. [Yayın kapıları](release-checklist.md) tamamlanmadan mağazaya gönderme.
 
@@ -56,3 +56,5 @@ Yayıncı kimliği, destek e-postası, hosted Terms/Privacy ve gerçek HTTPS API
 Local.xcconfig public Supabase ayarları içerirken yerel AuthService artık bulut istemcisi oluşturmaz; yerel oturum cloud restore/refresh ile değişmez. Bu ayrımı kapsayan birim testi eklendi, bundle config testi public yerel override ile uyumlu hale getirildi. Son tam çalışma: 27 unit + 6 UI = 33 Passed, 0 failure/skip; iki UI testi gerçek yerel Docker API akışını çalıştırdı. Release cihaz arşivi tekrar başarılı; derlenmiş uygulama gerçek sunucu anahtar/parolaları açısından tarandı, hiçbiri bulunmadı. ATS/HTTPS koruması ve privacy manifest doğrulandı. Yayın preflight eksik HTTPS API/policy, billing, Google ve destek ayarlarını beklenen şekilde reddediyor; Supabase public alanları artık geçerli.
 
 Gerçek development Supabase backend `8081` üzerinde ayrıca doğrulandı: gerçek JWT/refresh, CRUD sahipliği, Free sınırları, kapalı AI'da kredi/görsel temizliği ve Auth/DB/Storage hesap silme. [Runtime kanıtı](../infrastructure/supabase-runtime-verification.json). Bu, native iOS sağlayıcı veya TestFlight doğrulaması değildir.
+
+9 Kasım: Gemini Flash-Lite gerçek Java/backend üzerinden sentetik opener/reply/style ile doğrulandı; [kanıt](../infrastructure/gemini-verification.json). iOS kaynakları değişmedi ve Debug fixture modunda kaldı; bu sonuç native iOS/cloud giriş veya cihaz yayını kabulü değildir.

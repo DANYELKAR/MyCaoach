@@ -1,0 +1,29 @@
+{
+  "verifiedAt": "2026-11-09T08:20:49.775562+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "billingTierObserved": "Free tier",
+  "checks": [
+    "real_gemini_five_distinct_valid_opener_suggestions",
+    "idempotent_replay_and_conflict_do_not_spend_extra_credit",
+    "retained_private_image_roundtrip",
+    "synthetic_auth_database_storage_cleanup"
+  ],
+  "openerRoundtripSeconds": 4.82,
+  "syntheticAccountsCreatedAndDeleted": 1,
+  "personalDataSent": false,
+  "billingEnabledByAgent": false,
+  "note": "One successful opener inference; replay/conflict do not perform additional inference. No content, IDs, signed URLs, tokens or credentials recorded.",
+  "directAdapterChecks": {
+    "success": true,
+    "checks": [
+      "reply_four_distinct_valid_suggestions",
+      "style_summary_required_fields"
+    ],
+    "verifiedAt": "2026-11-09T08:20:38.165483+00:00"
+  },
+  "modelSelection": {
+    "gemini-3.8-flash": "Models list accessible; two raw probes timed out at 30 seconds and Java adapter timed out at 25 seconds. Not selected.",
+    "gemini-3.5-flash-lite": "Synthetic probe HTTP 200 in 1.11s, Java opener adapter validated in 1.85s; full Auth/DB/Storage/AI opener roundtrip measured separately.",
+    "note": "Small synthetic smoke observations, not a quality benchmark or latency guarantee."
+  }
+}
